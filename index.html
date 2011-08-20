@@ -2,23 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Projects</title>
+    <title>kiro.me</title>
+    <link href="http://fonts.googleapis.com/css?family=Amaranth:400,700" rel="stylesheet" type="text/css">
     <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
     <script src="http://documentcloud.github.com/underscore/underscore.js"></script>
     <script src="http://documentcloud.github.com/backbone/backbone.js"></script>
     <link href="../style/default.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h1><a href="/">&lt;kiro&gt;</a></h1>
-    <nav>
-      <ul>
-        <li><span data-name="blog">Blog</span></li>
-        <li><span data-name="projects">Projects</span></li>
-        <li><span data-name="about">About</span></li>
+    <div id="container">
+      <h1>kiro<span>dot</span>me</h1>
+
+      <ul id="menu">
+        <li data-name="/about">About</li>
+        <li data-name="/projects">Projects</li>
       </ul>
-    </nav>
-    <section id="content">
-    </section>
+
+      <section id="content">
+      </section>
+    </div>
   </body>
   <script type="text/javascript">
     $(function() {
@@ -34,7 +36,8 @@
         , loadProjects : function() {
             this._content.load('../projects.html');
         }
-        , loadAbout: function(other){
+        , loadAbout: function(){
+            this._content.empty();
         }
       });
 
@@ -42,8 +45,8 @@
        
       Backbone.history.start();
 
-      $('nav ul > li span').bind('click', function() {
-        app.navigate('/' + $(this).data('name'), true);
+      $('#menu > li').bind('click', function() {
+        app.navigate($(this).data('name'), true);
       });
       
     })
