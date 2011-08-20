@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <title>Projects</title>
+    <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+    <script src="http://documentcloud.github.com/underscore/underscore.js"></script>
+    <script src="http://documentcloud.github.com/backbone/backbone.js"></script>
+    <link href="../style/default.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    KRISK
+    <h1><a href="/">&lt;kiro&gt;</a></h1>
+    <nav>
+      <ul>
+        <li><span data-name="blog">Blog</span></li>
+        <li><span data-name="projects">Projects</span></li>
+        <li><span data-name="about">About</span></li>
+      </ul>
+    </nav>
+    <section id="content">
+    </section>
   </body>
   <script type="text/javascript">
+    $(function() {
+
+      AppRouter = Backbone.Router.extend({
+        routes: {
+          '/projects': 'loadProjects'
+          , '/about': 'loadAbout'
+        }
+        , initialize: function() {
+            this._content = $('#content');
+        }
+        , loadProjects : function() {
+            this._content.load('../projects.html');
+        }
+        , loadAbout: function(other){
+        }
+      });
+
+      var app = new AppRouter();
+       
+      Backbone.history.start();
+
+      $('nav ul > li span').bind('click', function() {
+        app.navigate('/' + $(this).data('name'), true);
+      });
+      
+    })
   </script>
 </html>
