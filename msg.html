@@ -10,6 +10,15 @@
   <body>
     <div id="container">
       <h2>A special message to The Obvious Corporation</h2>
+      <article id="short_version" style="display: none;">
+      <p>
+        I like what I do.  You probably will like it too.  Let's join forces.
+        <br>
+        <br>
+        <a href="#" id="long_version_link">Long version</a>
+      </p>
+      </article>
+      <article id="long_version">
       <sub>Pardon the novel, but I need more than 140 characters.</sub>
       <p>
         Let me just go ahead and say that I love my current position, and employer.  Frankly, they really do not give me any reason to leave.  Nonetheless, I wouldn’t say that the technology I create helps people on a personal and social level (ex, twitter, blogger, or other collaborative web systems), though, it definitely does help them make money.  However, is that really the <strong>ONLY</strong> type of technology that I want to keep creating? Do my projects have to exist solely for the enjoyment of a very <strong>few</strong> privileged individuals? I’m not quite sure.
@@ -22,10 +31,10 @@
       </p>
       <p>
       <p>
-        That's all for now.  <a href="mailto:kirollos@gmail.com">Contact me</a> for any questions or comments, or to simply ridicule me for creating a page specifically designed for this one purpose.
+        That's all for now.  <a href="mailto:kirollos@gmail.com">Contact me</a> for any questions, comments, or to simply ridicule me for creating a page specifically designed for this one purpose.
       </p>
       <p>
-        My apologies, I know this is 12 times longer than what your average twitter user is accustomed to.  But if you've read this far, then thanks.
+        My apologies, I know this is 12 times longer than what your average twitter user is accustomed to.  But if you've read this far, then thanks. Or, if you think this is too pathetically long, <a href="#" id="short_version_link">here's the short version.</a>
         <br/>
         <br/>
         Kirollos (Kiro) Risk
@@ -36,13 +45,21 @@
       <p style="font-size: 12px;">
         P.P.S., If I join your team, I’ll try vegetarianism for a full month. Scout's honor.
       </p>
-      
+      </article>
     </div>
   </body>
   <script type="text/javascript">
     $(function() {
-
-      
+      var $short_version = $('#short_version');
+      var $long_version = $('#long_version');
+      $('#short_version_link').click(function() {
+        $short_version.show();
+        $long_version.hide();
+      });
+      $('#long_version_link').click(function() {
+        $long_version.show();
+        $short_version.hide();
+      });
     })
   </script>
 </html>
