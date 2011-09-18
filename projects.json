@@ -1,12 +1,11 @@
 [
-{
-	"name": "Textualizer", 
-	"url":   "http://kiro.me/textualizer",
-	"description": "Textualizer is a jQuery plug-in that allows you to transition through blurbs of text. When transitioning to a new blurb, any character that is common to the next blurb is kept on the screen, and moved to its new position."
-}
-,
-{
-	"name": "Provision", 
-	"description": "ProvisionJS is a set of JavaScript code blocks that provide a solid foundation to build modular UI Controls for use in Web 2.0+ applications"
-}
+   {
+      "name":"Textualizer",
+      "url":"http://kiro.me/textualizer",
+      "description":"Textualizer is a jQuery plug-in that allows you to transition through blurbs of text. When transitioning to a new blurb, any character that is common to the next blurb is kept on the screen, and moved to its new position."
+   },
+   {
+      "name":"Provision",
+      "description":"ProvisionJS is a set of JavaScript code blocks that provide a solid foundation to build modular UI Controls for use in Web 2.0+ applications"
+   }
 ]
