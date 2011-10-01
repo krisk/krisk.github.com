@@ -9,7 +9,7 @@
 * Date: Thu May 05 14:23:00 2011 -0600
 */
 (function( $ ){
-	$.fn.fitText = function( kompressor ) {
+	$.fn.fitText = function(kompressor) {
 		return this.each(function(){
 			var $this = $(this);                                     // store the object
 			var origFontSize = parseFloat($this.css('font-size'));   // init the font sizes
