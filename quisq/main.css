@@ -129,7 +129,7 @@ html {
 body {
     background:url("images/bg.jpg?1305065911") no-repeat fixed 50% 0 #151515;
     text-align:center;
-    font:normal 14px/24px "Arial Narrow",Helvetica,Arial,sans-serif;
+    font:normal 14px/24px "Proxima Nova Condensed Regular","Proxima Nova Condensed","Arial Narrow",Helvetica,Arial,sans-serif;
     color:#9f9f9f;
 }
 p,form {
@@ -169,7 +169,7 @@ section {
     width: 802px;
 }
 #work h2,#people h2,#about h2,#blog h2,#services h2,#contact h2 {
-    font-family: "Arial Narrow",Helvetica,Arial,sans-serif;
+    font-family: "Proxima Nova Condensed Semibold","Arial Narrow",Helvetica,Arial,sans-serif;
     color:#eee;
     font-size:21px;
     text-transform:uppercase;
@@ -337,7 +337,7 @@ a.readmore:hover,a.readmore:focus {
 #hgroup h2,#people .hd,#about .hd,#services .hd,#contact .hd,#blog h3,.slidecontent h3 {
     margin:30px 0 0 65px;
     letter-spacing:0;
-    font:24px/34px "Arial Narrow",Helvetica,Arial,sans-serif;
+    font:24px/34px "Proxima Nova Condensed Light","Arial Narrow",Helvetica,Arial,sans-serif;
     text-align:left;
     width:570px;
     text-shadow:0 -2px 0 rgba(0,0,0,0.4);
@@ -351,7 +351,7 @@ em {
     font-style:normal;
 }
 #hgroup em {
-    font-family: "Arial Narrow",Helvetica,Arial,sans-serif;
+    font-family: "Proxima Nova Condensed Semibold","Arial Narrow",Helvetica,Arial,sans-serif;
 }
 .action,.action:hover {
     position:absolute;
@@ -589,13 +589,13 @@ em {
 }
 #work .openproject .col3 p {
     margin-bottom:0;
-    font:200 16px/24px "Arial Narrow",Helvetica,Arial,sans-serif;
+    font:200 16px/24px "Proxima Nova Condensed Light","Arial Narrow",Helvetica,Arial,sans-serif;
 }
 #work .openproject .col3 em {
     *display:none;
     float:left;
     color:#555;
-    font:69px/24px "Arial Narrow",Helvetica,Arial,sans-serif;
+    font:69px/1px "Proxima Nova Condensed Semibold","Arial Narrow",Helvetica,Arial,sans-serif;
     margin:0.35em 0.15em 0 0;
     line-height:1px;
 }
@@ -772,12 +772,12 @@ em {
 }
 .col2 p {
     margin-bottom:0;
-    font:200 16px/24px "Arial Narrow",Helvetica,Arial,sans-serif;
+    font:200 16px/24px "Proxima Nova Condensed Light","Arial Narrow",Helvetica,Arial,sans-serif;
 }
 .col2 em {
     float:left;
     color:#555;
-    font:69px/24px "Arial Narrow",Helvetica,Arial,sans-serif;
+    font:69px/1px "Proxima Nova Condensed Semibold","Arial Narrow",Helvetica,Arial,sans-serif;
     margin:0.35em 0.15em 0 0;
     line-height:1px;
 }
@@ -909,7 +909,7 @@ input:focus,textarea:focus {
     background:#095d7a;
     text-transform:uppercase;
     color:#fff;
-    font:normal 18px/18px "Arial Narrow",Helvetica,Arial,sans-serif;
+    font:18px/18px "Proxima Nova Condensed Regular","Proxima Nova Condensed","Arial Narrow",Helvetica,Arial,sans-serif;
     padding:8px 0;
     border:0;
 }
