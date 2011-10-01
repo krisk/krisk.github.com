@@ -677,17 +677,17 @@ em {
     padding-bottom:65px;
 }
 #people .img {
-    margin-bottom:10px;
-    height:110px;
-    width:110px;
-    background-image:url('/images/people.png');
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    height: 110px;
+    margin-bottom: 10px;
+    width: 110px;
 }
 #people .img1 {
-    background-position:3px 3px;
+    background-image: url("images/kiro.jpg");
 }
 #people .img2 {
-    background-position:3px -117px;
+    background-image: url("images/mina.jpg");
 }
 #people a,#people div {
     float:left;
