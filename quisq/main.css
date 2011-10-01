@@ -310,7 +310,7 @@ a.readmore:hover,a.readmore:focus {
     width:940px;
     height:647px;
     text-align:center;
-    background:transparent url('images/lab.jpg?1305705277') no-repeat fixed 51% 155px;
+    background:transparent url('images/lab.jpg') no-repeat fixed 51% 155px;
 }
 #logo {
     margin-top:88px;
@@ -483,7 +483,7 @@ em {
     height:18px;
     overflow:hidden;
     text-indent:-9999px;
-    background:transparent url('/images/kiskosprite.png?1305705277') no-repeat -627px 0;
+    background:transparent url('/images/kiskosprite.png') no-repeat -627px 0;
 }
 #work .openproject .pagination a.activeSlide {
     background-position:-603px 0;
@@ -526,7 +526,7 @@ em {
     position:absolute;
     top:20px;
     right:-5px;
-    background:transparent url('/images/kiskosprite.png?1305705277') no-repeat right top;
+    background:transparent url('/images/kiskosprite.png') no-repeat right top;
     z-index:1001;
     width:50px;
     border:0;
@@ -680,7 +680,7 @@ em {
     margin-bottom:10px;
     height:110px;
     width:110px;
-    background-image:url('/images/people.png?1305705277');
+    background-image:url('/images/people.png');
     background-repeat:no-repeat;
 }
 #people .img1 {
@@ -688,30 +688,6 @@ em {
 }
 #people .img2 {
     background-position:3px -117px;
-}
-#people .img3 {
-    background-position:3px -237px;
-}
-#people .img4 {
-    background-position:3px -357px;
-}
-#people .img5 {
-    background-position:3px -477px;
-}
-#people .img6 {
-    background-position:3px -597px;
-}
-#people .img7 {
-    background-position:3px -717px;
-}
-#people .img8 {
-    background-position:3px -837px;
-}
-#people .img9 {
-    background-position:3px -957px;
-}
-#people .img10 {
-    background-position:3px -1077px;
 }
 #people a,#people div {
     float:left;
@@ -817,7 +793,7 @@ em {
 }
 #blog .col {
     width:370px;
-    background:transparent url('/images/line_vertical.png?1305065911') repeat-y top right;
+    background:transparent url('/images/line_vertical.png') repeat-y top right;
     padding-right:30px;
     margin:0 30px 30px 0;
 }
@@ -931,13 +907,13 @@ input:focus,textarea:focus {
     -webkit-transition:none !important;
     -moz-transition:none !important;
     transition:none !important;
-    background:transparent url('/images/kiskosprite.png?1305705277') no-repeat -370px -3px;
+    background:transparent url('/images/kiskosprite.png') no-repeat -370px -3px;
 }
 #social .tw {
-    background:transparent url('/images/kiskosprite.png?1305705277') no-repeat -419px -3px;
+    background:transparent url('/images/kiskosprite.png') no-repeat -419px -3px;
 }
 #social .rss {
-    background:transparent url('/images/kiskosprite.png?1305705277') no-repeat -467px -3px;
+    background:transparent url('/images/kiskosprite.png') no-repeat -467px -3px;
 }
 #social .fb:hover,#social .fb:focus {
     background-position:-370px -50px;
@@ -1047,21 +1023,21 @@ input:focus,textarea:focus {
     padding-top:24px;
     width:79px;
     height:65px;
-    background:transparent url('/images/kiskosprite.png?1305705277') no-repeat 0 0;
+    background:transparent url('/images/kiskosprite.png') no-repeat 0 0;
 }
 .railsgirls {
     margin-right:10px;
     opacity:0.7;
     width:157px;
-    background:transparent url('/images/kiskosprite.png?1305705277') no-repeat -80px 0;
+    background:transparent url('/images/kiskosprite.png') no-repeat -80px 0;
 }
 .frozenrails:hover,.frozenrails:focus {
     opacity:1.0;
-    background:transparent url('/images/kiskosprite.png?1305705277') no-repeat 0 -135px;
+    background:transparent url('/images/kiskosprite.png') no-repeat 0 -135px;
 }
 .railsgirls:hover,.railsgirls:focus {
     opacity:1.0;
-    background: transparent url('/images/kiskosprite.png?1305705277') no-repeat -80px -135px;
+    background: transparent url('/images/kiskosprite.png') no-repeat -80px -135px;
 }
 /* =========================================== DEVICE ADAPTATION============================================== */
 /* 1000px and under */
