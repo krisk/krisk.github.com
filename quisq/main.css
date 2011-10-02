@@ -318,7 +318,7 @@ a.readmore:hover,a.readmore:focus {
     height:117px;
 }
 #logo a {
-    background: url("images/logo5.png") no-repeat scroll 50% 40% transparent;
+    background: url("images/logo6.png") no-repeat scroll 50% 40% transparent;
     border: 0 none;
     display: block;
     height: 100%;
@@ -329,7 +329,7 @@ a.readmore:hover,a.readmore:focus {
     color:#eee;
     margin-top:124px;
     margin-bottom:7px;
-    font:74px/100px "Proxima Nova Condensed Semibold", "Arial Narrow",Impact,Helvetica,Arial,sans-serif;
+    font:57px/100px "Proxima Nova Condensed Semibold", "Arial Narrow",Impact,Helvetica,Arial,sans-serif;
     letter-spacing:-4px;
     text-shadow:0 -2px 0 rgba(0,0,0,0.7);
     -webkit-font-smoothing:antialiased;
