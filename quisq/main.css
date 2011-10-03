@@ -136,7 +136,7 @@ p,form {
     font:13px/18px "Helvetica Neue",Helvetica,Arial,sans-serif;
     color:#9f9f9f;
 }
-img,.slides,#people .img {
+img,.slides,#team .img {
     -webkit-transition:all .3s ease;
     -moz-transition:all .3s ease;
     transition:all .3s ease;
@@ -168,7 +168,7 @@ section {
     text-align: left;
     width: 802px;
 }
-#work h2,#people h2,#about h2,#blog h2,#services h2,#contact h2 {
+#work h2,#team h2,#about h2,#blog h2,#services h2,#contact h2 {
     font-family: "Proxima Nova Condensed Semibold","Arial Narrow",Helvetica,Arial,sans-serif;
     color:#eee;
     font-size:21px;
@@ -196,7 +196,7 @@ p a:focus {
     -moz-box-shadow:#095d7a 0 0 5px;
     box-shadow:#095d7a 0 0 10px;
 }
-a:hover img,a:focus img,#people a:hover .img,#people a:focus .img {
+a:hover img,a:focus img,#team a:hover .img,#team a:focus .img {
     border:1px solid #0b8cb8;
     -webkit-box-shadow:#0b8cb8 0 0 10px;
     -moz-box-shadow:#095d7a 0 0 5px;
@@ -334,7 +334,7 @@ a.readmore:hover,a.readmore:focus {
     text-shadow:0 -2px 0 rgba(0,0,0,0.7);
     -webkit-font-smoothing:antialiased;
 }
-#hgroup h2,#people .hd,#about .hd,#services .hd,#contact .hd,#blog h3,.slidecontent h3 {
+#hgroup h2,#team .hd,#about .hd,#services .hd,#contact .hd,#blog h3,.slidecontent h3 {
     margin:30px 0 0 65px;
     letter-spacing:0;
     font:24px/34px "Proxima Nova Condensed Light","Arial Narrow",Helvetica,Arial,sans-serif;
@@ -421,7 +421,7 @@ em {
 #work #project_vb,#work #project_mt {
     width:400px;
 }
-#work h3,#people h3,#blog h4,.sidebar h4,#services h4 {
+#work h3,#team h3,#blog h4,.sidebar h4,#services h4 {
     color:#eee;
     font-weight:normal;
     font-size:18px;
@@ -673,42 +673,42 @@ em {
     margin-left: 0;
 }
 /* =========================================== PEOPLE============================================== */
-#people {
+#team {
     padding-bottom:65px;
 }
-#people .img {
+#team .img {
     background-repeat: no-repeat;
     background-size: 100% auto;
     height: 110px;
     margin-bottom: 10px;
     width: 110px;
 }
-#people .img1 {
+#team .img1 {
     background-image: url("images/kiro.jpg");
 }
-#people .img2 {
+#team .img2 {
     background-image: url("images/mina.jpg");
 }
-#people a,#people div {
+#team a,#team div {
     float:left;
     width:118px;
     margin-right:53px;
     padding-bottom:40px;
     border:0;
 }
-#people .last {
+#team .last {
     margin-right:0;
 }
-#people h3 {
+#team h3 {
     margin-bottom:4px;
 }
-#people div .img {
+#team div .img {
     border-color:#333;
 }
-#people p {
+#team p {
     white-space:nowrap;
 }
-#people .hd,#about .hd,#contact .hd,#services .hd,#blog h3 a,#blog h3 {
+#team .hd,#about .hd,#contact .hd,#services .hd,#blog h3 a,#blog h3 {
     width:auto;
     margin:0 0 48px 0;
     color: #9f9f9f;
@@ -1170,7 +1170,7 @@ input:focus,textarea:focus {
         margin:0 0 10px 0;
         padding:0;
     }
-    #people a,#people div,#people .last {
+    #team a,#team div,#team .last {
         margin-right:33px;
     }
     #dev_blog,#lahtolaukaus {
@@ -1378,7 +1378,7 @@ input:focus,textarea:focus {
     #services h4 {
         margin-top:15px;
     }
-    #people a,#people div {
+    #team a,#team div {
         height: 180px;
     }
 }
@@ -1395,10 +1395,10 @@ input:focus,textarea:focus {
         width:320px !important;
         /* Opera Mini fix */
     }
-    #people a:nth-child(even) {
+    #team a:nth-child(even) {
         margin-right:0;
     }
-    #people div.last {
+    #team div.last {
         display:none;
     }
     #work .openproject .slides {
