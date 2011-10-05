@@ -73,6 +73,19 @@ $(function() {
  		},
  		initialize: function() { 				
  			var self = this;
+ 			
+ 			// Find the location of the user
+ 			/*
+ 			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function(position) {
+					var coords = position.coords;
+					var address = position.address;
+					$('#search-location').val(address.city + ', ' + address.country + ', ' + address.postalCode);
+				});
+			}
+			*/
+
+			$("#search-filter").stickyPanel();
 
  			$.getJSON('./data.json', function(data) {
  				self.model = new App.Collections.Business(data);
@@ -96,4 +109,31 @@ $(function() {
  	});
 
  	var main = new App.Views.Main();
+
+ 	/*
+
+      AppRouter = Backbone.Router.extend({
+        routes: {
+          '/projects': 'loadProjects'
+          , '/about': 'loadAbout'
+        }
+        , initialize: function() {
+            this._content = $('#content');
+        }
+        , loadProjects : function() {
+            this._content.load('../projects.html');
+        }
+        , loadAbout: function(){
+            this._content.empty();
+        }
+      });
+
+      var app = new AppRouter();
+       
+      Backbone.history.start();
+
+      $('#menu > li').bind('click', function() {
+        app.navigate($(this).data('name'), true);
+      });
+ 	*/
 });

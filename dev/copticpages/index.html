@@ -4,6 +4,7 @@
 		<title>CopticPages</title>
 		<script type="text/javascript" src="javascript/underscore-min.js"></script>
 		<script type="text/javascript" src="javascript/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="javascript/jquery-stickyPanel.js"></script>
 		<script type="text/javascript" src="javascript/backbone-min.js"></script>
 		<script type="text/javascript" src="javascript/mustache.js"></script>
 		<script type="text/javascript" src="javascript/main.js"></script>
@@ -17,14 +18,40 @@
 			<!--Search View -->
 			<section id="search">
 				<section id="search-params">
+					<section>
+						<label for="search-type">What type of business are you looking for?</label>
+						<input id="search-type" type="text" />
+					</section>
+					<section>
+						<label for="search-location">Where are you?</label>
+						<input id="search-location" type="text" />
+					</section>
+					<section>
+						<!--
+						<input id="search-dir" type="checkbox" />
+						<label for="search-dir">Search entire directory</label>
+						-->
+					</section>
 				</section>
 				<section id="search-body">
 				</section>
-				<section id="search-filter">
+				<section id="search-filter-wrapper">
+					<!-- Create a wrapper so that when scrolling, the search-filter is always in view -->
+					<div id="search-filter">
+						<section id="map-options">
+							<input id="search-map-checkbox" type="checkbox" />
+							<label for="search-map-checkbox">Update results as map moves</label>
+						</section>
+						<section id="map">
+						</section>
+					</div>
 				</section>
 			</section>
-			
+
 		</div>
+
+
+		<!--TEMPLATES-->
 
 		<!--Listing -->
 		<script id="search-listitem-template" type="text/html" />
