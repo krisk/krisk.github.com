@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="javascript/backbone-min.js"></script>
 		<script type="text/javascript" src="javascript/mustache.js"></script>
 		<script type="text/javascript" src="javascript/main.js"></script>
+		<link href="button.css" type="text/css" rel="stylesheet" />
 		<link href="main.css" type="text/css" rel="stylesheet" />
 	</head>
 	<body>
@@ -16,7 +17,7 @@
 				<nav>
 					<ul>
 						<li><a href="/about">Home</a></li>
-						<li><a>Login</a></li>
+						<li><a>Sign in</a></li>
 						<li><a href="/register">Register</a></li>
 						<li><a href="/news">News</a></li>
 					</ul>
@@ -24,6 +25,11 @@
 			</div>
 		</header>
 		<div id="wrapper">
+
+			<section id="action">
+				<a id="list-your-space" class="button-glossy yellow hide_when_printing" href="/rooms/new">List your business</a>
+			</section>
+
 
 			<!--Search View -->
 			<section id="search">

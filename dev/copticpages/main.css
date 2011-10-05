@@ -30,12 +30,10 @@ table {
 
 
 body {
-	font: 13px/1.231 sans-serif;
-	font-family: lucida grande,lucida sans unicode,lucida sans,sans-serif;
+	/*font: 13px/1.231 sans-serif;*/
+	/*font-family: lucida grande,lucida sans unicode,lucida sans,sans-serif;*/
+	font: 14px/1.4 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
 	background-color: #FAFAFA;
-}
-#wrapper {
-	background-color: white;
 }
 
 #wrapper, #header-wrapper, #footer-wrapper {
@@ -46,7 +44,7 @@ body {
 /* HEADER */
 header, footer {
 	/*background: url("./images/body-bg.jpg") repeat scroll 0 0 #222222;*/
-	background-color: black;
+	background-color: black; /*#2B2B2B;*/
 }
 header {
 	border-bottom: 1px solid #C2C2C2;
@@ -75,21 +73,39 @@ header nav ul li {
 	margin-left: 10px;
 }
 header nav ul li {
-	font-size: 16px;
 	/*text-transform: uppercase;*/
 }
 header nav ul li a {
-	text-decoration: none;
-	color: white;
+ 	color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding-bottom: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+header nav ul li a:hover {
+	/*text-decoration: underline;*/
+	border-bottom: 2px solid #555555;
 }
 
 
+#list-your-space {
+    color: black !important;
+    float: right;
+    font-weight: normal;
+}
+
+#action {
+	height: 65px;
+}
 
 /* SEARCH */
 #search {
 	border: 1px solid #A8A8A8;
 	overflow: hidden;
 	border-radius: 7px;
+	background-color: white;
+	width: 1020px;
 }
 #search-params {
 	background-color: #FFD84F;
@@ -127,7 +143,7 @@ header nav ul li a {
 	position: relative;
 }
 #search-filter-wrapper, #search-filter {
-	width: 277px;
+	width: 279px;
 } 
 #map-options {
 	background: none repeat scroll 0 0 #EEEEE6;
@@ -181,6 +197,9 @@ header nav ul li a {
 .listing .info h3 a:link {
 	text-decoration: none;
 	color: #1D95CB;
+}
+.listing .info h3 a:link:hover {
+	text-decoration: underline;
 }
 .listing .info div > span {
 }
