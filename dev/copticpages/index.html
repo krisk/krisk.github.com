@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>CopticPages</title>
+		<script type="text/javascript" src="javascript/underscore-min.js"></script>
+		<script type="text/javascript" src="javascript/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="javascript/backbone-min.js"></script>
+		<script type="text/javascript" src="javascript/mustache.js"></script>
+		<script type="text/javascript" src="javascript/main.js"></script>
+		<link href="main.css" type="text/css" rel="stylesheet" />
+	</head>
+	<body>
+		<header>
+		</header>
+		<div id="wrapper">
+
+			<!--Search View -->
+			<section id="search">
+				<section id="search-params">
+				</section>
+				<section id="search-body">
+				</section>
+				<section id="search-filter">
+				</section>
+			</section>
+			
+		</div>
+
+		<!--Listing -->
+		<script id="search-listitem-template" type="text/html" />
+			<section class="top">
+			</section>
+			<section class="logo">
+				<a><img src="images/{{img}}" /></a>
+			</section>
+			<section class="info">
+				<h3>
+					<!-- If there's a profile, clicking on the name brings you to the business profile -->
+					{{#profile}}
+					<a href="profile/{{profile}}">{{name}}</a>
+					{{/profile}}
+					<!-- Otherwise just displa the business' name -->
+					{{^profile}}
+					{{name}}
+					{{/profile}}
+				</h3>
+				<!-- If there's a catchphrase, show it -->
+				{{#catchphrase}}
+				<p class="catchphrase">{{catchphrase}}</p>
+				{{/catchphrase}}
+				<div class="address">
+					<span class="street-address">{{streetAddress}}</span>
+					<span class="postal-code">{{postalCode}}</span>
+				</div>
+				<span class="telephone">{{phone}}</span>
+				<span class="distance">{{distance}}</span>
+				<!-- If there's a website, show a link to it -->
+				{{#website}}
+				<a href="{{website}}">website</a>
+				{{/website}}
+			<section>
+		</script>
+
+	</body>
+</html>

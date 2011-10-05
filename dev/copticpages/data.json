@@ -1,0 +1,22 @@
+[
+   {
+      "name":"Dental hell",
+      "profile": "dental_hell",
+      "catchphrase": "Caring and gentle comprehensive dentistry by people who get to know you",
+      "phone":"111-111-1111",
+      "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
+      "postalCode":"L5M7W8",
+      "email":"kirollos@gmail.com",
+      "website":"kiro.me",
+      "img":"random.jpg"
+   },
+   {
+      "name":"Pizza Purgatory",
+      "catchphrase": "Because you're just not good enough for the real deal",
+      "phone":"111-111-1111",
+      "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
+      "postalCode":"L5M7W8",
+      "email":"kirollos@gmail.com",
+      "img":"random.jpg"
+   }
+]

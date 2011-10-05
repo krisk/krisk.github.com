@@ -1,0 +1,97 @@
+html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, abbr, acronym, address, big, cite, code,del, dfn, em, img, ins, kbd, q, s, samp,small, strike, strong, sub, sup, tt, var,b, u, i, center,dl, dt, dd, ol, ul, li,fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td,article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+body {
+	font: 75%/1.25 "HelveticaNeue","Helvetica Neue","HelveticaNeueRoman","HelveticaNeue-Roman","Helvetica Neue Roman","TeXGyreHerosRegular","Helvetica","Tahoma","Geneva","Arial",sans-serif;
+}
+#wrapper {
+	margin: 0 auto;
+	width: 980px;
+}
+
+/* Search */
+#search {
+	border: 1px solid #A8A8A8;
+	overflow: hidden;
+}
+#search-params {
+	border-bottom: 1px solid #A8A8A8;
+    height: 50px;
+    width: 100%;
+}
+#search-body {
+	width: 740px;
+	border-right: 1px solid #A8A8A8;
+	float: left;
+}
+#search-filter {
+	float: left;
+}
+
+/* Listings */
+.listings {
+	list-style: none;
+	width: 100%;
+}
+.listing {
+	border-bottom: 1px solid #D8D8D8;
+	min-height: 92px;
+    padding: 10px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+.listing .logo {
+ 	float: left;
+    padding: 0 9px;
+    width: 122px;
+}
+.listing .logo a {
+ 	border: 1px solid #D7D7D7;
+    display: block;
+    height: 74px;
+    padding: 3px;
+}
+.listing .info {
+	float: left;
+}
+.listing .info h3 {
+	font-size: 23px;
+	font-weight: bold;
+}
+.listing .info h3 a:link {
+	text-decoration: none;
+	color: #1D95CB;
+}
+.listing .info div > span {
+}
+.listing .top {
+	float: right;
+}
