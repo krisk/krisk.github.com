@@ -75,7 +75,7 @@ $(function() {
  			var self = this;
  			
  			// Find the location of the user
- 			/*
+
  			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition(function(position) {
 					var coords = position.coords;
@@ -83,7 +83,6 @@ $(function() {
 					$('#search-location').val(address.city + ', ' + address.country + ', ' + address.postalCode);
 				});
 			}
-			*/
 
 			$("#search-filter").stickyPanel();
 
