@@ -116,6 +116,14 @@ body {
 .listing .info {
 	float: left;
 }
+.listing .info p, 
+.listing .info span, 
+.listing .info a  {
+	line-height: 20px;
+}
+.listing .info .catchphrase {
+	font-style: italic;
+}
 .listing .info h3 {
 	font-size: 23px;
 	font-weight: bold;
