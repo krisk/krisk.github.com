@@ -44,7 +44,7 @@ body {
 /* HEADER */
 header, footer {
 	/*background: url("./images/body-bg.jpg") repeat scroll 0 0 #222222;*/
-	background-color: #333333; /*#1765A6;*/ /*#2B2B2B;*/
+	background: url("./images/columns.png") repeat-x scroll 0 0 #1765A6; /*#2B2B2B;*/
 }
 header {
 	border-bottom: 1px solid #C2C2C2;
@@ -87,7 +87,7 @@ header nav ul li a {
 header nav ul li a:hover {
 	/*text-decoration: underline;*/
 	/*border-bottom: 2px solid #555555;*/
-	background-color: #4086c0; /*#777777;*/
+	background-color: rgba(0, 0, 0, 0.3); /*#777777;*/
 }
 
 
@@ -110,7 +110,7 @@ header nav ul li a:hover {
 	width: 1020px;
 }
 #search-params {
-	background-color: #E33A2C; /*#FFD84F;*/
+	background-color: #3862A1;
     border-bottom: 1px solid #A8A8A8;
     height: 70px;
     padding: 10px;
