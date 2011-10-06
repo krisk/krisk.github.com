@@ -1,0 +1,67 @@
+<section id="search">
+	<section id="search-params">
+		<section>
+			<label for="search-type">What type of business are you looking for?</label>
+			<input id="search-type" type="text" />
+		</section>
+		<section>
+			<label for="search-location">Where are you?</label>
+			<input id="search-location" type="text" />
+			</section>
+		<section>
+			<a id="search-button" class="button-glossy yellow hide_when_printing" href="">Search</a>
+			<!--
+			<input id="search-dir" type="checkbox" />
+			<label for="search-dir">Search entire directory</label>
+			-->
+		</section>
+	</section>
+	<section id="search-body">
+	</section>
+	<section id="search-filter-wrapper">
+		<!-- Create a wrapper so that when scrolling, the search-filter is always in view -->
+		<div id="search-filter">
+			<section id="map-options">
+				<input id="search-map-checkbox" type="checkbox" />
+				<label for="search-map-checkbox">Update results as map moves</label>
+			</section>
+			<section id="map">
+			</section>
+		</div>
+	</section>
+</section>
+	
+<!--listitem template-->
+<script id="search-listitem-template" type="text/html">
+	<section class="top">
+	</section>
+	<section class="logo">
+		<a><img src="images/{{img}}" /></a>
+	</section>
+	<section class="info">
+		<h3>
+			<!-- If there's a profile, clicking on the name brings you to the business profile -->
+			{{#profile}}
+			<a href="#/profile/{{profile}}">{{name}}</a>
+			{{/profile}}
+			<!-- Otherwise just display the business' name -->
+			{{^profile}}
+			{{name}}
+			{{/profile}}
+		</h3>
+		<!-- If there's a catchphrase, show it -->
+		{{#catchphrase}}
+		<p class="catchphrase">{{catchphrase}}</p>
+		{{/catchphrase}}
+		<div class="address">
+			<span class="street-address">{{streetAddress}}</span>
+			<span class="postal-code">{{postalCode}}</span>
+		</div>
+		<span class="telephone">{{phone}}</span>
+		<span class="distance">{{distance}}</span>
+		<!-- If there's a website, show a link to it -->
+		{{#website}}
+		<a href="{{website}}">website</a>
+		{{/website}}
+	<section>
+</script>
