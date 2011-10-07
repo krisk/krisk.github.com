@@ -15,18 +15,18 @@
 	})('facebook-jssdk');
 
 	(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) {return;}
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-	  fjs.parentNode.insertBefore(js, fjs);
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/all.js#appId=129242853843367&xfbml=1";
+		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
 </script>
 
 
 <script id="profile-template" type="text/html">
 	<div id="fb">
-		<div class="fb-like" data-href="kiro.me/{{profileName}}" data-send="true" data-width="450" data-show-faces="true"></div>
+		<div class="fb-like" data-href="kiro.me/{{profileName}}" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 	</div>
 	{{#image}}
 	<section class="image">
