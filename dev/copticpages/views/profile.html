@@ -11,9 +11,9 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-like" data-href="www.kiro.me" data-send="true" data-width="450" data-show-faces="true"></div>
 
 <script id="profile-template" type="text/html">
+	<div class="fb-like" data-href="{{profileURL}}" data-send="true" data-width="450" data-show-faces="true"></div>
 	{{#image}}
 	<section class="image">
 		<a><img src="images/{{image}}" /></a>
