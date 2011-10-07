@@ -1,7 +1,10 @@
 <div id="profile-view">
 	Something goes here
 </div>
-
+<!--
+	Facebook's script.  Hack added so that the script is deleted, if it exists, every time the
+	profile page is loaded. 
+-->
 <div id="fb-root"></div>
 <script>
 	(function(id) {
@@ -22,7 +25,9 @@
 
 
 <script id="profile-template" type="text/html">
-	<div class="fb-like" data-href="kiro.me/{{profileName}}" data-send="true" data-width="450" data-show-faces="true"></div>
+	<div id="fb">
+		<div class="fb-like" data-href="kiro.me/{{profileName}}" data-send="true" data-width="450" data-show-faces="true"></div>
+	</div>
 	{{#image}}
 	<section class="image">
 		<a><img src="images/{{image}}" /></a>

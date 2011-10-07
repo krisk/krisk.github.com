@@ -269,3 +269,6 @@ header nav ul li a:hover {
 #profile-view .info > a {
 	display: block;
 }
+#profile-view #fb {
+	height: 20px;
+}
