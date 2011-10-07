@@ -229,14 +229,15 @@ $(function() {
         },
         profile : function(name) {
             var m = {
-                  "name":"Dental hell",
+                  "name":"TEST " + name,
                   "description": "Explore the most comprehensive hell-bound dentistry in the world.",
                   "phone":"111-111-1111",
                   "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
                   "postalCode":"L5M7W8",
                   "email":"kirollos@gmail.com",
-                  "website":"kiro.me"
-                  //"image":"one.jpg"
+                  "website":"kiro.me",
+                  "profileName": name
+                  //, "image":"one.jpg"
             }
 
             App.Main.el.load('./views/profile.html', function() {
