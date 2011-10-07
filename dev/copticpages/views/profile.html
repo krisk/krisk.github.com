@@ -4,12 +4,12 @@
 
 <div id="fb-root"></div>
 <script>
-	(function() {
+	(function(id) {
 		var js = document.getElementById(id);
 		if (js) {
 			js.parentNode.removeChild(js);
 		}
-	})();
+	})('facebook-jssdk');
 
 	(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
