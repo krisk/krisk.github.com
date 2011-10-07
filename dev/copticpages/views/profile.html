@@ -1,19 +1,16 @@
 <div id="profile-view">
-	Something goes here
 </div>
-<!--
-	Facebook's script.  Hack added so that the script is deleted, if it exists, every time the
-	profile page is loaded. 
--->
+
+
 <div id="fb-root"></div>
 <script>
+	// My filthy hack, added to delete facebook' 'like' button' script, if it exists, every time the profile page loads
 	(function(id) {
 		var js = document.getElementById(id);
-		if (js) {
-			js.parentNode.removeChild(js);
-		}
+		if (js) { js.parentNode.removeChild(js); }
 	})('facebook-jssdk');
 
+	// Facebook's script for the 'like' button
 	(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id)) {return;}
