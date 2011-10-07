@@ -1,5 +1,14 @@
 $(function() {
 	
+    String.format = function() {
+      var s = arguments[0];
+      for (var i = 0; i < arguments.length - 1; i++) {       
+        var reg = new RegExp("\\{" + i + "\\}", "gm");             
+        s = s.replace(reg, arguments[i + 1]);
+      }
+      return s;
+    }
+
     var App = {
         Models: {},
         Views: {},
@@ -27,29 +36,40 @@ $(function() {
   		model: App.Models.Business
 	});
 
-    //var searchQueryModel = null
-
  	// VIEWS
-    var searchQuery = null;
+    var SearchMethods = {
+        initialize: function (){
+            $el = $(this.el);
+            this.termTextBox = $el.find('#search-type');
+            this.locationTextBox = $el.find('#search-location');
+        },
+        searchQuery: function(e, args) {
+            var term = this.termTextBox.val(),
+                location = this.locationTextBox.val(),
+                query = '/search';
 
+            if (term) {
+                query += '/' + term;
+                if (location) {
+                    query += '/' + location;
+                }
+            }
+            return query;
+        }
+    }  
+    
     App.Views.Home = Backbone.View.extend({
         el: '#home-view',
         events: {
             'click #home-view #search-button': 'onSearchButtonClicked'
         },
         initialize: function () {
-            $el = $(this.el);
-            this.termTextBox = $el.find('#search-type');
-            this.locationTextBox = $el.find('#search-location');
-            if (searchQuery) {
-                this.termTextBox.val(searchQuery.term);
-            }
+            SearchMethods.initialize.apply(this, arguments);
         },
         onSearchButtonClicked: function(e, args) {
             e.preventDefault();
-            searchQuery = { term: this.termTextBox.val() };
-
-            App.Router.navigate('/search', true);
+            var query = SearchMethods.searchQuery.apply(this, arguments);
+            App.Router.navigate(query, true);
         },
         render: function() {
             return this;
@@ -75,14 +95,15 @@ $(function() {
         initialize: function() {
  			var self = this;
 
-            $el = $(this.el);
-            this.termTextBox = $el.find('#search-type');
-            this.locationTextBox = $el.find('#search-location');
+            SearchMethods.initialize.apply(this, arguments);
 
-            if (searchQuery) {
-                this.termTextBox.val(searchQuery.term);
+            if (this.options.term) {
+                this.termTextBox.val(this.options.term);
             }
-            
+            if (this.options.location) {
+                this.locationTextBox.val(this.options.location);
+            }
+
  			// Find the location of the user
             /*
  			if (navigator.geolocation) {
@@ -104,6 +125,8 @@ $(function() {
  		},
         onSearchButtonClicked: function(e, args) {
             e.preventDefault();
+            var query = SearchMethods.searchQuery.apply(this, arguments);
+            App.Router.navigate(query);
             this.search();
         },
         search: function() {
@@ -168,7 +191,9 @@ $(function() {
         routes: {
             '': 'home',
             '/search': 'search',
-            '/profile/:name': 'business',
+            '/search/:term': 'search',
+            '/search/:term/:location': 'search',
+            '/profile/:name': 'profile'
         },
         home: function() {
             App.Main.el.load('./views/home.html', function() {
@@ -176,13 +201,13 @@ $(function() {
                 home.render();
             });
         },
-        search: function () {
+        search: function (term, location) {
             App.Main.el.load('./views/search.html', function() {
-                var search = new App.Views.Search();
+                var search = new App.Views.Search({term: term, location: location});
                 search.render();
             });
         },
-        business : function(name) {
+        profile : function(name) {
             var m = {
                   "name":"Dental hell",
                   "profile": "dental_hell",

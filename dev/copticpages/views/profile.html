@@ -3,23 +3,18 @@
 </div>
 
 <script id="profile-template" type="text/html">
-	<section class="top">
-	</section>
 	<section class="logo">
 		<a><img src="images/{{img}}" /></a>
 	</section>
 	<section class="info">
 		<h3>
-			<!-- If there's a profile, clicking on the name brings you to the business profile -->
 			{{#profile}}
 			<a href="#/profile/{{profile}}">{{name}}</a>
 			{{/profile}}
-			<!-- Otherwise just display the business' name -->
 			{{^profile}}
 			{{name}}
 			{{/profile}}
 		</h3>
-		<!-- If there's a catchphrase, show it -->
 		{{#catchphrase}}
 		<p class="catchphrase">{{catchphrase}}</p>
 		{{/catchphrase}}
@@ -29,7 +24,6 @@
 		</div>
 		<span class="telephone">{{phone}}</span>
 		<span class="distance">{{distance}}</span>
-		<!-- If there's a website, show a link to it -->
 		{{#website}}
 		<a href="{{website}}">website</a>
 		{{/website}}
