@@ -8,7 +8,7 @@
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
       "website":"kiro.me",
-      "img":"one.jpg"
+      "thumbnail":"one.jpg"
    },
    {
       "name":"Pizza Purgatory",
@@ -17,7 +17,7 @@
       "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
-      "img":"two.jpg"
+      "thumbnail":"two.jpg"
    },
    {
       "name":"Dental hell",
@@ -28,7 +28,7 @@
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
       "website":"kiro.me",
-      "img":"three.jpg"
+      "thumbnail":"three.jpg"
    },
    {
       "name":"Pizza Purgatory",
@@ -37,7 +37,7 @@
       "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
-      "img":"four.jpg"
+      "thumbnail":"four.jpg"
    },
    {
       "name":"Dental hell",
@@ -48,7 +48,7 @@
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
       "website":"kiro.me",
-      "img":"one.jpg"
+      "thumbnail":"one.jpg"
    },
    {
       "name":"Pizza Purgatory",
@@ -57,7 +57,7 @@
       "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
-      "img":"two.jpg"
+      "thumbnail":"two.jpg"
    },
    {
       "name":"Dental hell",
@@ -68,7 +68,7 @@
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
       "website":"kiro.me",
-      "img":"three.jpg"
+      "thumbnail":"three.jpg"
    },
    {
       "name":"Pizza Purgatory",
@@ -77,7 +77,7 @@
       "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
-      "img":"four.jpg"
+      "thumbnail":"four.jpg"
    },
    {
       "name":"Dental hell",
@@ -88,7 +88,7 @@
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
       "website":"kiro.me",
-      "img":"one.jpg"
+      "thumbnail":"one.jpg"
    },
    {
       "name":"Pizza Purgatory",
@@ -97,7 +97,7 @@
       "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
-      "img":"two.jpg"
+      "thumbnail":"two.jpg"
    },
    {
       "name":"Dental hell",
@@ -108,7 +108,7 @@
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
       "website":"kiro.me",
-      "img":"three.jpg"
+      "thumbnail":"three.jpg"
    },
    {
       "name":"Pizza Purgatory",
@@ -117,7 +117,7 @@
       "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
-      "img":"four.jpg"
+      "thumbnail":"four.jpg"
    },
    {
       "name":"Dental hell",
@@ -128,7 +128,7 @@
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
       "website":"kiro.me",
-      "img":"one.jpg"
+      "thumbnail":"one.jpg"
    },
    {
       "name":"Pizza Purgatory",
@@ -137,7 +137,7 @@
       "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
-      "img":"two.jpg"
+      "thumbnail":"two.jpg"
    },
    {
       "name":"Dental hell",
@@ -148,7 +148,7 @@
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
       "website":"kiro.me",
-      "img":"three.jpg"
+      "thumbnail":"three.jpg"
    },
    {
       "name":"Pizza Purgatory",
@@ -157,6 +157,6 @@
       "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
       "postalCode":"L5M7W8",
       "email":"kirollos@gmail.com",
-      "img":"four.jpg"
+      "thumbnail":"four.jpg"
    }
 ]

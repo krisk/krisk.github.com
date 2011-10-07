@@ -2,30 +2,33 @@
 	Something goes here
 </div>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like" data-href="www.kiro.me" data-send="true" data-width="450" data-show-faces="true"></div>
+
 <script id="profile-template" type="text/html">
-	<section class="logo">
-		<a><img src="images/{{img}}" /></a>
+	{{#image}}
+	<section class="image">
+		<a><img src="images/{{image}}" /></a>
 	</section>
+	{{/image}}
 	<section class="info">
-		<h3>
-			{{#profile}}
-			<a href="#/profile/{{profile}}">{{name}}</a>
-			{{/profile}}
-			{{^profile}}
-			{{name}}
-			{{/profile}}
-		</h3>
-		{{#catchphrase}}
-		<p class="catchphrase">{{catchphrase}}</p>
-		{{/catchphrase}}
+		<h2>{{name}}</h2>
 		<div class="address">
 			<span class="street-address">{{streetAddress}}</span>
 			<span class="postal-code">{{postalCode}}</span>
 		</div>
 		<span class="telephone">{{phone}}</span>
-		<span class="distance">{{distance}}</span>
+		<a href="mailto:{{email}}">{{email}}</a>
 		{{#website}}
-		<a href="{{website}}">website</a>
+		<a href="{{website}}">{{website}}</a>
 		{{/website}}
-	<section>
+	</section>
 </script>

@@ -255,3 +255,17 @@ header nav ul li a:hover {
 .listing .top {
 	float: right;
 }
+
+#profile-view .telephone {
+ 	color: #005E9D;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+#profile-view h2 {
+	font-size: 35px;
+}
+#profile-view .info > span, 
+#profile-view .info > a {
+	display: block;
+}

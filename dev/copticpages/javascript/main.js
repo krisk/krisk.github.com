@@ -21,15 +21,26 @@ $(function() {
  	App.Models.Business = Backbone.Model.extend({
         defaults : {
             name: '', 
+            category: null,
             phone: null,
             catchPhrase: null,
             streeAddress: null,
             postalCode: null,
             email: null,
             website: null,
-            contact: null
+            contact: null,
+            thumbnail: null
         }
  	});
+
+    App.Models.Profile = App.Models.Business.extend({
+        defaults: _.extend(App.Models.Business.prototype.defaults, {
+            image: null,
+            description: '',
+            photos: [],
+            deals: []
+        })
+    })
 
  	// COLLECTIONS
  	App.Collections.Business = Backbone.Collection.extend({
@@ -49,9 +60,9 @@ $(function() {
                 query = '/search';
 
             if (term) {
-                query += '/' + term;
+                query += '/q=' + encodeURIComponent(term);
                 if (location) {
-                    query += '/' + location;
+                    query += '&loc=' + encodeURIComponent(location);
                 }
             }
             return query;
@@ -191,9 +202,18 @@ $(function() {
         routes: {
             '': 'home',
             '/search': 'search',
-            '/search/:term': 'search',
-            '/search/:term/:location': 'search',
+            '/search/': 'search',
             '/profile/:name': 'profile'
+        },
+        initialize: function (){
+            //Matches /search/q=*
+            this.route(/^\/search\/q=(.*)$/, 'search', function(term) {
+                this.search(decodeURIComponent(term.replace(/\+/g, " ")));
+            });
+            //Matches /searc/hq=*&loc=*
+            this.route(/^\/search\/q=(.*)&loc=(.*)$/, 'search', function(term, location) {
+                this.search(decodeURIComponent(term.replace(/\+/g, " ")), decodeURIComponent(location.replace(/\+/g, " ")));
+            });
         },
         home: function() {
             App.Main.el.load('./views/home.html', function() {
@@ -210,14 +230,13 @@ $(function() {
         profile : function(name) {
             var m = {
                   "name":"Dental hell",
-                  "profile": "dental_hell",
-                  "catchphrase": "Caring and gentle comprehensive dentistry by people who get to know you",
+                  "description": "Explore the most comprehensive hell-bound dentistry in the world.",
                   "phone":"111-111-1111",
                   "streetAddress":"3343 Eglinton Ave West, Mississauga, ON",
                   "postalCode":"L5M7W8",
                   "email":"kirollos@gmail.com",
-                  "website":"kiro.me",
-                  "img":"one.jpg"
+                  "website":"kiro.me"
+                  //"image":"one.jpg"
             }
 
             App.Main.el.load('./views/profile.html', function() {
