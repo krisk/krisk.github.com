@@ -42,11 +42,11 @@ body {
 }
 
 /* HEADER */
-header, footer {
+#site-header, footer {
 	/*background: url("./images/body-bg.jpg") repeat scroll 0 0 #222222;*/
 	background: url("./images/columns.png") repeat-x scroll 0 0 #1765A6; /*#2B2B2B;*/
 }
-header {
+#site-header {
 	border-bottom: 1px solid #C2C2C2;
 	box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 	margin-bottom: 15px;
@@ -61,21 +61,21 @@ footer {
 }
 
 /* NAVIGATION */
-header nav {
+#site-header nav {
 	float: right;
 }
-header nav ul {
+#site-header nav ul {
 	margin-top: 10px;
 	list-style: none;
 }
-header nav ul li {
+#site-header nav ul li {
 	float: left;
 	margin-left: 10px;
 }
-header nav ul li {
+#site-header nav ul li {
 	/*text-transform: uppercase;*/
 }
-header nav ul li a {
+#site-header nav ul li a {
  	color: white;
     font-size: 12px;
     font-weight: bold;
@@ -84,7 +84,7 @@ header nav ul li a {
     text-transform: uppercase;
     border-radius: 3px;
 }
-header nav ul li a:hover {
+#site-header nav ul li a:hover {
 	/*text-decoration: underline;*/
 	/*border-bottom: 2px solid #555555;*/
 	background-color: rgba(0, 0, 0, 0.3); /*#777777;*/
@@ -262,8 +262,12 @@ header nav ul li a:hover {
     font-size: 20px;
     font-weight: bold;
 }
-#profile-view h2 {
+#profile-view header h2 {
 	font-size: 35px;
+	display: inline-block;
+}
+#profile-view header .fb-like {
+	display: inline-block;
 }
 #profile-view .info > span, 
 #profile-view .info > a {

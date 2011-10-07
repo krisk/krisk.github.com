@@ -25,16 +25,16 @@
 
 
 <script id="profile-template" type="text/html">
-	<div id="fb">
-		<div class="fb-like" data-href="kiro.me/{{profileName}}" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
-	</div>
 	{{#image}}
 	<section class="image">
 		<a><img src="images/{{image}}" /></a>
 	</section>
 	{{/image}}
 	<section class="info">
-		<h2>{{name}}</h2>
+		<header>
+			<h2>{{name}}</h2>
+			<div class="fb-like" data-href="kiro.me/{{profileName}}" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+		</header>
 		<div class="address">
 			<span class="street-address">{{streetAddress}}</span>
 			<span class="postal-code">{{postalCode}}</span>
