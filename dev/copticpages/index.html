@@ -9,9 +9,18 @@
 		<script type="text/javascript" src="http://documentcloud.github.com/backbone/backbone.js"></script>
 		<script type="text/javascript" src="javascript/mustache.js"></script>
 		<script type="text/javascript" src="javascript/main.js"></script>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) {return;}
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
 		<link href="button.css" type="text/css" rel="stylesheet" />
 		<link href="main.css" type="text/css" rel="stylesheet" />
 	</head>
+	<div id="fb-root"></div>
 	<body>
 		<header>
 			<div id="header-wrapper">
