@@ -62,8 +62,8 @@ body {
 /* HEADER */
 #site-header {
 	/*background: url("./images/body-bg.jpg") repeat scroll 0 0 #222222;*/
-	/*background: url("./images/columns.png") repeat-x scroll 0 0 #1765A6; */
-	background: url("./images/bg-header.jpg") repeat-x scroll center top transparent;
+	background: url("./images/columns.png") repeat-x scroll 0 0 #1765A6;
+	/*background: url("./images/bg-header.jpg") repeat-x scroll center top transparent;*/
 }
 #site-header {
 	border-bottom: 1px solid #C2C2C2;
