@@ -213,7 +213,8 @@ body {
 }
 #search > div:first-child span a {
  	background: url("./images/subscribe-add.png") no-repeat scroll left 50% transparent;
-    color: orange;
+    color: #ED5D21;
+    font-weight: bold;
     display: inline-block;
     padding-left: 17px;
     text-decoration: underline;
