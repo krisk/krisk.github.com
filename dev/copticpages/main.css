@@ -34,9 +34,9 @@ a {
 body {
 	/*font: 13px/1.231 sans-serif;*/
 	/*font-family: lucida grande,lucida sans unicode,lucida sans,sans-serif;*/
-	background: url("./images/bg-texture.jpg") repeat scroll 0 0 #FFFFFF;
+	/*background: url("./images/bg-texture.jpg") repeat scroll 0 0 #FFFFFF;*/
 	font: 12px/1.4 'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
-	background-color: #FAFAFA;
+	background-color: #F5F5F5;
 }
 
 .wrapper {
@@ -44,10 +44,10 @@ body {
 	width: 1020px;
 }
 .banner {
-	background: url("./images/bg-texture.jpg") repeat scroll 0 0 #FFFFFF;
+	/*background: url("./images/bg-texture.jpg") repeat scroll 0 0 #FFFFFF;*/
     border-bottom: 1px solid #D9D9D9;
-    height: 49px;
     position: relative;
+    padding: 10px;
 }
 .pipe {
     margin: 0 5px;
@@ -160,24 +160,28 @@ body {
 	margin: 0 auto;
 	width: 500px;
 	height: 300px;
+	margin-top: 15px;
 	/*background-color: #3862A1;*/
 	/*padding: 15px;*/
 	/*border-radius: 10px;*/
 }
 #home-view #search-container label {
 	/*color: white;*/
+	font-size: 15px;
 }
 #home-view #search-container section input[type="text"] {
     color: #3D3D3D;
     font-size: 20px;
     padding: 5px;
+	border: 1px solid #A8A8A8;
 }
 #home-view #search-container #search-type {
 	display: block;
-	width: 488px;
+	width: 455px;
 }
 #home-view #search-container > section:first-child label {
 	display: block;
+	margin-bottom: 10px;
 }
 #home-view #search-container > section, 
 #home-view #search-container > section > section {
@@ -190,19 +194,36 @@ body {
 	float: right;
 }
 #home-view #search-container .search-location-section {
-	border: 1px solid blue;
-	padding: 15px 40px;
+	/*padding: 15px 40px;*/
 }
-
 
 /* SEARCH */
 #search {
-	overflow: hidden;
-	border-radius: 7px;
-	background-color: white;
-	width: 1020px;
+ 	background-color: white;
+    width: 1020px;
+}
+#search > div {
+    overflow: hidden;
+}
+#search > div:first-child {
+	margin-bottom: 5px;
+}
+#search > div:first-child span {
+	float: right;
+}
+#search > div:first-child span a {
+ 	background: url("./images/subscribe-add.png") no-repeat scroll left 50% transparent;
+    color: orange;
+    display: inline-block;
+    padding-left: 17px;
+    text-decoration: underline;
+}
+#search > div:last-child {
+	border: 1px solid #A8A8A8;
+    border-radius: 7px 7px 7px 7px;
 }
 #search-params {
+	background: none repeat scroll 0 0 #EDF0F8;
     border-bottom: 1px solid #A8A8A8;
     height: 70px;
     padding: 10px;
@@ -240,7 +261,7 @@ body {
 	position: relative;
 }
 #search-filter-wrapper, #search-filter {
-	width: 279px;
+	width: 277px;
 } 
 #map-options {
 	background: none repeat scroll 0 0 #EEEEE6;
@@ -254,7 +275,7 @@ body {
     vertical-align: top;
 }
 #map_canvas {
-	width: 279px;
+	width: 277px;
 	height: 300px;
 }
 /* LISTINGS */
@@ -270,7 +291,7 @@ body {
     overflow: hidden;
 }
 .listing:hover {
-	background-color: #F9F9F9;
+	background: -moz-linear-gradient(center top , #DEF3F9, #CAE7EE) repeat scroll 0 0 #CAE7EE;
 }
 .listing .logo {
  	float: left;
@@ -282,6 +303,7 @@ body {
     display: block;
     height: 74px;
     padding: 3px;
+    background-color: white;
 }
 .listing .info {
 	float: left;
@@ -333,7 +355,13 @@ body {
 	height: 30px;
 }
 
-
+.section-container {
+	background: none repeat scroll 0 0 #EDF0F8;
+    border: 1px solid #D5DAE6;
+    border-radius: 6px 6px 6px 6px;
+    height: 65px;
+    padding: 15px;
+}
 
 .btn-blue {
     background: -moz-linear-gradient(#098DF4, #125CB8) repeat scroll 0 0 #098DF4;
@@ -356,3 +384,48 @@ body {
     position: relative;
     top: 1px;
 }
+
+/*
+#cities-container {
+	margin: 0 auto;
+	width: 500px;
+	background-color: #EBEBEB;
+	background-image: -moz-linear-gradient( top, #fafafa 0% , #ebebeb 100% );
+	background-image: -webkit-gradient( linear, 0 0% , 0 100% , from( #fafafa ), to( #ebebeb ) );
+	-moz-box-shadow: 1px 2px 3px 0 #cccccc;
+	-webkit-box-shadow: 1px 2px 3px 0 #cccccc;
+	box-shadow: 1px 2px 3px 0 #cccccc;
+    border: 1px solid #CCCCCC;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 1px 2px 3px 0 #CCCCCC;
+    margin: 0 auto;
+    padding: 5px 10px;
+    width: 500px;
+}
+#cities-list {
+	list-style: none;
+	height: 150px;
+	display: inline-block;
+}
+#cities-list > li {
+	float: left;
+	margin-right: 10px;
+	width: 115px;
+}
+#cities-list > li h5 {
+	font-size: 17px;
+	font-weight: bold;
+	color: #333333;
+}
+#cities-list > li > ul > li a {
+	width: 115px;
+	display: block;
+	font-weight: bold;
+	padding: 2px 5px;
+	color: #665252;
+}
+#cities-list > li > ul > li a:hover {
+	background-color: #484848;
+	color: white;
+}
+*/

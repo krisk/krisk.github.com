@@ -30,38 +30,45 @@
 </script>
 
 <section id="search">
-	<section id="search-params">
-		<section>
-			<label for="search-type">What type of business are you looking for?</label>
-			<input id="search-type" type="text" />
-		</section>
-		<section>
-			<label for="search-location">Where are you?</label>
-			<input id="search-location" type="text" />
-		</section>
-		<section>
-			<a id="search-button" href="/get/sharing" class="btn-blue">Search</a>
-			<!--
-			<input id="search-dir" type="checkbox" />
-			<label for="search-dir">Search entire directory</label>
-			-->
-		</section>
-	</section>
-	<section id="search-body">
-	</section>
-	<section id="search-filter-wrapper">
-		<!-- Create a wrapper so that when scrolling, the search-filter is always in view -->
-		<div id="search-filter">
-			<section id="map-options">
-				<input id="search-map-checkbox" type="checkbox" />
-				<label for="search-map-checkbox">Update results as map moves</label>
+	<div>
+		<span>
+			<a href="#">List your business with us today!</a>
+		</span>
+	</div>
+	<div>
+		<section id="search-params">
+			<section>
+				<label for="search-type">What type of business are you looking for?</label>
+				<input id="search-type" type="text" />
 			</section>
-			<section id="map_canvas">
+			<section>
+				<label for="search-location">Where are you?</label>
+				<input id="search-location" type="text" />
 			</section>
-		</div>
-	</section>
+			<section>
+				<a id="search-button" href="/get/sharing" class="btn-blue">Search</a>
+				<!--
+				<input id="search-dir" type="checkbox" />
+				<label for="search-dir">Search entire directory</label>
+				-->
+			</section>
+		</section>
+		<section id="search-body">
+		</section>
+		<section id="search-filter-wrapper">
+			<!-- Create a wrapper so that when scrolling, the search-filter is always in view -->
+			<div id="search-filter">
+				<section id="map-options">
+					<input id="search-map-checkbox" type="checkbox" />
+					<label for="search-map-checkbox">Update results as map moves</label>
+				</section>
+				<section id="map_canvas">
+				</section>
+			</div>
+		</section>
+	</div>
 </section>
-	
+
 <script id="search-listitem-template" type="text/html">
 	<section class="top">
 	</section>
