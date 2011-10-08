@@ -140,7 +140,8 @@ body {
 #site-header nav ul li a:hover {
 	/*text-decoration: underline;*/
 	/*border-bottom: 2px solid #555555;*/
-	background-color: #FE6D4C;
+	/*background-color: #FE6D4C;*/
+	background-color: rgba(0, 0, 0, 0.3); /*#777777;*/
 }
 
 
