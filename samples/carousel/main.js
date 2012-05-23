@@ -1,6 +1,5 @@
 $(function() {
 
-
   var $prevButton = $('.prv'),
       $nextButton = $('.nxt'),
 
@@ -20,7 +19,9 @@ $(function() {
 
       percentage = 0.80,
 
-      RESET_SPEED = 150;
+      RESET_SPEED = 150,
+
+      currViewAreaLocationIndex = 0;
 
   // If there's no selected item to begin with,
   // simply select the first.
@@ -41,13 +42,14 @@ $(function() {
     }, speed || 400);
   }
 
-  function next() {
-    selectedIndex++;
+  function next(index) {
+    selectedIndex = index !== undefined ? index :  ++selectedIndex;
     viewableAreaIndex++;
 
     if (selectedIndex === NUM_ITEMS) {
       selectedIndex = 0;
       viewableAreaIndex = 1;
+      currViewAreaLocationIndex = 0;
     }
 
     $selectedItem.removeClass('selected');
@@ -65,6 +67,8 @@ $(function() {
             numItemsLeft = NUM_ITEMS - viewableAreaLastItemIndex,
             distance = Math.min(moveDistance, numItemsLeft);
 
+            currViewAreaLocationIndex += distance;
+
         if (distance > 0) {
           scrollRight(distance);
           viewableAreaIndex -= distance
@@ -72,16 +76,17 @@ $(function() {
       }
     }
 
-    console.log(viewableAreaIndex);
+    console.log(viewableAreaIndex, currViewAreaLocationIndex);
   }
 
-  function prev() {
-    selectedIndex--;
+  function prev(index) {
+    selectedIndex = index !== undefined ? index : --selectedIndex;
     viewableAreaIndex--;
 
     if (selectedIndex === -1) {
       selectedIndex = NUM_ITEMS - 1;
       viewableAreaIndex = viewableArea;
+      currViewAreaLocationIndex = NUM_ITEMS - viewableArea
     }
 
     $selectedItem.removeClass('selected');
@@ -99,6 +104,8 @@ $(function() {
             numItemsLeft = viewableAreaLastItemIndex - 1,
             distance = Math.min(moveDistance, numItemsLeft);
 
+            currViewAreaLocationIndex -= distance;
+
         if (distance > 0) {
           scrollLeft(distance);
           viewableAreaIndex += distance
@@ -106,7 +113,7 @@ $(function() {
       }
     }
 
-    console.log(viewableAreaIndex);
+    console.log(viewableAreaIndex, currViewAreaLocationIndex);
   }
 
   function onPrevButtonClicked() {
@@ -117,8 +124,25 @@ $(function() {
     next();
   }
 
+  function onItemClicked(event) {
+    var $item = $(event.target).closest('li');
+    selectedIndex = $item.index();
+    viewableAreaIndex = selectedIndex - currViewAreaLocationIndex,
+    mid = Math.ceil(viewableArea / 2);
+
+    if (viewableAreaIndex >= mid) {
+      next(selectedIndex);
+    } else {
+      viewableAreaIndex = selectedIndex - currViewAreaLocationIndex + 2;
+      prev(selectedIndex);
+    }
+
+    console.log(selectedIndex, $item);
+  }
+
   $prevButton.on('click', onPrevButtonClicked);
   $nextButton.on('click', onNextButtonClicked);
+  $ul.on('click', onItemClicked);
 
   $(window).on('keyup', function(event) {
     if (event.which === 39) {
