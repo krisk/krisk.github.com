@@ -1,3 +1,17 @@
+.outer-container {
+  width: 515px;
+}
+.scrl {
+  background: url(http://www.scottswork.com/portfolio/images/hed_rep.gif) repeat-x;
+  padding: 6px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 5px;
+  height: 53px;
+}
 .sliderGalleryContainer {
   display: inline-block;
 }
@@ -5,7 +19,6 @@
   width: 416px;
   overflow: hidden;
 
-  border: 1px solid black;
   position: relative;
   height: 40px;
 }
@@ -21,6 +34,15 @@
 }
 .sliderGallery ul li {
   float: left;
+  height: 36px;
+  width: 34px;
+
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.sliderGallery ul li img {
+
 }
 
 .active_img {
@@ -28,12 +50,11 @@
 }
 
 .list_inner {
-  width: 30px;
   text-align: center;
-  padding: 10px 0;
-  border: 1px solid black;
+  padding: 7px;
+  border: 1px solid transparent;
 }
 
-.selected {
-  background-color: red;
+.sliderGallery ul li.selected div {
+  border: 1px solid white;
 }

@@ -1,155 +1,195 @@
 $(function() {
 
-  var $prevButton = $('.prv'),
-      $nextButton = $('.nxt'),
+  function Carousel($el, options) {
 
-      $ul = $('> ul', '.sliderGallery'),
+    var $prevButton = options.prev,
+        $nextButton = options.next,
+        $ul = $el.find('> ul'),
+        $items = $ul.find('> li'),
+        $selectedItem = $items.filter('.selected'),
 
-      $items = $ul.find('> li');
+        $self = $(this),
 
-      $selectedItem = $items.filter('.selected'),
+        selectedIndex = 0,
+        itemsCount = $items.length,
 
-      selectedIndex = 0;
+        scrollAreaIndex = 1,
+        currViewAreaLocationIndex = 0,
+        scrollAreaMoveIndex,
 
-      NUM_ITEMS = 26,
-      viewableArea = 13,
-      viewableAreaIndex = 1,
+        containerWidth = $el.width(),
+        itemWidth = $items.eq(0).outerWidth(),
+        scrollArea = containerWidth / itemWidth,
+        scrollAreaMidPoint = Math.ceil(scrollArea / 2);
 
-      WIDTH = 32,
+    // Get options
+    options = $.extend({}, Carousel.defaults, options);
 
-      percentage = 0.80,
+    scrollAreaMoveIndex = Math.ceil(scrollArea * options.percentage);
 
-      RESET_SPEED = 150,
-
-      currViewAreaLocationIndex = 0;
-
-  // If there's no selected item to begin with,
-  // simply select the first.
-  if ($selectedItem.length === 0) {
-    $selectedItem = $items.first().addClass('selected');
-    selectedIndex = 0;
-  }
-
-  function scrollRight(spots, speed) {
-    $ul.animate({
-      left: '-=' + (spots * WIDTH)
-    }, speed || 400);
-  }
-
-  function scrollLeft(spots, speed) {
-    $ul.animate({
-      left: '+=' + (spots * WIDTH)
-    }, speed || 400);
-  }
-
-  function next(index) {
-    selectedIndex = index !== undefined ? index :  ++selectedIndex;
-    viewableAreaIndex++;
-
-    if (selectedIndex === NUM_ITEMS) {
-      selectedIndex = 0;
-      viewableAreaIndex = 1;
-      currViewAreaLocationIndex = 0;
-    }
-
-    $selectedItem.removeClass('selected');
-    $selectedItem = $items.eq(selectedIndex).addClass('selected');
-
-    if (selectedIndex === 0) {
-      scrollLeft(NUM_ITEMS - viewableArea, RESET_SPEED);
-    } else {
-      var viewableAreaMoveIndex = Math.ceil(viewableArea * percentage),
-          viewableAreaMidPoint = Math.ceil(viewableArea / 2);
-
-      if (viewableAreaIndex >= viewableAreaMoveIndex) {
-        var viewableAreaLastItemIndex = selectedIndex + 1 + (viewableArea - viewableAreaIndex),
-            moveDistance = viewableAreaIndex - viewableAreaMidPoint,
-            numItemsLeft = NUM_ITEMS - viewableAreaLastItemIndex,
-            distance = Math.min(moveDistance, numItemsLeft);
-
-            currViewAreaLocationIndex += distance;
-
-        if (distance > 0) {
-          scrollRight(distance);
-          viewableAreaIndex -= distance
-        }
+    // PRIVATE functions
+    function init() {
+      // If there's no selected item to begin with, select the first.
+      if ($selectedItem.length === 0) {
+        $selectedItem = $items.first().addClass('selected');
+        selectedIndex = 0;
       }
     }
 
-    console.log(viewableAreaIndex, currViewAreaLocationIndex);
-  }
-
-  function prev(index) {
-    selectedIndex = index !== undefined ? index : --selectedIndex;
-    viewableAreaIndex--;
-
-    if (selectedIndex === -1) {
-      selectedIndex = NUM_ITEMS - 1;
-      viewableAreaIndex = viewableArea;
-      currViewAreaLocationIndex = NUM_ITEMS - viewableArea
+    function move(direction, spots, speed) {
+      $ul.animate({
+        left: (direction === 1 ? '+=' : '-=') + (spots * itemWidth)
+      }, speed || 400);
     }
 
-    $selectedItem.removeClass('selected');
-    $selectedItem = $items.eq(selectedIndex).addClass('selected');
+    function scrollRight(spots, speed) {
+      move(-1, spots, speed);
+    }
 
-    if (selectedIndex === NUM_ITEMS - 1) {
-      scrollRight(NUM_ITEMS - viewableArea, RESET_SPEED);
-    } else {
-      var viewableAreaMoveIndex = Math.ceil(viewableArea * percentage),
-          viewableAreaMidPoint = Math.ceil(viewableArea / 2);
+    function scrollLeft(spots, speed) {
+      move(1, spots, speed);
+    }
 
-      if (viewableAreaIndex <= viewableArea - viewableAreaMoveIndex + 1) {
-        var viewableAreaLastItemIndex = selectedIndex - viewableAreaIndex + 2,
-            moveDistance = viewableAreaMidPoint - viewableAreaIndex,
-            numItemsLeft = viewableAreaLastItemIndex - 1,
-            distance = Math.min(moveDistance, numItemsLeft);
+    function selectItemAtIndex(index) {
+      selectedIndex = index;
+      $selectedItem.removeClass('selected');
+      $selectedItem = $items.eq(selectedIndex).addClass('selected');
 
-            currViewAreaLocationIndex -= distance;
+      // Trigger a 'selected' events
+      $self.trigger('selected', { index: index });
+    }
 
-        if (distance > 0) {
-          scrollLeft(distance);
-          viewableAreaIndex += distance
+    function next(index) {
+      var scrollAreaLastItemIndex,
+          moveDistance,
+          numItemsLeft,
+          distance;
+
+      index = index !== undefined ? index : selectedIndex + 1;
+      scrollAreaIndex++;
+
+      if (index === itemsCount) {
+        index = 0;
+        scrollAreaIndex = 1;
+        currViewAreaLocationIndex = 0;
+      }
+
+      selectItemAtIndex(index);
+
+      if (index === 0) {
+        scrollLeft(itemsCount - scrollArea, options.resetSpeed);
+      } else {
+        if (scrollAreaIndex >= scrollAreaMoveIndex) {
+          scrollAreaLastItemIndex = index + 1 + (scrollArea - scrollAreaIndex);
+          numItemsLeft = itemsCount - scrollAreaLastItemIndex;
+          moveDistance = scrollAreaIndex - scrollAreaMidPoint;
+          distance = Math.min(moveDistance, numItemsLeft);
+
+          currViewAreaLocationIndex += distance;
+
+          if (distance > 0) {
+            scrollRight(distance);
+            scrollAreaIndex -= distance
+          }
         }
+      }
+
+      console.log(scrollAreaIndex, currViewAreaLocationIndex);
+    }
+
+    function previous(index) {
+      var scrollAreaFirstItemIndex,
+          moveDistance,
+          numItemsLeft,
+          distance;
+
+      index = index !== undefined ? index : selectedIndex - 1;
+      scrollAreaIndex--;
+
+      if (index === -1) {
+        index = itemsCount - 1;
+        scrollAreaIndex = scrollArea;
+        currViewAreaLocationIndex = itemsCount - scrollArea
+      }
+
+      selectItemAtIndex(index);
+
+      if (index === itemsCount - 1) {
+        scrollRight(itemsCount - scrollArea, options.resetSpeed);
+      } else {
+        if (scrollAreaIndex <= scrollArea - scrollAreaMoveIndex + 1) {
+          scrollAreaFirstItemIndex = index - scrollAreaIndex + 2;
+          numItemsLeft = scrollAreaFirstItemIndex - 1;
+          moveDistance = scrollAreaMidPoint - scrollAreaIndex;
+          distance = Math.min(moveDistance, numItemsLeft);
+
+          currViewAreaLocationIndex -= distance;
+
+          if (distance > 0) {
+            scrollLeft(distance);
+            scrollAreaIndex += distance
+          }
+        }
+      }
+
+      console.log(scrollAreaIndex, currViewAreaLocationIndex);
+    }
+
+    function selectItem(index) {
+      scrollAreaIndex = index - currViewAreaLocationIndex;
+
+      if (scrollAreaIndex >= scrollAreaMidPoint) {
+        next(index);
+      } else {
+        scrollAreaIndex = index - currViewAreaLocationIndex + 2;
+        previous(index);
       }
     }
 
-    console.log(viewableAreaIndex, currViewAreaLocationIndex);
-  }
-
-  function onPrevButtonClicked() {
-    prev();
-  }
-
-  function onNextButtonClicked() {
-    next();
-  }
-
-  function onItemClicked(event) {
-    var $item = $(event.target).closest('li');
-    selectedIndex = $item.index();
-    viewableAreaIndex = selectedIndex - currViewAreaLocationIndex,
-    mid = Math.ceil(viewableArea / 2);
-
-    if (viewableAreaIndex >= mid) {
-      next(selectedIndex);
-    } else {
-      viewableAreaIndex = selectedIndex - currViewAreaLocationIndex + 2;
-      prev(selectedIndex);
+    // Handlers
+    function onPrevButtonClicked() {
+      previous();
     }
 
-    console.log(selectedIndex, $item);
+    function onNextButtonClicked() {
+      next();
+    }
+
+    function onItemClicked(event) {
+      var $item = $(event.target).closest('li');
+
+      selectItem($item.index());
+    }
+
+    // Handler binding
+    function bindHandlers() {
+      $prevButton.on('click', onPrevButtonClicked);
+      $nextButton.on('click', onNextButtonClicked);
+      $ul.on('click', onItemClicked);
+
+      $(window).on('keyup', function(event) {
+        if (event.which === 39) {
+          onNextButtonClicked();
+        } else if (event.which === 37) {
+          onPrevButtonClicked();
+        }
+      });
+    }
+
+    init();
+    bindHandlers();
+
+    // PRIVILEGED functions
+    this.next = next;
+    this.previous = previous;
+    this.selectItem = selectItem;
   }
 
-  $prevButton.on('click', onPrevButtonClicked);
-  $nextButton.on('click', onNextButtonClicked);
-  $ul.on('click', onItemClicked);
+  Carousel.defaults = {
+    percentage: 0.8,
+    resetSpeed: 150
+  };
 
-  $(window).on('keyup', function(event) {
-    if (event.which === 39) {
-      onNextButtonClicked();
-    } else if (event.which === 37) {
-      onPrevButtonClicked();
-    }
-  })
+  window.Carousel = Carousel;
 
 });
