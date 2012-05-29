@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>kiro.me</title>
-    <link href="http://fonts.googleapis.com/css?family=Amaranth:400,700" rel="stylesheet" type="text/css">
-    <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
-    <script src="http://documentcloud.github.com/underscore/underscore.js"></script>
-    <script src="http://documentcloud.github.com/backbone/backbone.js"></script>
-    <link href="../style/default.css" rel="stylesheet" type="text/css">
+    <title>K. Risk</title>
+    <meta name="description" content="Front-end developer, a JavaScript afficionado, and lover of all things web-related">
+    <!--
+      I'm a front-end developer, a JavaScript afficionado, and I like all things web-related.
+       - K. Risk
+    -->
+    <meta name="keywords" content="Kirollos Risk, Web Developer, JavaScript, JS, Front-end engineer">
+    <link href='http://fonts.googleapis.com/css?family=Bilbo' rel='stylesheet' type='text/css'>
+    <link href="style/default.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <div id="container">
-      <h1>kiro<span>dot</span>me</h1>
 
-      <ul id="menu">
-        <li data-name="/about">About</li>
-        <li data-name="/projects">Projects</li>
+    <header>
+      <a href="http://www.kiro.me" id="logo">K. Risk</a>
+      <nav id="site-nav">
+        <ul id="site-menu">
+          <li><a href="http://www.kiro.me">Home</a></li>
+          <li><a>Projects</a></li>
+          <li><a>About me</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="container">
+
+      <h2>Projects<h2>
+      <ul id="project-list">
+        <li>
+          <h3><a href="/Fuse">Fuse.js</a></h3>
+          <h4>Lighweight fuzzy-search, in JavaScript.</h4>
+        </li>
+        <li>
+          <h3><a href="/Class">Class.js</a></h3>
+          <h4>Lightweight JavaScript prototypal inheritance model.</h4>
+        </li>
+        <li>
+          <h3><a href="/textualizer">textualizer</a></h3>
+          <h4>A jQuery plug-in which transitions through blurbs of text, animating each character.</h4>
+        </li>
       </ul>
 
-      <section id="content">
-      </section>
     </div>
+
   </body>
+  <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
   <script type="text/javascript">
     $(function() {
 
-      AppRouter = Backbone.Router.extend({
-        routes: {
-          '/projects': 'loadProjects'
-          , '/about': 'loadAbout'
-        }
-        , initialize: function() {
-            this._content = $('#content');
-        }
-        , loadProjects : function() {
-            this._content.load('../projects.html');
-        }
-        , loadAbout: function(){
-            this._content.empty();
-        }
-      });
-
-      var app = new AppRouter();
-       
-      Backbone.history.start();
-
-      $('#menu > li').bind('click', function() {
-        app.navigate($(this).data('name'), true);
-      });
-      
     })
   </script>
 </html>

@@ -1,5 +1,5 @@
 html {
-    
+
 }
 body {
     margin-top: 1.0em;
@@ -7,26 +7,60 @@ body {
     background: url("../images/bg.png") repeat scroll 0 0 transparent;
     color: #333333;
     font-family: Helvetica,Arial,sans-serif;
-    font-size: 16px;
+    font-size: 12px;
 }
-h1 {
-    font-family: 'Amaranth',sans-serif;
-    font-size: 100px;
-    font-weight: normal;
+ul, li {
     margin: 0;
+    padding: 0;
+    list-style: none;
 }
-h1 span {
-    color: #222222;
+#site-nav {
+    float: right;
+}
+#site-menu {
+    list-style: none;
+}
+#site-menu li {
+    float: left;
+    margin-right: 20px;
+    cursor: pointer;
+}
+#site-menu li a {
+    color: white;
+    padding: 0;
+    margin: 0;
+    font-weight: lighter;
+    font-family: Helvetica, arial;
+    line-height: 45px;
+    font-size: 18px;
+    text-shadow: 1px 1px 0px black;
+    text-decoration: none;
+}
+
+#logo {
+    font-family: 'Bilbo', cursive;
+    font-weight: 400;
+    font-size: 35px;
+    padding: 2px 0 2px 10px;
+    color: white;
+    text-shadow: 1px 1px 0px black;
     display: inline-block;
-    font-size: 25px;
-    vertical-align: middle;
+    text-decoration: none;
 }
-h2, h3, #txtlzr {
-    font-family: 'Amaranth',sans-serif;
+
+#container {
+    margin: 60px auto 0 auto;
+    width: 800px;
 }
-h2 {
-    font-size: 28px;
+
+h3 a {
+    text-decoration: none;
 }
+h3 a:hover,
+#site-menu li a:hover {
+    color: rgb(48, 118, 182);
+}
+
 a {
     color: #333333;
 }
@@ -36,36 +70,23 @@ a:hover {
 p {
     line-height: 1.4em;
 }
-#container {
-    margin: 0 auto;
-    width: 800px;
+
+header {
+    background-color: black;
+    background-image: url("http://static.nodesocket.com/doc/images/denim.png");
+    height: 45px;
+    left: 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+    font-size: 1.3em;
 }
-#menu {
-    background: none repeat scroll 0 0 #56BA4A;
-    border: 3px solid #59A24F;
-    border-radius: 5px 5px 5px 5px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 24px;
-    list-style: none outside none;
-    margin: 0;
-    padding: 0;
+
+#project-list {
+
 }
-#menu li {
-    -moz-transition: all 350ms ease-in-out 0s;
-    font-family: 'Amaranth',sans-serif;
-    border-right: 3px solid #59A24F;
-    float: left;
-    height: 100%;
-    margin: 0;
-    padding: 10px 15px;
-}
-#menu li:last-child {
-    border-right: 0;
-}
-#menu li:hover {
-    background: none repeat scroll 0 0 #2F8325;
-    box-shadow: none;;
+
+#project-list li {
+    border-bottom: 1px solid #AEAEAE;
 }
