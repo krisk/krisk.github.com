@@ -75,6 +75,7 @@ h1 {
 }
 #browsers {
     padding-left: 20px;
+    font-size: 15px;
 }
 #browsers li {
     line-height: 1.4em;
