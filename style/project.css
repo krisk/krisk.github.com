@@ -9,6 +9,9 @@ pre {
     line-height: 18px;
     text-shadow: none;
 }
+h1 {
+    font-size: 100px
+}
 #txtlzr {
   margin-top: 20px;
     font-size: 30px;
