@@ -49,6 +49,7 @@ ul, li {
     text-shadow: 1px 1px 0px black;
     display: inline-block;
     text-decoration: none;
+    float: left;
 }
 
 #container {
