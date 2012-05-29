@@ -74,6 +74,13 @@ p {
     line-height: 1.4em;
 }
 
+.github-fork {
+    position: fixed;
+    top: 45px;
+    right: 0;
+    border: 0;
+}
+
 header {
     background-color: black;
     background-image: url("http://static.nodesocket.com/doc/images/denim.png");
