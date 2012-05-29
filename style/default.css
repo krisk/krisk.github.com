@@ -36,6 +36,9 @@ ul, li {
     text-shadow: 1px 1px 0px black;
     text-decoration: none;
 }
+#site-menu li.selected a {
+    color: rgb(48, 118, 182);
+}
 
 #logo {
     font-family: 'Bilbo', cursive;
