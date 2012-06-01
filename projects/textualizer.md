@@ -23,6 +23,8 @@ css:
   <a href="https://raw.github.com/krisk/textualizer/master/textualizer.min.js">textualizer.min.js <span>(4.83 kb)</span></a>
 </div>
 
+base {{ page.baseurl }}
+
 ### Usage
 
 {% highlight javascript %}
