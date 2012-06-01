@@ -1,2 +1,2 @@
-permalink: /blog/:month-:day-:year/:title.html
+permalink: /blog/:title.html
 pygments: true
