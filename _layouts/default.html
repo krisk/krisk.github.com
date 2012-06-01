@@ -1,0 +1,77 @@
+---
+ga_account_id: UA-25301489-1
+---
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title> {% if page.title %} {{ page.title }} | {% endif %} K. Risk, Web Developer </title>
+  <meta name="author" content="Kirollos Risk" />
+  {% if page.summary %}
+  <meta name="description" content="{{ page.summary }}">
+  {% endif %}
+  <!--
+    I'm a front-end developer, a JavaScript afficionado, and I like all things web-related.
+    If the mark-up of this page looks hideous, we can blame it on Jekyll.
+     - K. Risk
+  -->
+  {% if page.keywords %}
+  <meta name="keywords" content="{{ page.keywords }}">
+  {% endif %}
+
+  <link href='http://fonts.googleapis.com/css?family=Bilbo' rel='stylesheet' type='text/css'>
+  <link href="/css/default.css" rel="stylesheet" type="text/css">
+
+  {% for css in page.css %}
+    <link rel="stylesheet" href="{{ css }}" type="text/css" />
+  {% endfor %}
+
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', '{{ page.ga_account_id }}']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</head>
+
+<body>
+
+  <div id="main">
+
+    <header>
+      <a href="http://www.kiro.me" id="logo">K. Risk</a>
+      <nav id="site-nav" role="navigation">
+        <ul id="site-menu">
+          <li {% if page.name == "" %}class="selected"{% endif %}><a href="./">Home</a></li>
+          <li {% if page.name == "projects" %}class="selected"{% endif %}><a href="./projects.html">Projects</a></li>
+          <li {% if page.name == "about" %}class="selected"{% endif %}><a href="./about.html">About me</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="container">
+      {{ content }}
+    </div>
+
+    <footer>
+      <p>@copy; Kirollos Risk | All Rights Reserved. </p>
+    </footer>
+
+  </div>
+
+  {% for js in page.javascript %}
+    <script type="text/javascript" src="{{ js }}"></script>
+  {% endfor %}
+
+</body>
+</html>
