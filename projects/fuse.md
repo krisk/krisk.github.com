@@ -29,7 +29,7 @@ If you need a lightweight, fast way to search through a list of items, and allow
 
 ### Try it out!
 
-Given [this list of books](data.json), try searching by misspelling the title or author's name:
+Given [this list of books](http://www.kiro.me/data/books.json), try searching by misspelling the title or author's name:
 
 <input id="inputSearch" placeholder="Search..." />
 <input id="author" type="checkbox" />
