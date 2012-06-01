@@ -14,6 +14,6 @@ css:
 ### Lightweight JavaScript prototypal inheritance
 
 <div id="download">
-  <a href="https://raw.github.com/krisk/class/master/class.js">class.js <span>(2.41 kb [1.17 kb gzipped])</span></a>
-  <a href="https://raw.github.com/krisk/class/master/class.min.js">class.min.js <span>(498 bytes [306 bytes gzipped])</span></a>
+  <a href="https://raw.github.com/krisk/class/master/class.js">class.js <span>(2.41 kb)</span></a>
+  <a href="https://raw.github.com/krisk/class/master/class.min.js">class.min.js <span>(498 bytes)</span></a>
 </div>
