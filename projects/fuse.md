@@ -34,10 +34,10 @@ If you need a lightweight, fast way to search through a list of items, and allow
 Given [this list of books](http://www.kiro.me/data/books.json), try searching by misspelling the title or author's name:
 
 <input id="inputSearch" placeholder="Search..." />
-<input id="author" type="checkbox" />
-<label for="author">Author</label>
+<input id="author" type="checkbox" class="fuse-checkbox" />
+<label for="author" >Author</label>
 
-<input id="title" type="checkbox" checked="true" />
+<input id="title" type="checkbox" checked="true" class="fuse-checkbox" />
 <label for="title">Title</label>
 
 The results are sorted by score. That is, the ones that match the strongest are first.
