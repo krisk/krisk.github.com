@@ -21,7 +21,6 @@ ga_account_id: UA-25301489-1
   <meta name="keywords" content="{{ page.keywords }}">
   {% endif %}
 
-  <link href='http://fonts.googleapis.com/css?family=Bilbo' rel='stylesheet' type='text/css'>
   <link href="/css/default.css" rel="stylesheet" type="text/css">
 
   {% for css in page.css %}
@@ -48,18 +47,20 @@ ga_account_id: UA-25301489-1
 
   <div id="main">
 
-    <header>
-      <a href="http://www.kiro.me" id="logo">K. Risk</a>
-      <nav id="site-nav" role="navigation">
-        <ul id="site-menu">
-          <li {% if page.name == "" %}class="selected"{% endif %}><a href="./">Home</a></li>
-          <li {% if page.name == "projects" %}class="selected"{% endif %}><a href="/projects.html">Projects</a></li>
-          <li {% if page.name == "about" %}class="selected"{% endif %}><a href="/about.html">About me</a></li>
-        </ul>
-      </nav>
-    </header>
-
     <div id="container">
+
+
+      <header>
+        <a href="http://www.kiro.me" id="logo">K. Risk</a>
+        <nav id="site-nav" role="navigation">
+          <ul id="site-menu">
+            <li {% if page.name == "" %}class="selected"{% endif %}><a href="/">Home</a></li>
+            <li {% if page.name == "projects" %}class="selected"{% endif %}><a href="/projects.html">Projects</a></li>
+            <li {% if page.name == "about" %}class="selected"{% endif %}><a href="/about.html">About me</a></li>
+          </ul>
+        </nav>
+      </header>
+
       {{ content }}
     </div>
 
