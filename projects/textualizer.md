@@ -18,10 +18,12 @@ css:
 
 <div id="txtlzr">&nbsp;</div>
 
-<div id="download">
-  <a href="https://raw.github.com/krisk/textualizer/master/textualizer.js">textualizer.js <span>(12.67 kb)</span></a>
-  <a href="https://raw.github.com/krisk/textualizer/master/textualizer.min.js">textualizer.min.js <span>(4.83 kb)</span></a>
-</div>
+Download:
+
+<ul class="download-list">
+  <li><a href="https://raw.github.com/krisk/textualizer/master/textualizer.js">textualizer.js</a> - (12.67 kb) development</li>
+  <li><a href="https://raw.github.com/krisk/textualizer/master/textualizer.min.js">textualizer.min.js</a> - (4.83 kb) production</li>
+</ul>
 
 ### Usage
 

@@ -15,10 +15,12 @@ css:
 
 ### Lightweight JavaScript prototypal inheritance
 
-<div id="download">
-  <a href="https://raw.github.com/krisk/class/master/class.js">class.js <span>(2.41 kb)</span></a>
-  <a href="https://raw.github.com/krisk/class/master/class.min.js">class.min.js <span>(498 bytes)</span></a>
-</div>
+Download:
+
+<ul class="download-list">
+  <li><a href="https://raw.github.com/krisk/class/master/class.js">class.js</a> - (2.41 kb) development</li>
+  <li><a href="https://raw.github.com/krisk/class/master/class.min.js">class.min.js</a> - (498 bytes) production</li>
+</ul>
 
 *(Note: I realize "Class" isn't a very original name, so if you have any suggestions, let me know! Yes indeed, credit will be given)*
 

@@ -18,10 +18,12 @@ css:
 
 ### Lighweight fuzzy-search, in JavaScript.
 
-<div id="download">
-  <a href="https://raw.github.com/krisk/fuse/master/fuse.js">fuse.js <span>(8.89 kb)</span></a>
-  <a href="https://raw.github.com/krisk/fuse/master/fuse.min.js">fuse.min.js <span>(1.61 kb)</span></a>
-</div>
+Download:
+
+<ul class="download-list">
+  <li><a href="https://raw.github.com/krisk/fuse/master/fuse.js">fuse.js</a> - (8.89 kb) development</li>
+  <li><a href="https://raw.github.com/krisk/fuse/master/fuse.min.js">fuse.min.js</a> - (1.61 kb) production</li>
+</ul>
 
 ## Why?
 
