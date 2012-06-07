@@ -1,6 +1,7 @@
 ---
 layout: project
 title: Class.js
+project: class
 summary: Class.js is a lightweight JavaScript prototypal inheritance model
 keywords: JavaScript inheritance, prototypal, extend
 disqus_title: class
