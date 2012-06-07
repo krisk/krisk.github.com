@@ -12,13 +12,11 @@ css:
   - /css/examples/fuse.css
 ---
 
-## What is it?
-
-*(Note: this is still a work in progress. Nonetheless, the base functioality is there, and works)*
+### QUnit test automation
 
 AQ allows you to automate your [QUnit](http://docs.jquery.com/QUnit) tests, leveraging Node.js.
 
-To get started, create a Node.js server.
+*(Note: this is still a work in progress. Nonetheless, the base functioality is there, and works)*
 
 ## Install
 
@@ -29,7 +27,9 @@ npm install aq
 npm update
 {% endhighlight %}
 
-Then, in your node server file:
+## Getting started
+
+Create a Node.js server,
 
 {% highlight javascript %}
 aq = require('aq'),
