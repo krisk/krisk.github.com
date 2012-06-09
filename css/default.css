@@ -8,6 +8,9 @@ body {
 a {
     color: steelBlue;
 }
+h2 {
+    margin-bottom: 10px;
+}
 ul, li {
     margin: 0;
     padding: 0;
@@ -64,10 +67,45 @@ header {
     border-bottom: 2px solid #CACACA;
     margin-bottom: 10px;
 }
+
 .byline {
     font-size: 12px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
-.author {
+.byline .author {
     display: inline;
+    font-style: none;
+    color: #1D637D;
+    line-height: 2em;
+    font-size: 100%;
+    font-weight: bold;
 }
+.byline .author a {
+    text-decoration: none;
+    font-style: normal;
+}
+.byline .pubdate {
+    color: #DD4725;
+    line-height: 2em;
+    font-size: 100%;
+    font-weight: bold;
+}
+.byline .separator {
+    color: #CCC;
+    font-size: 13px;
+    font-family: arial,helvetica,sans-serif;
+    line-height: 26px;
+    padding: 0 6px;
+    font-weight: bold;
+}
+
+#share {
+    height: 25px;
+    border-bottom: 1px solid #DDD;
+    padding: 5px 0;
+    margin-top: 5px;
+}
+#share-button-list li {
+    width: 100px;
+    float: left;
+}`
