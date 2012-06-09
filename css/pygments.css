@@ -2,6 +2,9 @@ pre {
   border-left: solid 2px #CCC;
   padding-left: 18px;
   margin: 2em 0 2em -20px;
+  font-size: 14px;
+  line-height: 18px;
+  text-shadow: none;
   overflow: auto;
 }
 pre code {

@@ -3,26 +3,15 @@ layout: default
 name: home
 summary: Front-end developer, a JavaScript afficionado, and lover of all things web-related
 keywords: Kirollos Risk, Web Developer, JavaScript, JS, Front-end engineer
-javascript:
-  - /javascripts/json_search.0.9.0.js
-  - /javascripts/home.js
 ---
 
-Nothing yet! Check back soon...
-
-For now, take a look at my <a href="./projects.html" title="krisk's projects">projects</a>.
-
-<!--
 <h2>Posts</h2>
 <ul class="posts">
-
   {% for post in site.posts %}
     <li>
       <a href="{{ post.url }}">{{ post.title }}</a>
-      <p>{{ post.summary }}</p>
+      <p>{{ post.date | date_to_string }}</p>
+      <!--<p>{{ post.summary }}</p>-->
     </li>
   {% endfor %}
-
-
 </ul>
--->
