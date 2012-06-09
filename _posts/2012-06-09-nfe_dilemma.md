@@ -81,6 +81,11 @@ g(); // --> false
 
 Well, it's obvious why that's bad. If you're going to set the value of a variable, conditionally, to a function; the function declared last will win.  Of course, part of the problem is that we're attempting to use `g` instead of `f`, which is clearly bad programming practice.
 
+#### Resources
+
+1. [ECMAScript Language Specification - Function Definition](http://bclary.com/2004/11/07/#a-13)
+2. [MDN - Function](https://developer.mozilla.org/en/JavaScript/Reference/Operators/function)
+
 ---
 
 {% include comments.md %}

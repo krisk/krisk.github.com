@@ -3,6 +3,9 @@ layout: default
 ---
 
 <h2>{{ page.title }}</h2>
+<div class="byline">
+  <address class="author">By <a rel="author" href="mailto:kirollos@gmail.com" title="Kiro Risk">K. Risk</a></address>, on <time pubdate datetime="{{ page.date | date: "%B %d %Y" }}">{{ page.date | date_to_string }}</time>
+</div>
 
 {{ content }}
 

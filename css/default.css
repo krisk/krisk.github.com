@@ -13,6 +13,9 @@ ul, li {
     padding: 0;
     list-style: none;
 }
+ol li {
+    list-style-type: decimal;
+}
 #main {
     width: 960px;
     margin: auto;
@@ -60,4 +63,11 @@ header {
     height: 30px;
     border-bottom: 2px solid #CACACA;
     margin-bottom: 10px;
+}
+.byline {
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+.author {
+    display: inline;
 }
