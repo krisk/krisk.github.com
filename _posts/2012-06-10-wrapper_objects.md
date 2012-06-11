@@ -23,7 +23,7 @@ var str = 'hello';
 console.log(str.toUpperCase()); // --> HELLO
 {% endhighlight %}
 
-As you can see from the above code, it appears that `str` clearly has a `toUpperCase` property.  Was our inference incorrect? Specifically, *if strings are not objects, why do they have properties like `toUpperCase`, `toLowerCase`, etc...?*
+It appears that `str` clearly has a `toUpperCase` property.  Was our inference incorrect? Specifically, *if strings are not objects, why do they have properties like `toUpperCase`, `toLowerCase`, etc...?*
 
 Short answer: JavaScript promptly coerces between primitives and objects.
 
