@@ -153,7 +153,7 @@ console.log(temp); // 10
 
 Remember that calling the `Number` constructor without the `new` operation basically attempts to convert a value into its primitive representation.  The same goes for `String` and `Boolean` (though `Boolean` is a little problematic - we'll deal with it in a later post perhaps).
 
-Having said that, JavaScript knows what the primitive value of my number-like object is because it looks for and executes the `valueOf` method.  As long as you have this method in your object (and assuming it returns a number), your object can be mathematically operated on (though, you should be warned, the `Number` object of course has more methods than just `valueOf`, such as `toExponential`, `toExponential`, `toFixed`, `toLocaleString`, `toPrecision`, and `toString`).
+Having said that, JavaScript knows what the primitive value of my number-like object is because it looks for and executes the `valueOf` method.  As long as you have this method in your object (and assuming it returns a number), your object can be mathematically operated on (though, you should be warned, the `Number` object of course has more methods than just `valueOf`, such as `toExponential`, `toFixed`, `toLocaleString`, `toPrecision`, and `toString`).
 
 #### Resources
 
