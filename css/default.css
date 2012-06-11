@@ -5,6 +5,9 @@ body {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 16px;
 }
+p {
+    line-height: 140%;
+}
 a {
     color: steelBlue;
 }
@@ -25,6 +28,7 @@ ol li {
 }
 #container {
     margin-right: 260px;
+    /*position: relative;*/
 }
 #site-nav {
     float: right;
@@ -108,4 +112,22 @@ header {
 #share-button-list li {
     width: 100px;
     float: left;
-}`
+}
+
+/*
+aside {
+    font-size: 12px;
+    position: absolute;
+    right: -190px;
+    border: 1px dashed #CCC;
+    padding: 5px;
+    width: 170px;
+}
+
+@media screen and (max-width:900px) {
+    aside {
+        display: none;
+    }
+}
+*/
+
