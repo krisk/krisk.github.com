@@ -47,25 +47,73 @@ ga_account_id: UA-25301489-1
 
   <div id="main">
 
-    <div id="container">
-
-
-      <header>
+    <header>
+      <div>
         <a href="http://www.kiro.me" id="logo">K. Risk</a>
         <nav id="site-nav" role="navigation">
           <ul id="site-menu">
             <li {% if page.name == "" %}class="selected"{% endif %}><a href="/">Home</a></li>
             <li {% if page.name == "projects" %}class="selected"{% endif %}><a href="/projects.html">Projects</a></li>
-            <li {% if page.name == "about" %}class="selected"{% endif %}><a href="/about.html">About me</a></li>
+            <!--<li {% if page.name == "about" %}class="selected"{% endif %}><a href="/about.html">About me</a></li>-->
           </ul>
         </nav>
-      </header>
+      </div>
+    </header>
+
+    <div id="container">
 
       {{ content }}
+
+    </div>
+
+    <div id="sidebar">
+        <h3>About me</h3>
+
+        <p>
+          <img id="me-image" src="http://www.gravatar.com/avatar/4ae8dc54def0eb337f21fe40fa8972db.png" />
+          I'm <strong>Kiro Risk</strong>.  I'm a <strong>Web Developer</strong> at LinkedIn.  I work with JavaScript, HTML, CSS, Java, Python, MySQL and a plethora of other programming goodness every day.
+        </p>
+
+        <p>I live in Santa Clara, California.</p>
+
+        <p>
+          Questions? Feel free to <a href="mailto:kirollos@gmail.com">contact me</a>.
+        </p>
+
+        <!--
+        <p>
+          <a href="http://www.github.com/krisk" target="_blank" title="Kiro - GitHub">GitHub</a>
+        </p>
+        -->
+
+        <p>
+          <a href="http://www.linkedin.com/in/kirollos" style="text-decoration:none;">
+            <span><img src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png" width="20" height="15" alt="Kiro Risk's LinkedIn profile" style="vertical-align:top" border="0" />View my LinkedIn profile</span>
+          </a>
+        </p>
+
+        <a href="https://twitter.com/kirorisk" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @kirorisk</a>
+        <script>
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+        </script>
+
+        <!--
+        <a href="http://www.linkedin.com/in/kirollos">
+          <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" width="160" height="25" border="0" alt="View Kirollos Risk's profile on LinkedIn">
+        </a>
+        -->
+
+        <!--
+        <p>
+          <a id="feedrss" title="Subscribe to this blog..." href="http://feeds.feedburner.com/krisk">Subscribe to the RSS feed</a>
+        </p>
+        -->
     </div>
 
     <footer>
-
+      <hr />
+      <p>Designed and built using Jekyll, and hosted on <a href="http://github.com/krisk/krisk.github.com" target="_blank" title="GitHub page">GitHub</a></p>
+      <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a></p>
     </footer>
 
   </div>

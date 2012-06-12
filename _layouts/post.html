@@ -13,6 +13,14 @@ layout: default
 
 {{ content }}
 
+<!--
+<hr />
+
+<small>Tags: {% for tag in page.tags %} <a href="/tags/{{ tag }}" title="View posts tagged with &quot;{{ tag }}&quot;"><u>{{ tag }}</u></a>  {% if forloop.last != true %} {% endif %} {% endfor %} </small>
+-->
+
+<hr />
+
 {% include comments.md %}
 
 <!--

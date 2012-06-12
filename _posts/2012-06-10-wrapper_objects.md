@@ -80,6 +80,8 @@ console.log(str.custom);
 
 Once again, JavaScript creates a wrapper `String` object from the original, unmodified string value and then tries to read `custom`. This property, of course, does not exist, and the expression evaluates to `undefined`.  Again, the wrapper object is then discarded.
 
+---
+
 Similarly, given all the info above, we can now see how
 
 {% highlight javascript %}
@@ -159,6 +161,4 @@ Having said that, JavaScript knows what the primitive value of my number-like ob
 
 1. [ECMAScript Language Specification - Strings](http://bclary.com/2004/11/07/#a-4.3.16)
 2. [MDN - Strings](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String)
-
----
 
