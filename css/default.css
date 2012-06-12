@@ -10,6 +10,11 @@ p {
 }
 a {
     color: steelBlue;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: #005580;
 }
 h2 {
     margin-bottom: 10px;
@@ -183,15 +188,11 @@ footer {
     margin: 0;
     font-size: 18px;
 }
-.posts h3 a {
-    text-decoration: none;
-}
-.posts h3 a:hover {
-    text-decoration: underline;
-    color: #005580;
-}
 .posts p {
     margin: 0;
+}
+.pagination p {
+    text-align: right;
 }
 /*
 aside {
