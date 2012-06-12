@@ -177,18 +177,18 @@ footer {
     border: 3px solid white;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
 }
-.posts li {
+.article-list li {
     border-bottom: 1px solid #DDD;
     padding: 10px 0;
 }
-.posts li small {
+.article-list li small {
     color: #999;
 }
-.posts h3 {
+.article-list h3 {
     margin: 0;
     font-size: 18px;
 }
-.posts p {
+.article-list p {
     margin: 0;
 }
 .pagination p {
