@@ -22,7 +22,7 @@
     </li>
     <!-- Hacker News -->
     <li>
-      <a href="http://news.ycombinator.com/submitlink?u=http://erjjones.github.com{{ page.url }}&t={{ page.title }}" target="_blank" title="Submit {{ page.title }} to Hacker News">
+      <a href="http://news.ycombinator.com/submitlink?u=http://{{ page.url }}&t={{ page.title }}" target="_blank" title="Submit {{ page.title }} to Hacker News">
         <img src="/images/y-comb.gif" />
       </a>
     </li>
