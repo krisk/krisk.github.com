@@ -2,7 +2,7 @@
 layout: post
 title: The Wrapper Object
 summary: A look at the wrapper object created during type coercion
-disqus_title: nfe
+disqus_title: wrapper_object
 disqus_identifer: 1000102
 tags: javascript, functions, Strings, Numbers, type coercion, wrapper object
 category: javascript
