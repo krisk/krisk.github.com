@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The "typeof" Operator
-summary: A closer look at null
+summary: Demystifying "typeof", once and for all
 disqus_title: typeof_null
 disqus_identifer: 1000103
 tags: javascript, functions, Strings, Numbers, type
