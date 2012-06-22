@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The "typeof" Operator
+title: Null & typeof
 summary: Demystifying "typeof", once and for all
 disqus_title: typeof_null
 disqus_identifer: 1000103
