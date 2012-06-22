@@ -19,8 +19,8 @@ css:
 Download:
 
 <ul class="download-list">
-  <li><a href="https://raw.github.com/krisk/class/master/class.js">class.js</a> - (2.41 kb) development</li>
-  <li><a href="https://raw.github.com/krisk/class/master/class.min.js">class.min.js</a> - (498 bytes) production</li>
+  <li><a href="https://raw.github.com/krisk/class/master/class.js">class.js</a> - (2.28 kb) development</li>
+  <li><a href="https://raw.github.com/krisk/class/master/class.min.js">class.min.js</a> - (434 bytes) production</li>
 </ul>
 
 *(Note: I realize "Class" isn't a very original name, so if you have any suggestions, let me know! Yes indeed, credit will be given)*
@@ -84,34 +84,6 @@ Create an instance of `Dog`:
 {% highlight javascript %}
 var husky = new Dog();
 husky.scare(); // "Dog::I scare you'"
-{% endhighlight %}
-
-### Decorating
-
-The ability to decorate instances is quite powerful. As an example:
-
-{% highlight javascript %}
-var Domesticated = function(obj, base) {
-    // Override the instance' scare method
-    obj.scare = function(){
-        console.log('Domesticated::sorry, we dont scare');
-    }
-
-    // Add a method
-    obj.kneel = function(){}
-
-    // Bind some custom events
-    $(obj).on('barking', function() {});
-};
-{% endhighlight %}
-
-From the above, you can see that a decorator is merely a function that expects an instance and the base prototype, both of which are provided by the Class library. Within this function, you can override, augment, bind... - that is, decorate, the instance as you please.
-
-So, back to our husky example. To decorate the instance, use `decorate`:
-
-{% highlight javascript %}
-husky.decorate(Domesticated);
-husky.scare(); // "Domesticated::sorry, we don't scare"
 {% endhighlight %}
 
 That's it.  You're done.
