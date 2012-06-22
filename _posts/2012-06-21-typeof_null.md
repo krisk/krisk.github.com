@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Null & typeof
-summary: Demystifying "typeof", once and for all
+summary: Demystifying typeof null, once and for all
 disqus_title: typeof_null
 disqus_identifer: 1000103
 tags: javascript, functions, Strings, Numbers, type
