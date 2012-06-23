@@ -71,7 +71,8 @@ ol li {
     text-decoration: underline;
 }
 #feedrss img {
-    margin-right: 9px;
+    margin-right: 5px;
+    vertical-align: top;
 }
 
 #site-nav {
