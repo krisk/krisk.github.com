@@ -21,8 +21,8 @@ css:
 Download:
 
 <ul class="download-list">
-  <li><a href="https://raw.github.com/krisk/fuse/master/fuse.js">fuse.js</a> - (8.89 kb) development</li>
-  <li><a href="https://raw.github.com/krisk/fuse/master/fuse.min.js">fuse.min.js</a> - (1.61 kb) production</li>
+  <li><a href="https://raw.github.com/krisk/fuse/master/fuse.js">fuse.js</a> - (9.25 kb) development</li>
+  <li><a href="https://raw.github.com/krisk/fuse/master/fuse.min.js">fuse.min.js</a> - (1.65 kb) production</li>
 </ul>
 
 ## Why?
