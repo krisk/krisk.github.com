@@ -8,7 +8,7 @@ disqus_title: fuse
 disqus_identifer: 1000001
 javascript:
   - http://code.jquery.com/jquery.min.js
-  - https://raw.github.com/krisk/Fuse/master/fuse.js
+  - fuse.js
   - /javascript/examples/fuse.js
 css:
   - /css/project.css
@@ -21,8 +21,8 @@ css:
 Download:
 
 <ul class="download-list">
-  <li><a href="https://raw.github.com/krisk/fuse/master/fuse.js">fuse.js</a> - (9.25 kb) development</li>
-  <li><a href="https://raw.github.com/krisk/fuse/master/fuse.min.js">fuse.min.js</a> - (1.65 kb) production</li>
+  <li><a href="https://raw.github.com/krisk/fuse/master/fuse.js">fuse.js</a> - (9 kb) development</li>
+  <li><a href="https://raw.github.com/krisk/fuse/master/fuse.min.js">fuse.min.js</a> - (1.58 kb) production</li>
 </ul>
 
 ## Why?
