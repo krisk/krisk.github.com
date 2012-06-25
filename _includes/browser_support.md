@@ -1,6 +1,6 @@
 ## Browser support
 
-<img src="http://www.kiro.me/images/browsers.png" />
+<img class="browsers" src="http://www.kiro.me/images/browsers.png" />
 
 {{ page.title }} has been successfully tested in the following browsers:
 

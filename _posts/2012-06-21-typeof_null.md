@@ -12,7 +12,7 @@ css:
 
 The <code>typeof</code> operator can be a little counter-intuitive.  However, regardless of the confusion it may cause, the way it works is extremely straightforward: *return the type string of a given reference according to the table specified in [ECMA-262](http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262%205th%20edition%20December%202009.pdf)*:
 
-<img src="/images/posts/typeof_table.png" />
+<img class="es-table" src="/images/posts/typeof_table.png" />
 
 ### Implementation
 

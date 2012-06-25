@@ -242,14 +242,34 @@ aside {
         margin-top: 5px;
     }
 }
-/* 480px and under (iPhone) */
+/* 480px and under */
 @media screen and (max-width:480px) {
+    /*/
+    header {
+        height: auto;
+    }
+    #site-nav {
+        float: none;
+    }
+    #site-menu li {
+        width: 97.5%;
+        padding: 5px;
+        border-top: 1px solid grey;
+        background-color: yellow;
+    }
+    */
 }
 /* 400px and under */
 @media screen and (max-width:400px) {
+    .es-table {
+        width: 100%;
+    }
 }
-/* 320px and under */
+/* 320px and under (iPhone) */
 @media screen and (max-width:320px) {
+    .browsers {
+        width: 90%;
+    }
 }
 /* iPads (portrait and landscape) */
 @media screen and (device-width:768px) {
