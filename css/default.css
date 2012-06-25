@@ -212,3 +212,46 @@ aside {
 }
 */
 
+
+/* 900px and under */
+@media screen and (max-width:970px) {
+    #main,
+    #container,
+    header > div {
+        width: 100%;
+    }
+    .github-fork {
+        display: none;
+    }
+    #sidebar {
+        display: none;
+    }
+}
+/* 840px and under */
+@media screen and (max-width:840px) {
+}
+/* 740px and under */
+@media screen and (max-width:740px) {
+}
+/* 600px and under */
+@media screen and (max-width:600px) {
+    #share {
+        height: 65px;
+    }
+    #share-button-list li {
+        margin-top: 5px;
+    }
+}
+/* 480px and under (iPhone) */
+@media screen and (max-width:480px) {
+}
+/* 400px and under */
+@media screen and (max-width:400px) {
+}
+/* 320px and under */
+@media screen and (max-width:320px) {
+}
+/* iPads (portrait and landscape) */
+@media screen and (device-width:768px) {
+}
+
