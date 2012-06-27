@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NaN and typeof
-summary: An in-depth look at the NaN property, and why it is a considered a number type.
+summary: An in-depth look at the NaN property, and why it is considered a number type.
 disqus_title: typeof_null
 disqus_identifer: 1000104
 tags: javascript, Numbers, NaN, Infinity, typeof, IEEE
