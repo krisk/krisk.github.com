@@ -43,7 +43,7 @@ The ECMAScript standard states that Numbers should be IEEE-754 floating point da
 By definition, <code>NaN</code> is the return value from operations which have an **undefined numerical result**.  Hence why, in JavaScript, aside from being part of the global object, it is also part of the Number object: <code>Number.NaN</code>. **It is still a numeric data type**, but it is undefined as a [real number](http://en.wikipedia.org/wiki/Real_number).
 
 <aside>
-  <code>NaN</code> also represents any number outside of the ECMAScript <a href="http://bclary.com/2004/11/07/#a-8.5" target="_blank">domain of definition</a>
+  <code>NaN</code> also represents any number outside of the ECMAScript <a href="http://bclary.com/2004/11/07/#a-8.5" target="_blank">domain of definition.</a>
 </aside>
 
 ### Computer arithmetic is limited
