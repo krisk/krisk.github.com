@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Wrapper Object
-summary: A look at the wrapper object created during type coercion
+summary: A look at the wrapper object created during type coercion.
 disqus_title: wrapper_object
 disqus_identifer: 1000102
 tags: javascript, functions, Strings, Numbers, type coercion, wrapper object
@@ -157,7 +157,9 @@ Remember that calling the `Number` constructor without the `new` operation basic
 
 Having said that, JavaScript knows what the primitive value of my number-like object is because it looks for and executes the `valueOf` method.  As long as you have this method in your object (and assuming it returns a number), your object can be mathematically operated on (though, you should be warned, the `Number` object of course has more methods than just `valueOf`, such as `toExponential`, `toFixed`, `toLocaleString`, `toPrecision`, and `toString`).
 
-#### Resources
+---
+
+### Resources
 
 1. [ECMAScript Language Specification - Strings](http://bclary.com/2004/11/07/#a-4.3.16)
 2. [MDN - Strings](https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String)

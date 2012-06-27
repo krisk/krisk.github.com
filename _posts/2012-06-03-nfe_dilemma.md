@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Named Function Expressions and the IE dilemma
-summary: Explaning the problems with named function expressions in IE
+summary: Explaning the problems with named function expressions in IE.
 disqus_title: nfe
 disqus_identifer: 1000101
 tags: javascript, functions, expressions
@@ -39,7 +39,7 @@ NFEs differ from their nameless counterparts in two ways: (1) they provide you v
 
 Both of these points are quite helpful.  However, there's a few problems with NFEs in certain browsers.  For the purpose of this article, I'll deal with IE <= 8.
 
-### Problems
+## Problems
 
 **1. The function expression identifier leaks into the enclosing scope**
 
@@ -89,7 +89,9 @@ g(); // --> false
 
 Well, it's obvious why that's bad. If you're going to set the value of a variable, conditionally, to a function; the function declared last will win.  Of course, part of the problem is that we're attempting to use `g` instead of `f`, which is clearly bad programming practice.
 
-#### Resources
+---
+
+### Resources
 
 1. [ECMAScript Language Specification - Function Definition](http://bclary.com/2004/11/07/#a-13)
 2. [MDN - Function](https://developer.mozilla.org/en/JavaScript/Reference/Operators/function)

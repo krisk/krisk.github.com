@@ -7,7 +7,7 @@ ga_account_id: UA-25301489-1
 
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-  <title> {% if page.title %} {{ page.title }} | {% endif %} K. Risk, Web Developer </title>
+  <title>{% if page.title %}{{ page.title }} | {% endif %}K. Risk - JavaScript Refined</title>
   <meta name="author" content="Kirollos Risk" />
   {% if page.summary %}
   <meta name="description" content="{{ page.summary }}">
@@ -54,7 +54,10 @@ ga_account_id: UA-25301489-1
 
     <header>
       <div>
-        <a href="http://www.kiro.me" id="logo">K. Risk</a>
+        <a href="http://www.kiro.me" id="logo">
+          <span>K. Risk -</span>
+          <strong>JavaScript Refined</strong>
+        </a>
         <nav id="site-nav" role="navigation">
           <ul id="site-menu">
             <li {% if page.name == "" %}class="selected"{% endif %}><a href="/">Home</a></li>
@@ -85,12 +88,6 @@ ga_account_id: UA-25301489-1
           Questions? Feel free to <a href="mailto:kiro@kiro.me">contact me</a>.
         </p>
 
-        <!--
-        <p>
-          <a href="http://www.github.com/krisk" target="_blank" title="Kiro - GitHub">GitHub</a>
-        </p>
-        -->
-
         <a href="https://twitter.com/kirorisk" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @kirorisk</a>
         <script>
           !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
@@ -106,11 +103,12 @@ ga_account_id: UA-25301489-1
           </a>
         </p>
 
-        <!--
-        <a href="http://www.linkedin.com/in/kirollos">
-          <img src="http://www.linkedin.com/img/webpromo/btn_viewmy_160x25.png" width="160" height="25" border="0" alt="View Kirollos Risk's profile on LinkedIn">
-        </a>
-        -->
+        <p>
+          <a id="github-account" href="http://www.github.com/krisk" target="_blank" title="Kiro - GitHub">
+            <img src="/images/github.png" width="16" alt="Kiro Risk's LinkedIn profile" style="vertical-align:top" border="0" />GitHub
+          </a>
+        </p>
+
     </div>
 
     <footer>

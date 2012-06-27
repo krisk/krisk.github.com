@@ -16,6 +16,9 @@ a:hover {
     text-decoration: underline;
     color: #005580;
 }
+h1 {
+    margin: 10px 0;
+}
 h2 {
     margin-bottom: 10px;
 }
@@ -74,6 +77,9 @@ ol li {
     margin-right: 5px;
     vertical-align: top;
 }
+#github-account img {
+    margin-right: 5px;
+}
 
 #site-nav {
     float: right;
@@ -85,6 +91,7 @@ ol li {
     float: left;
     margin-right: 20px;
     cursor: pointer;
+    line-height: 22px;
 }
 #site-menu li a {
     color: steelBlue;
@@ -95,10 +102,9 @@ ol li {
 }
 #site-menu li.selected a {
     border-bottom: 2px solid steelBlue;
-    padding-bottom: 3px;
 }
 #site-menu li a:hover {
-    color: rgb(48, 118, 182);
+    color: #005580;
 }
 #logo {
     color: #666;
@@ -195,23 +201,13 @@ footer {
 .pagination p {
     text-align: right;
 }
-/*
+
 aside {
-    font-size: 12px;
-    position: absolute;
-    right: -190px;
+    font-size: 13px;
     border: 1px dashed #CCC;
     padding: 5px;
-    width: 170px;
+    background-color: #F5F5F5;
 }
-
-@media screen and (max-width:900px) {
-    aside {
-        display: none;
-    }
-}
-*/
-
 
 /* 900px and under */
 @media screen and (max-width:970px) {
@@ -244,6 +240,9 @@ aside {
 }
 /* 480px and under */
 @media screen and (max-width:480px) {
+    #logo span {
+        display: none;
+    }
     /*/
     header {
         height: auto;
