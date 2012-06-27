@@ -96,7 +96,7 @@ function isNaN(x) {
   The native implementation of <code>isNaN()</code> returns <code>true</code> even if the value is <code>undefined</code>, or if the value cannot be coerced into a primitive number data type.
 </aside>
 
-Of course, I wouldn't recommend replacing the native implementation of <code>isNaN()</code>.  However, there are some libraries out there which introduce their own. For example, <a href="http://underscorejs.org/" target="blank">Underscore</a>'s implemenation is as follows:
+Of course, I wouldn't recommend replacing the native implementation.  However, there are some libraries out there which introduce their own. For example, <a href="http://underscorejs.org/" target="blank">Underscore</a>'s implemenation is as follows:
 
 {% highlight javascript %}
 _.isNaN = function(obj) {
