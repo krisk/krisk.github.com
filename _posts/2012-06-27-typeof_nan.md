@@ -77,7 +77,7 @@ isNaN(NaN); // true
 This is why you cannot determine whether a given value is <code>NaN</code> by comparing it to <code>NaN</code>, and instead you must use the <code>isNaN()</code> function.
 
 <aside>
-  The <em>division of zero by a zero</em> <a href="http://www.newton.dep.anl.gov/askasci/math99/math99259.htm" target="_blank">explanation</a> illustrates why <code>NaN != NaN</code>: it is false to say that "every number <em>x</em> is equal to every number <em>x</em>".  Since the value cannot be determined, it follows that the comparison cannot be determined, and thus the sentence is instrinsically and mathematically false.
+  The <em>division of zero by a zero</em> <a href="http://www.newton.dep.anl.gov/askasci/math99/math99259.htm" target="_blank">discussion</a> illustrates why <code>NaN != NaN</code>: it is false to say that "every number <em>x</em> is equal to every number <em>x</em>".  Since the value cannot be determined, it follows that the comparison cannot be determined, and thus the sentence is instrinsically and mathematically false.
 </aside>
 
 It is not surprising, then, that the native implementation of the function <code>isNaN()</code> could be simply replaced with:
