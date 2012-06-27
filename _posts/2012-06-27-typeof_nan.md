@@ -21,12 +21,13 @@ NaN; // NaN
 Number.NaN; // NaN
 {% endhighlight %}
 
-The value <code>NaN</code> can happen in several ways:
+There are several ways in which <code>NaN</code> can happen:
 
 1. Division of zero by zero
 2. Dividing an infinity by an infinity
 3. Multiplication of an infinity by a zero
 4. Any operation in which <code>NaN</code> is an operand
+5. Converting a non-numeric string or <code>undefined</code> into a number
 
 <aside>
   If you're interested in why <code>0/0 = NaN</code>, read this <a href="http://www.newton.dep.anl.gov/askasci/math99/math99259.htm" target="_blank">discussion</a>.  Even mathematicians are undecided.
@@ -124,6 +125,22 @@ _.isNaN("a");       // false
 {% endhighlight %}
 
 I can't be certain, but I suppose Underscore included this implementation because you might be interested in checking that the value is indeed <code>NaN</code>, since the **only** value that satisfies an unequality check against itself is <code>NaN</code>.
+
+### Booleans are NOT <code>NaN</code>s
+
+Consider the following code:
+
+{% highlight javascript %}
+isNaN(true);  // false
+isNaN(false); // false
+{% endhighlight %}
+
+This is because booleans are considered and implemented as numerical values with a single binary digit (i.e., bit), thus they are coerced into their respective bit representations:
+
+{% highlight javascript %}
+Number(true);  // 1
+Number(false); // 0
+{% endhighlight %}
 
 ---
 
