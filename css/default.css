@@ -83,6 +83,7 @@ ol li {
 
 #site-nav {
     float: right;
+    display: inline-block;
 }
 #site-menu {
     list-style: none;
@@ -118,9 +119,8 @@ ol li {
     border: 0;
 }
 header {
-    height: 30px;
     border-bottom: 2px solid #CACACA;
-    margin-bottom: 10px;
+    padding-bottom: 10px;
 }
 header > div {
     width: 680px;
@@ -240,8 +240,12 @@ aside {
 }
 /* 480px and under */
 @media screen and (max-width:480px) {
-    #logo span {
-        display: none;
+    #site-nav {
+        margin-top: 10px;
+        float: none;
+    }
+    #site-menu {
+        display: inline-block;
     }
     /*/
     header {
