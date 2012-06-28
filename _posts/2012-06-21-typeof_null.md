@@ -82,7 +82,7 @@ typeof null === "object"; // true
 
 The answer might disappoint some, but the truth is simply because the table above says to do so.
 
-The reasoning behind this is that <code>null</code>, in contrast with <code>undefined</code>, was (and still is) often used where objects appear.  In other words, <code>null</code> is often used to signify an empty reference to an object. When [Brendan Eich](http://en.wikipedia.org/wiki/Brendan_Eich) created JavaScript, he followed the same paradigm, and it made sense (arguably) to return <code>"object"</code>.  In fact, the ECMAScript specification defines the <code>null</code> as the *primitive value that represents the intentional absence of any object value* (ECMA-262, 11.4.11).
+The reasoning behind this is that <code>null</code>, in contrast with <code>undefined</code>, was (and still is) often used where objects appear.  In other words, <code>null</code> is often used to signify an empty reference to an object. When [Brendan Eich](http://en.wikipedia.org/wiki/Brendan_Eich) created JavaScript, he followed the same paradigm, and it made sense (arguably) to return <code>"object"</code>.  In fact, the ECMAScript specification defines <code>null</code> as the *primitive value that represents the intentional absence of any object value* (ECMA-262, 11.4.11).
 
 There have been discussions in the ECMAScript working group (between Brendan Eich, Douglas Crockford, and a few other other individuals) proposing the following change:
 
