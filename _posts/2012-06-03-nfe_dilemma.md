@@ -4,7 +4,7 @@ title: Named Function Expressions and the IE dilemma
 summary: Explaning the problems with named function expressions in IE.
 disqus_title: nfe
 disqus_identifer: 1000101
-tags: javascript, functions, expressions
+tags: functions, expressions, declarations, IE
 category: javascript
 css:
   - /css/pygments.css
@@ -22,11 +22,9 @@ var z = function w(){};     // instead of: var z = function (){};
 
 All of the above are examples of *Named Function Expressions* (NFEs), that is, they are *Function Expressions* with an identifier (`f`, `y`, and `w` respectively).
 
-<!--
 <aside>
-   <a href="http://bclary.com/2004/11/07/#a-13" title="ECMAScript - Functions">Here's</a> the ECMAScript definition of a Function Expressions
+   <a href="http://bclary.com/2004/11/07/#a-13" title="ECMAScript - Functions">Here's</a> the ECMAScript definition of a Function Expression
 </aside>
--->
 
 NFEs differ from their nameless counterparts in two ways: (1) they provide you visibility on the callstack during debugging, and (2) they give you the ability to recurse via the inner scope:
 

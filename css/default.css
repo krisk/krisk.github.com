@@ -29,6 +29,7 @@ ul, li {
 }
 ol li {
     list-style-type: decimal;
+    line-height: 1.4em;
 }
 #main {
     width: 960px;
@@ -166,6 +167,15 @@ header > div {
     width: 100px;
     float: left;
 }
+
+ul.posts span {
+    color: #AAA;
+    font-size: 80%;
+}
+ul.posts li {
+    line-height: 1.5em;
+}
+
 hr {
     margin: 18px 0;
     border: 0;

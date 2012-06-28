@@ -4,7 +4,7 @@ title: Null and typeof
 summary: Demystifying typeof null, once and for all.
 disqus_title: typeof_null
 disqus_identifer: 1000103
-tags: javascript, functions, Strings, Numbers, typeof, IEEE
+tags: typeof, null, IEEE
 category: javascript
 css:
   - /css/pygments.css
