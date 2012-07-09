@@ -11,10 +11,6 @@ pre {
 .linenos pre code {
   line-height: 10px;
 }
-.highlighttable {
-  display: block;
-  overflow-x: scroll;
-}
 .highlighttable div.highlight {
   padding-left: 10px;
 }
