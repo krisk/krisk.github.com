@@ -27,7 +27,7 @@ Download:
 
 ### Usage
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 var list = ['first blurb', 'second blurb', 'third blurb'];  // list of blurbs
 
 var txt = $('#txtlzr');  // The container in which to render the list

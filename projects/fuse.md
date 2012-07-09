@@ -49,7 +49,7 @@ The results are sorted by score. That is, the ones that match the strongest are 
 
 Suppose you have the following data structure:
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 // List of books
 var books = [{
   id: 1,
@@ -70,7 +70,7 @@ var books = [{
 
 Search and return a result list of identifiers
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 var options = {
   keys: ['author', 'title'],   // keys to search in
   id: 'id'                     // return a list of identifiers only
@@ -86,7 +86,7 @@ var result = f.search('brwn'); // Fuzzy-search for pattern 'brwn'
 
 Search and return a result list of records
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 var options = {
   keys: ['author', 'title']
 }
@@ -110,7 +110,7 @@ var result = f.search('brwn');
 
 Search over a flat array, and return the indices
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 var books = ["Old Man's War", "The Lock Artist", "HTML5", "Right Ho Jeeves", "The Code of the Wooster", "Thank You Jeeves", "The DaVinci Code", "Angels & Demons", "The Silmarillion", "Syrup", "The Lost Symbol", "The Book of Lies", "Lamb", "Fool", "Incompetence", "Fat", "Colony", "Backwards, Red Dwarf", "The Grand Design", "The Book of Samson", "The Preservationist", "Fallen", "Monster 1959"];
 
 var f = new Fuse(books);

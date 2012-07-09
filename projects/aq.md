@@ -31,7 +31,7 @@ npm update
 
 Create a Node.js server,
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 aq = require('aq'),
 
 app = http.createServer( function( request, response ) {
@@ -78,7 +78,7 @@ Additionally, there has to be a target container called `aq-container` where AQ 
 
 AQ will begin testing only when explicitly told.  You can do this by calling `AQ.start()`, in the test page:
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 window.AQ.start();
 {% endhighlight %}
 
@@ -147,7 +147,7 @@ node server.js -- test1.html test2.html
 
 AQ provides a `beforeTestRun` event which is executed after a unit test file is loaded.  If this is event is bound, **no test will run unless an explicit call to `AQ.run` is made.**  For example, in the test page:
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 window.AQ.start();
 
 $(window.AQ).on('beforeTestRun', function() {
@@ -160,7 +160,7 @@ $(window.AQ).on('beforeTestRun', function() {
 
 On the server side, once AQ is listening, you can bind onto certain events:
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 aq = aq.listen(app, options);
 
 /**

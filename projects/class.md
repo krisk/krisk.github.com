@@ -29,7 +29,7 @@ This inheritiance model, I think, is best explained with code.
 
 Let's define an `Animal` class:
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 // Animal base class
 var Animal = Class.extend(function(base) {
     return {
@@ -52,7 +52,7 @@ var Animal = Class.extend(function(base) {
 
 `Class.extend` expects a function that returns an object literal. That object literal is used to construct the prototype. The `init` method in the object literal acts as the constructor, which is invoked when an instance is created. That is:
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 var animal = new Animal(); // Create a new Animal instance
 {% endhighlight %}
 
@@ -62,7 +62,7 @@ var animal = new Animal(); // Create a new Animal instance
 
 Now, suppose I want to create a `Dog` class. Since a dog is essentially an animal, then it should inherit from `Animal`. Note that every class definition has access to the parent's prototype via the `base` argument (or whatever you named it).
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 // Extend the Animal class.
 var Dog = Animal.extend(function(base) {
     return {
@@ -81,7 +81,7 @@ var Dog = Animal.extend(function(base) {
 
 Create an instance of `Dog`:
 
-{% highlight javascript %}
+{% highlight js linenos=table %}
 var husky = new Dog();
 husky.scare(); // "Dog::I scare you'"
 {% endhighlight %}
