@@ -15,11 +15,6 @@ syntax: true
 
 First, <code>NaN</code> is not a keyword (unlike <code>true</code>, <code>false</code>, <code>null</code>, etc..), **it is a property of the global object**.  The value of <code>NaN</code> is the same as the value of <code>Number.NaN</code>:
 
-{% highlight js linenos=table %}
-NaN; // NaN
-Number.NaN; // NaN
-{% endhighlight %}
-
 <pre class="brush: js">
 NaN; // NaN
 Number.NaN; // NaN
