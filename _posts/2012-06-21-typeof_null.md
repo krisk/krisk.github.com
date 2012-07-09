@@ -6,8 +6,7 @@ disqus_title: typeof_null
 disqus_identifer: 1000103
 tags: typeof, null, IEEE
 category: javascript
-css:
-  - /css/pygments.css
+syntax: true
 ---
 
 The <code>typeof</code> operator can be a little counter-intuitive.  However, regardless of the confusion it may cause, the way it works is extremely straightforward: *return the type string of a given reference according to the table specified in [ECMA-262](http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262%205th%20edition%20December%202009.pdf)*:
@@ -18,56 +17,56 @@ The <code>typeof</code> operator can be a little counter-intuitive.  However, re
 
 The actual implementation varies depending on which engine you are running.  The V8 (behind Chrome and Node.js) implementation of the <code>typeof</code> operator (written in C++), is as follows (I've added a few comments for clarification):
 
-{% highlight javascript %}
+<pre class="brush: cpp">
 // Returns the type string of a value; see ECMA-262, 11.4.3
 RUNTIME_FUNCTION(MaybeObject*, Runtime_Typeof) {
   NoHandleAllocation ha;
 
   Object* obj = args[0];
-  if (obj->IsNumber()) return isolate->heap()->number_symbol();
+  if (obj-&gt;IsNumber()) return isolate-&gt;heap()-&gt;number_symbol();
   HeapObject* heap_obj = HeapObject::cast(obj);
 
   // typeof an undetectable object is 'undefined'
-  if (heap_obj->map()->is_undetectable()) {
-    return isolate->heap()->undefined_symbol();
+  if (heap_obj-&gt;map()-&gt;is_undetectable()) {
+    return isolate-&gt;heap()-&gt;undefined_symbol();
   }
 
-  InstanceType instance_type = heap_obj->map()->instance_type();
-  if (instance_type < FIRST_NONSTRING_TYPE) {
+  InstanceType instance_type = heap_obj-&gt;map()-&gt;instance_type();
+  if (instance_type &lt; FIRST_NONSTRING_TYPE) {
     // return "string"
-    return isolate->heap()->string_symbol();
+    return isolate-&gt;heap()-&gt;string_symbol();
   }
 
   switch (instance_type) {
     // oddbal types: true, false, null, undefined
     case ODDBALL_TYPE:
       // true, false
-      if (heap_obj->IsTrue() || heap_obj->IsFalse()) {
+      if (heap_obj-&gt;IsTrue() || heap_obj-&gt;IsFalse()) {
         // return "boolean"
-        return isolate->heap()->boolean_symbol();
+        return isolate-&gt;heap()-&gt;boolean_symbol();
       }
       // null
-      if (heap_obj->IsNull()) {
+      if (heap_obj-&gt;IsNull()) {
         return FLAG_harmony_typeof
             // return "null"
-            ? isolate->heap()->null_symbol()
+            ? isolate-&gt;heap()-&gt;null_symbol()
             // return "object"
-            : isolate->heap()->object_symbol();
+            : isolate-&gt;heap()-&gt;object_symbol();
       }
-      ASSERT(heap_obj->IsUndefined());
+      ASSERT(heap_obj-&gt;IsUndefined());
       // return "undefined"
-      return isolate->heap()->undefined_symbol();
+      return isolate-&gt;heap()-&gt;undefined_symbol();
     case JS_FUNCTION_TYPE:
     case JS_FUNCTION_PROXY_TYPE:
       // return "function"
-      return isolate->heap()->function_symbol();
+      return isolate-&gt;heap()-&gt;function_symbol();
     default:
       // For any kind of object not handled above, the spec rule for
       // host objects gives that it is okay to return "object"
-      return isolate->heap()->object_symbol();
+      return isolate-&gt;heap()-&gt;object_symbol();
   }
 }
-{% endhighlight %}
+</pre>
 
 <aside>
   You can find the full file <a href="http://code.google.com/searchframe#W9JxUuHYyMg/trunk/src/runtime.cc&q=typeof%20null%20package:v8%5C.googlecode%5C.com" target="_blank">here</a>
@@ -75,10 +74,10 @@ RUNTIME_FUNCTION(MaybeObject*, Runtime_Typeof) {
 
 ## Why does <code>typeof null </code> return <code>"object"</code>?
 
-{% highlight javascript %}
+<pre class="brush: js">
 // What's happening here?
 typeof null === "object"; // true
-{% endhighlight %}
+</pre>}
 
 The answer might disappoint some, but the truth is simply because the table above says to do so.
 
@@ -86,9 +85,9 @@ The reasoning behind this is that <code>null</code>, in contrast with <code>unde
 
 There have been discussions in the ECMAScript working group (between Brendan Eich, Douglas Crockford, and a few other other individuals) proposing the following change:
 
-{% highlight javascript %}
+<pre class="brush: js">
 typeof null === "null"; // true
-{% endhighlight %}
+</pre>
 
 <aside>
   For the interested, you can read the <a href="http://wiki.ecmascript.org/doku.php?id=discussion:typeof" target="_blank">discussion</a> and <a href="http://wiki.ecmascript.org/doku.php?id=proposals:typeof" target="_blank">proposal</a>
@@ -96,12 +95,12 @@ typeof null === "null"; // true
 
 However, as Douglas Crockford [pointed out](http://wiki.ecmascript.org/doku.php?id=proposals:typeof), *"I think it is too late to fix <code>typeof</code>. The change proposed for <code>typeof null</code> will break existing code."*  By "existing code" he means many incorrect implementations of type checks on the web, such as:
 
-{% highlight javascript %}
+<pre class="brush: js">
 // This is extremely bad
 function isNull(a) {
-  return typeof a == 'object' && !a;
+  return typeof a == 'object' &amp;&amp; !a;
 }
-{% endhighlight %}
+</pre>
 
 Because of this, it was decided to leave <code>typeof</code> alone.
 
@@ -109,15 +108,15 @@ Because of this, it was decided to leave <code>typeof</code> alone.
 
 If you actually read each line of the V8 <code>typeof</code> operator implementation in <code>RUNTIME_FUNCTION</code> above, you might have noticed that <code>FLAG_harmony_typeof</code> check:
 
-{% highlight javascript %}
+<pre class="brush: js">
 // null
 if (heap_obj->IsNull()) {
   return FLAG_harmony_typeof
       // return "null"
-      ? isolate->heap()->null_symbol()
+      ? isolate-&gt;heap()-&gt;null_symbol()
       // return "object"
-      : isolate->heap()->object_symbol();
+      : isolate-&gt;heap()-&gt;object_symbol();
 }
-{% endhighlight %}
+</pre>
 
 Assuming you have the V8 Canary build on your machine, you can run it with the <code>--harmony-typeof</code> flag, which would essentially set the <code>FLAG_harmony_typeof</code> to <code>true</code>.  Now, any <code>typeof null</code> check is going to return <code>"null"</code>.

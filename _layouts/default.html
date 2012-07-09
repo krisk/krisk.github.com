@@ -124,5 +124,24 @@ ga_account_id: UA-25301489-1
     <script type="text/javascript" src="{{ js }}"></script>
   {% endfor %}
 
+  {% if page.syntax %}
+    <!-- Auto SyntaxHighlighter -->
+    <script type='text/javascript' src='/javascript/lib/shCore-min.js'></script>
+    <link rel='stylesheet' id='ash_core-css'  href='/css/shCore-min.css' type='text/css' media='all' />
+    <link rel='stylesheet' id='ash_theme_default-css'  href='/css/shThemeDefault-min.css' type='text/css' media='all' />
+    <script type='text/javascript'>
+    SyntaxHighlighter.autoloader(
+      'cpp c  /javascript/lib/shBrushCpp-min.js',
+      'css  /javascript/lib/shBrushCss-min.js',
+      'js jscript javascript  /javascript/lib/shBrushJScript-min.js',
+      'text plain /javascript/lib/shBrushPlain-min.js',
+      'xml xhtml xslt html  /javascript/lib/shBrushXml-min.js'
+    );
+    SyntaxHighlighter.defaults['auto-links'] = false;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+    </script>
+  {% endif %}
+
 </body>
 </html>

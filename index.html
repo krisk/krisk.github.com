@@ -8,6 +8,7 @@ keywords: Kirollos Risk, Web Developer, JavaScript, JS, Front-end engineer
 <h2>Posts</h2>
 <ul class="article-list">
   {% for post in site.posts %}
+    {% unless post.draft %}
     <li>
       <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
       <p>
@@ -15,5 +16,6 @@ keywords: Kirollos Risk, Web Developer, JavaScript, JS, Front-end engineer
       </p>
       <p>{{ post.summary }}</p>
     </li>
+    {% endunless %}
   {% endfor %}
 </ul>
