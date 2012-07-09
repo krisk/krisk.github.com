@@ -6,18 +6,19 @@ disqus_title: nfe
 disqus_identifer: 1000101
 tags: functions, expressions, declarations, IE
 category: javascript
-syntax: true
+css:
+  - /css/pygments.css
 ---
 
 Every once in a while I come across the following syntax:
 
-<pre class="brush: js">
+{% highlight js linenos=table %}
 (function f(){})();         // instead of: (function (){})();
 
 var x = (function y(){})(); // instead of: var x = (function (){})();
 
 var z = function w(){};     // instead of: var z = function (){};
-</pre>
+{% endhighlight %}
 
 All of the above are examples of *Named Function Expressions* (NFEs), that is, they are *Function Expressions* with an identifier (`f`, `y`, and `w` respectively).
 
@@ -27,12 +28,12 @@ All of the above are examples of *Named Function Expressions* (NFEs), that is, t
 
 NFEs differ from their nameless counterparts in two ways: (1) they provide you visibility on the callstack during debugging, and (2) they give you the ability to recurse via the inner scope:
 
-<pre class="brush: js">
+{% highlight js linenos=table %}
 (function f(){
   // Recurse on f
   f();
 })();
-</pre>
+{% endhighlight %}
 
 Both of these points are quite helpful.  However, there's a few problems with NFEs in certain browsers.  For the purpose of this article, I'll deal with IE <= 8.
 
@@ -40,37 +41,37 @@ Both of these points are quite helpful.  However, there's a few problems with NF
 
 **1. The function expression identifier leaks into the enclosing scope**
 
-<pre class="brush: js">
+{% highlight js linenos=table %}
 (function f(){})();
 typeof f; // 'function'
 
 var x = function y(){};
 typeof y; // 'function'
-</pre>
+{% endhighlight %}
 
 According to the specifications, the identifier of NFEs should **only** be available to its inner scope.  However, in IE <= 8, it's available to the outer scope.  Aside from leaks, it's dangerous and a debugging nightmare as it now pollutes another scope.
 
 **2. NFEs are treated as both function declarations and function expressions**
 
-<pre class="brush: js">
+{% highlight js linenos=table %}
 typeof g; // --> 'function'
 var f = function g(){};
-</pre>
+{% endhighlight %}
 
 In IE, the function declaration is hoisted to the top of the scope, thus giving you access to the declared function well before the assignment.  Aside from completely violating ECMAscript specifications, it's also dangerous as you can potentially invoke functions which were never meant to exist.
 
 **3. NFEs create two distinct objects**
 
-<pre class="brush: js">
+{% highlight js linenos=table %}
 var f = function g(){};
 f === g; // --> false
-</pre>
+{% endhighlight %}
 
 Oddly enough, IE creates two distinct objects in memory.  Augmenting one won't augment the other.  Similarly, setting `f` to `null` or `undefined` will not make the same changes to `g` (or vice-versa); therefore, if memory consuption is an issue, you'd have to explicitly break reference to both functions in order for IE's Garbage Collection to free-up resources.
 
 **4. Function declarations are parsed sequentially, regardless of block execution**
 
-<pre class="brush: js">
+{% highlight js linenos=table %}
 var f = function g() {
   return true;
 };
@@ -82,7 +83,7 @@ if (false) {
 }
 // Oh yes it does…
 g(); // --> false
-</pre>
+{% endhighlight %}
 
 Well, it's obvious why that's bad. If you're going to set the value of a variable, conditionally, to a function; the function declared last will win.  Of course, part of the problem is that we're attempting to use `g` instead of `f`, which is clearly bad programming practice.
 
