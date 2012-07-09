@@ -16,7 +16,7 @@ css:
 
 First, <code>NaN</code> is not a keyword (unlike <code>true</code>, <code>false</code>, <code>null</code>, etc..), **it is a property of the global object**.  The value of <code>NaN</code> is the same as the value of <code>Number.NaN</code>:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 NaN; // NaN
 Number.NaN; // NaN
 {% endhighlight %}
@@ -35,7 +35,7 @@ There are several ways in which <code>NaN</code> can happen:
 
 ## Why does <code>typeof NaN</code> return <code>"number"</code>?
 
-{% highlight js linenos=table %}
+{% highlight js %}
 typeof NaN; // "number"
 {% endhighlight %}
 
@@ -51,7 +51,7 @@ By definition, <code>NaN</code> is the return value from operations which have a
 
 Consider the following operation:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 (3.2317006071311 * 10e616) / (3.2317006071311 * 10e616); // NaN
 {% endhighlight %}
 
@@ -67,7 +67,7 @@ In this case, the <code>NaN</code> is in place of a real number that it could no
 
 According to the IEEE 754 floating-point standard, comparison with <code>NaN</code> always returns an unordered result.  That is, <code>NaN</code> is not equal to, greater than, or less than anything, **including itself**:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 NaN < 1;    // false
 NaN > 1;    // false
 NaN == NaN; // false
@@ -83,7 +83,7 @@ This is why you cannot determine whether a given value is <code>NaN</code> by co
 
 It is not surprising, then, that the native implementation of the function <code>isNaN()</code> could be simply replaced with:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 // Native implementation
 function isNaN(x) {
   // Coerce into number
@@ -99,7 +99,7 @@ function isNaN(x) {
 
 Of course, I wouldn't recommend replacing the native implementation.  However, there are some libraries out there which introduce their own. For example, <a href="http://underscorejs.org/" target="blank">Underscore</a>'s implementation is as follows:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 _.isNaN = function(obj) {
   // `NaN` is the only value for which `===` is not reflexive.
   return obj !== obj;
@@ -108,7 +108,7 @@ _.isNaN = function(obj) {
 
 But, its behavior is not same as the native <code>isNaN()</code> function:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var x; 	          // undefined
 isNaN(x);         // true
 isNaN(undefined); // true
@@ -117,7 +117,7 @@ isNaN("a");       // true
 
 compared to Underscore's:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var x; 	            // undefined
 _.isNaN(x);         // false
 _.isNaN(undefined); // false
@@ -130,14 +130,14 @@ I can't be certain, but I suppose Underscore included this implementation becaus
 
 Consider the following code:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 isNaN(true);  // false
 isNaN(false); // false
 {% endhighlight %}
 
 This is because booleans are considered and implemented as numerical values with a single binary digit (i.e., bit), thus they are coerced into their respective bit representations:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 Number(true);  // 1
 Number(false); // 0
 {% endhighlight %}

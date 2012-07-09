@@ -12,7 +12,7 @@ css:
 
 Every once in a while I come across the following syntax:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 (function f(){})();         // instead of: (function (){})();
 
 var x = (function y(){})(); // instead of: var x = (function (){})();
@@ -28,7 +28,7 @@ All of the above are examples of *Named Function Expressions* (NFEs), that is, t
 
 NFEs differ from their nameless counterparts in two ways: (1) they provide you visibility on the callstack during debugging, and (2) they give you the ability to recurse via the inner scope:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 (function f(){
   // Recurse on f
   f();
@@ -41,7 +41,7 @@ Both of these points are quite helpful.  However, there's a few problems with NF
 
 **1. The function expression identifier leaks into the enclosing scope**
 
-{% highlight js linenos=table %}
+{% highlight js %}
 (function f(){})();
 typeof f; // 'function'
 
@@ -53,7 +53,7 @@ According to the specifications, the identifier of NFEs should **only** be avail
 
 **2. NFEs are treated as both function declarations and function expressions**
 
-{% highlight js linenos=table %}
+{% highlight js %}
 typeof g; // --> 'function'
 var f = function g(){};
 {% endhighlight %}
@@ -62,7 +62,7 @@ In IE, the function declaration is hoisted to the top of the scope, thus giving 
 
 **3. NFEs create two distinct objects**
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var f = function g(){};
 f === g; // --> false
 {% endhighlight %}
@@ -71,7 +71,7 @@ Oddly enough, IE creates two distinct objects in memory.  Augmenting one won't a
 
 **4. Function declarations are parsed sequentially, regardless of block execution**
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var f = function g() {
   return true;
 };

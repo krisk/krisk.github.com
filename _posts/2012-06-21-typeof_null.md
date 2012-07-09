@@ -18,7 +18,7 @@ The <code>typeof</code> operator can be a little counter-intuitive.  However, re
 
 The actual implementation varies depending on which engine you are running.  The V8 (behind Chrome and Node.js) implementation of the <code>typeof</code> operator (written in C++), is as follows (I've added a few comments for clarification):
 
-{% highlight js linenos=table %}
+{% highlight js %}
 // Returns the type string of a value; see ECMA-262, 11.4.3
 RUNTIME_FUNCTION(MaybeObject*, Runtime_Typeof) {
   NoHandleAllocation ha;
@@ -75,7 +75,7 @@ RUNTIME_FUNCTION(MaybeObject*, Runtime_Typeof) {
 
 ## Why does <code>typeof null </code> return <code>"object"</code>?
 
-{% highlight js linenos=table %}
+{% highlight js %}
 // What's happening here?
 typeof null === "object"; // true
 {% endhighlight %}
@@ -86,7 +86,7 @@ The reasoning behind this is that <code>null</code>, in contrast with <code>unde
 
 There have been discussions in the ECMAScript working group (between Brendan Eich, Douglas Crockford, and a few other other individuals) proposing the following change:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 typeof null === "null"; // true
 {% endhighlight %}
 
@@ -96,7 +96,7 @@ typeof null === "null"; // true
 
 However, as Douglas Crockford [pointed out](http://wiki.ecmascript.org/doku.php?id=proposals:typeof), *"I think it is too late to fix <code>typeof</code>. The change proposed for <code>typeof null</code> will break existing code."*  By "existing code" he means many incorrect implementations of type checks on the web, such as:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 // This is extremely bad
 function isNull(a) {
   return typeof a == 'object' && !a;
@@ -109,7 +109,7 @@ Because of this, it was decided to leave <code>typeof</code> alone.
 
 If you actually read each line of the V8 <code>typeof</code> operator implementation in <code>RUNTIME_FUNCTION</code> above, you might have noticed that <code>FLAG_harmony_typeof</code> check:
 
-{% highlight js linenos=table linenostart=28 %}
+{% highlight js(linenostart=28 %}
 // null
 if (heap_obj->IsNull()) {
   return FLAG_harmony_typeof

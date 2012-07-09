@@ -18,7 +18,7 @@ Remember that a primitive data type is a non-composite building block.  Essentia
 
 Yes.  Even in JavaScript, strings are considered primitive data types - they are **not** objects.  However, consider the following code:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var str = 'hello';
 console.log(str.toUpperCase()); // --> HELLO
 {% endhighlight %}
@@ -33,7 +33,7 @@ Long answer: **whenever you try to access a property of a string `str`, JavaScri
 
 This is essentially the reason why the following piece of code yields an `undefined`:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var str = 'hello';
 str.custom = 1;
 console.log(str.custom); // -> undefined
@@ -43,14 +43,14 @@ Let's look at it in detail:
 
 #### Step 1
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var str = 'hello';
 str.custom = 1;
 {% endhighlight %}
 
 JavaScript creates a wrapper `String` object, sets its `custom` property to `1`, and then discards it.  Basically, it runs something like the following code:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var str = 'hello';
 var temp = new String(str); // wrapper object
 temp.custom = 1;
@@ -59,7 +59,7 @@ temp.custom = 1;
 
 The exact way it deals with it is really implementation specific, and you shouldn't have to think about it.  Either way, if you examine `temp` in Firebug, Chrome Developer Toolbar, or whatever debugging tool you use, you'll see something like the following:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 String:
   0: "h"
   1: "e"
@@ -74,7 +74,7 @@ As you can see, the `custom` property is set onto the `temp` wrapper object.
 
 #### Step 2
 
-{% highlight js linenos=table linenostart=3 %}
+{% highlight js(linenostart=3 %}
 console.log(str.custom);
 {% endhighlight %}
 
@@ -84,7 +84,7 @@ Once again, JavaScript creates a wrapper `String` object from the original, unmo
 
 Similarly, given all the info above, we can now see how
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var str = 'hello';
 var upper = str.toUpperCase();
 console.log(upper); // --> HELLO
@@ -92,7 +92,7 @@ console.log(upper); // --> HELLO
 
 basically translates to
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var upper = (new String(str)).toUpperCase().
 {% endhighlight %}
 
@@ -100,7 +100,7 @@ var upper = (new String(str)).toUpperCase().
 
 JavaScript coerces wrapper objects into the wrapped primitive values as necessary.  The `==` equality will treat a value and its wrapper object as equal, while the `===` strict equality operator will treat them as different entities.
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var a = 'hello';             // primitive
 var b = new String('hello'); // wrapper object
 
@@ -115,7 +115,7 @@ a === b // false
 
 Same principle applies to numbers.
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var x = 1;
 var y = new Number(1);
 
@@ -128,7 +128,7 @@ x === y // false
 
 When it comes to numbers, however, JavaScript gives you more liberty.  For starters, you can create your own "number"-like objects, and let type coercion resolve any numerical operation for you.  For example:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var x = {
   num: 2,
   valueOf: function() {
@@ -148,7 +148,7 @@ console.log(x + y); // 10
 
 As you can see from the above code, I did not explicitly convert `x` and `y` to numbers, yet I was able to add them.  This is because the addition coerced them into their primitive values.  Basically, behind the scenes, JavaScript did the following:
 
-{% highlight js linenos=table %}
+{% highlight js %}
 var temp = Number(x) + Number(y);
 console.log(temp); // 10
 {% endhighlight %}
