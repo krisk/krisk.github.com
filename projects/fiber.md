@@ -30,7 +30,7 @@ Download:
 
 #### Example
 
-```javascript
+{% highlight js %}
 // Animal base class
 var Animal = Fiber.extend(function() {
     return {
@@ -48,19 +48,19 @@ var Animal = Fiber.extend(function() {
         method1: function(){}
     }
 });
-```
+{% endhighlight %}
 
 The `init` method acts as the constructor, which is invoked when an instance is created:
 
-```javascript
+{% highlight js %}
 var animal = new Animal(); // Create a new Animal instance
-```
+{% endhighlight %}
 
 `init` is invoked automatically.
 
 ### Inheritance
 
-```javascript
+{% highlight js %}
 // Extend the Animal class.
 var Dog = Animal.extend(function() {
     return {
@@ -73,20 +73,20 @@ var Dog = Animal.extend(function() {
         }
     }
 });
-```
+{% endhighlight %}
 
 Create an instance of `Dog`:
 
-```javascript
+{% highlight js %}
 var husky = new Dog();
 husky.scare(); // "Dog::I scare you'"
-```
+{% endhighlight %}
 
 #### Accessing parent prototype
 
 Every class definition has access to the parent's prototype via the first argument passed into the function:
 
-```javascript
+{% highlight js %}
 // Extend the Animal class.
 var Dog = Animal.extend(function( base ) {
     return {
@@ -100,7 +100,7 @@ var Dog = Animal.extend(function( base ) {
         }
     }
 });
-```
+{% endhighlight %}
 
 ## Mixin
 
@@ -110,7 +110,7 @@ Mixins are a way to add functionality to a Fiber definition.  Basically, they ad
 
 `Fiber.mixin( object, function1, function2, ... )`
 
-```javascript
+{% highlight js %}
 var Foo = Fiber.extend(function(base) {
     return {
         method1: function(){}
@@ -129,7 +129,7 @@ var mix1 = function(base) {
 Fiber.mixin(Foo, mix1);
 
 f.method2();
-```
+{% endhighlight %}
 
 ## Decorators
 
@@ -139,7 +139,7 @@ With decorators you can dynamically attach additional properties to an instance.
 
 `Fiber.decorate( instance, decorator_1, ... , decorator_n )`
 
-```javascript
+{% highlight js %}
 function CarWithPowerWindows(base) {
     return {
         roll: function() {}
@@ -147,7 +147,7 @@ function CarWithPowerWindows(base) {
 }
 
 Fiber.decorate(myCar, CarWithPowerWindows);
-```
+{% endhighlight %}
 
 ## Proxy
 
@@ -155,7 +155,7 @@ Fiber.decorate(myCar, CarWithPowerWindows);
 
 `Fiber.proxy( base, instance )`
 
-```javascript
+{% highlight js %}
 // Extend the Animal class;
 var Dog = Animal.extend(function(base) {
     return {
@@ -165,7 +165,7 @@ var Dog = Animal.extend(function(base) {
         }
     }
 });
-```
+{% endhighlight %}
 
 ## noConflict
 
