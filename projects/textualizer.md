@@ -64,6 +64,27 @@ Textualizer currently has the following effects: `fadeIn`, `slideLeft`, `slideTo
   </li>
 </ul>
 
+### Events
+
+
+<ul id="api">
+  <li>
+    <code>.on('textualizer.changed')</code>
+    <p>Triggers when a blurb has completed animating.</p>
+    <br/>
+{% highlight js %}
+txt.on('textualizer.changed', function(event, args) {
+  // check if it's the last index in the array
+  if (args.index === LAST_INDEX) {
+    txt.textualizer('pause');
+  }
+});
+
+txt.textualizer('start');
+{% endhighlight %}
+  </li>
+</ul>
+
 {% include browser_support.md %}
 
 {% include problems.md %}
