@@ -34,6 +34,8 @@
   // The base `Fiber` implementation.
   function Fiber(){};
 
+  var ctor = function(){};
+
   // ###Extend
   //
   // Returns a subclass.
@@ -51,7 +53,7 @@
 
     // The constructor function for a subclass.
     function child(){
-      if( !initializing ){
+      //if( !initializing ){
         // Custom initialization is done in the `init` method.
         this.init.apply( this, arguments );
         // Prevent susbsequent calls to `init`.
@@ -60,14 +62,15 @@
         // `init` to `void 0` to obtain the `undefined` primitive value (in case the global's `undefined`
         // property has been re-assigned).
         this.init = void 0;
-      }
+      //}
     }
 
     // Instantiate a base class (but only create the instance, without running `init`).
     // and make every `constructor` instance an instance of `this` and of `constructor`.
-    initializing = true;
-    proto = child.prototype = new this;
-    initializing = false;
+    //initializing = true;
+    ctor.prototype = parent;
+    proto = child.prototype = new ctor;
+    //initializing = false;
 
     // Add default `init` function, which a class may override; it should call the
     // super class' `init` function (if it exists);
