@@ -19,7 +19,10 @@
     ArrayProto = Array.prototype,
 
   // Save the previous value of `Fiber`.
-    previousFiber = global.Fiber;
+    previousFiber = global.Fiber,
+
+  // Dummy constructor
+    ctor = function(){};
 
   // Helper function to copy properties from one object to the other.
   function copy( from, to ) {
@@ -51,23 +54,20 @@
 
     // The constructor function for a subclass.
     function child(){
-      if( !initializing ){
-        // Custom initialization is done in the `init` method.
-        this.init.apply( this, arguments );
-        // Prevent susbsequent calls to `init`.
-        // Note: although a `delete this.init` would remove the `init` function from the instance,
-        // it would still exist in its super class' prototype.  Therefore, explicitly set
-        // `init` to `void 0` to obtain the `undefined` primitive value (in case the global's `undefined`
-        // property has been re-assigned).
-        this.init = void 0;
-      }
+      // Custom initialization is done in the `init` method.
+      this.init.apply( this, arguments );
+      // Prevent susbsequent calls to `init`.
+      // Note: although a `delete this.init` would remove the `init` function from the instance,
+      // it would still exist in its super class' prototype.  Therefore, explicitly set
+      // `init` to `void 0` to obtain the `undefined` primitive value (in case the global's `undefined`
+      // property has been re-assigned).
+      this.init = void 0;
     }
 
     // Instantiate a base class (but only create the instance, without running `init`).
     // and make every `constructor` instance an instance of `this` and of `constructor`.
-    initializing = true;
-    proto = child.prototype = new this;
-    initializing = false;
+    ctor.prototype = parent;
+    proto = child.prototype = new ctor;
 
     // Add default `init` function, which a class may override; it should call the
     // super class' `init` function (if it exists);
