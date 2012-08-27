@@ -41,8 +41,10 @@
   // Returns a subclass.
   Fiber.create = function( obj, fn ) {
     // Keep a reference to the current prototye.
-    obj = obj || dummy;
-    fn = fn || obj;
+    if (!fn) {
+      obj = dummy;
+      fn = obj;
+    }
 
     var parent = obj.prototype,
 
