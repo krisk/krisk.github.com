@@ -42,8 +42,8 @@
   Fiber.create = function( obj, fn ) {
     // Keep a reference to the current prototye.
     if (!fn) {
-      obj = dummy;
       fn = obj;
+      obj = dummy;
     }
 
     var parent = obj.prototype,
