@@ -241,7 +241,7 @@
       module.exports = Fiber;
     }
   } else {
-    global.Fiber1 = Fiber;
+    global.Fiber = Fiber;
   }
 
 // Establish the root object: `window` in the browser, or global on the server.
