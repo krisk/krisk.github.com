@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Named Function Expressions and the IE dilemma
-summary: Explaning the problems with named function expressions in IE.
+summary: Explaining the problems with named function expressions in IE.
 disqus_title: nfe
 disqus_identifer: 1000101
 tags: functions, expressions, declarations, IE
