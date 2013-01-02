@@ -41,6 +41,20 @@ ol li {
 }
 
 #sidebar {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#feedrss img {
+    margin-right: 5px;
+    vertical-align: top;
+}
+
+#github-account img {
+    margin-right: 5px;
+}
+
+#about-section {
     min-height: 20px;
     margin-bottom: 20px;
     background-color: whiteSmoke;
@@ -52,34 +66,33 @@ ol li {
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
-    display: inline-block;
     width: 232px;
-    vertical-align: top;
     margin-top: 30px;
     margin-left: 10px;
     padding: 15px;
 }
-#sidebar h3 {
+
+#about-section h3 {
     font-size: 18px;
     font-weight: 300;
     margin: 0;
 }
-#sidebar p {
+
+#about-section p {
     font-size: 13px;
     line-height: 18px;
 }
-#sidebar p a {
+
+#about-section p a {
     text-decoration: none;
 }
-#sidebar p a:hover {
+
+#about-section p a:hover {
     text-decoration: underline;
 }
-#feedrss img {
-    margin-right: 5px;
-    vertical-align: top;
-}
-#github-account img {
-    margin-right: 5px;
+
+#clarify-section {
+    margin-left: 13px;
 }
 
 #site-nav {
