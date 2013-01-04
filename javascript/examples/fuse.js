@@ -5,9 +5,11 @@ $(function() {
 
         $authorCheckbox = $('#author'),
         $titleCheckbox = $('#title'),
+        $caseCheckbox = $('#case'),
 
         searchAuthors = false,
         searchTitles = true,
+        isCaseSensitive = false,
 
         fuse;
 
@@ -28,7 +30,8 @@ $(function() {
         keys.push('title');
       }
       fuse = new Fuse(books, {
-        keys: keys
+        keys: keys,
+        caseSensitive: isCaseSensitive
       });
     }
 
@@ -44,8 +47,15 @@ $(function() {
       search();
     }
 
+    function onCaseCheckboxChanged() {
+      isCaseSensitive = $caseCheckbox.prop('checked');
+      createFuse();
+      search();
+    }
+
     $authorCheckbox.on('change', onAuthorCheckboxChanged);
     $titleCheckbox.on('change', onTitleCheckboxChanged);
+    $caseCheckbox.on('change', onCaseCheckboxChanged);
 
     $inputSearch.on('keyup', search);
 
