@@ -134,6 +134,10 @@ var result = f.search('Falen');
     <code>threshold</code>
     <p>A decimal value indicating at which point the match algorithm gives up. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything.</p>
   </li>
+  <li>
+    <code>caseSensitive</code>
+    <p>A boolean value indicating whether comparisons should be case sensitive.</p>
+  </li>
 </ul>
 
 ### Limitations
