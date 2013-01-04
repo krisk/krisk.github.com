@@ -136,7 +136,7 @@ var result = f.search('Falen');
   </li>
   <li>
     <code>caseSensitive</code>
-    <p>A boolean value indicating whether comparisons should be case sensitive.</p>
+    <p>A boolean value indicating whether comparisons should be case sensitive.  False by default.</p>
   </li>
 </ul>
 
