@@ -40,6 +40,9 @@ Given [this list of books](http://www.kiro.me/data/books.json), try searching by
 <input id="title" type="checkbox" checked="true" class="fuse-checkbox" />
 <label for="title">Title</label>
 
+<input id="case" type="checkbox" class="fuse-checkbox" />
+<label for="case">Case sensitive</label>
+
 The results are sorted by score. That is, the ones that match the strongest are first.
 
 <ul id="results">
