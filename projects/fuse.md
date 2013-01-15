@@ -151,7 +151,7 @@ The pattern string cannot exceed 32 characters.
 
 ### How does it do it?
 
-Currently, it uses a full [Bitap algorithm](http://en.wikipedia.org/wiki/Bitap_algorithm "Bitap algorithm - wiki"), leveraging a modified version of the [Diff, Match & Patch](http://code.google.com/p/google-diff-match-patch/ "Diff, Match & Patch") tool by Google.
+Currently, it uses a full [Bitap algorithm](http://en.wikipedia.org/wikIi/Bitap_algorithm "Bitap algorithm - wiki"), leveraging a modified version of the [Diff, Match & Patch](http://code.google.com/p/google-diff-match-patch/ "Diff, Match & Patch") tool by Google.
 
 ### To do
 
