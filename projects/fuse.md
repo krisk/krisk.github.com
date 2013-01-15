@@ -145,13 +145,13 @@ var result = f.search('Falen');
 
 ### Limitations
 
-This isn't meant to work across hundreds of thousands, or millions of records. If you have that many records at once on the client, then you probably have bigger problems to worry about. To give you an idea of performance, searching over 2 keys in 20,000 records takes approximitaly 1 second. Still, 20k records is an awful lot. Ideally, a client-side fuzzy-search solution is only acceptable if the record-set is small, and the pattern string and keys' short.
+This isn't meant to work across hundreds of thousands, or millions of records. If you have that many records at once on the client, then you probably have bigger problems to worry about. To give you an idea of performance, searching over 2 keys in 20,000 records takes approximately 1 second. Still, 20k records is an awful lot. Ideally, a client-side fuzzy-search solution is only acceptable if the record-set is small, and the pattern string and keys' short.
 
 The pattern string cannot exceed 32 characters.
 
 ### How does it do it?
 
-Currently, it uses a full [Bitap algorithm](http://en.wikipedia.org/wiki/Bitap_algorithm "Bitap algorithm - wiki"), leveraging a modified version of the [Diff, Match & Patch](http://code.google.com/p/google-diff-match-patch/ "Diff, Match & Patch") tool by Google.
+Currently, it uses a full [Bitap algorithm](http://en.wikipedia.org/wikIi/Bitap_algorithm "Bitap algorithm - wiki"), leveraging a modified version of the [Diff, Match & Patch](http://code.google.com/p/google-diff-match-patch/ "Diff, Match & Patch") tool by Google.
 
 ### To do
 
