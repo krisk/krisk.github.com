@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>NaN and typeof | K. Risk - JavaScript Refined</title>
+  <meta name="author" content="Kirollos Risk" />
+  
+  <meta name="description" content="An in-depth look at the NaN property, and why it is considered a number type.">
+  
+
+  <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+
+  <!--
+    I'm a front-end developer, a JavaScript afficionado, and I like all things web-related.
+    If the mark-up of this page looks hideous, we can blame it on Jekyll.  Enjoy.
+     - K. Risk
+  -->
+  
+
+  <link rel="alternate" type="application/rss+xml" title="K. Risk - JavaScript Refined" href="/feed.xml" />
+  <link href="/css/default.css" rel="stylesheet" type="text/css">
+
+  
+    <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
+  
+
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25301489-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</head>
+
+<body>
+
+  <div id="main">
+
+    <header>
+      <div>
+        <a href="http://www.kiro.me" id="logo">
+          <span>K. Risk -</span>
+          <strong>JavaScript Refined</strong>
+        </a>
+        <nav id="site-nav" role="navigation">
+          <ul id="site-menu">
+            <li ><a href="/">Home</a></li>
+            <li ><a href="/projects.html">Projects</a></li>
+            <li ><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div id="container">
+
+      <h1>NaN and typeof</h1>
+<div class="byline">
+  <address class="author"><a rel="author" href="mailto:kiro@kiro.me" title="Kiro Risk">Kiro Risk</a></address>
+  <span class="separator">|</span>
+  <time class="pubdate" pubdate datetime="June 27 2012">27 Jun 2012</time>
+</div>
+
+<div id="share">
+  <ul id="share-button-list">
+    <!--Facebook -->
+    <li>
+      <div class="fb-like" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+    </li>
+    <!--LinkedIn -->
+    <li>
+      <script type="IN/Share" data-counter="right"></script>
+    </li>
+    <!--Twitter -->
+    <li>
+      <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+    </li>
+    <!-- G+ -->
+    <li>
+      <g:plusone size="medium"></g:plusone>
+    </li>
+    <!-- SU -->
+    <li>
+      <su:badge layout="1"></su:badge>
+    </li>
+    <!-- Hacker News -->
+    <li>
+      <a href="http://news.ycombinator.com/submitlink?u=http://www.kiro.me/blog/typeof_nan.html&t=NaN and typeof" target="_blank" title="Submit NaN and typeof to Hacker News">
+        <img src="/images/y-comb.gif" />
+      </a>
+    </li>
+  </ul>
+
+  <div id="fb-root"></div>
+
+  <script>
+    //Facebook
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=399955583389436";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // LinkedIn
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = '//platform.linkedin.com/in.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+
+    //Twitter
+    !function(d,s,id){
+      var js,fjs=d.getElementsByTagName(s)[0];
+      if(!d.getElementById(id)){
+        js=d.createElement(s);
+        js.id=id;
+        js.src="//platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js,fjs);
+      }}(document,"script","twitter-wjs");
+
+    // G+
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+
+    // SU
+    (function() {
+      var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true;
+      li.src = 'https://platform.stumbleupon.com/1/widgets.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s);
+    })();
+  </script>
+
+</div>
+
+<p><em>After writing the <a href='/blog/typeof_null.html'>previous post</a> in which I attempted to explain <code>typeof null</code>, a few people had <a href='http://news.ycombinator.com/item?id=4144679'>questioned</a> <code>NaN</code>&#8217;s behavior with the same operator (i.e., <code>typeof NaN</code>). Therefore, I&#8217;ve decided to write a similar post about this familiar, but often misunderstood, property.</em></p>
+<hr />
+<p>First, <code>NaN</code> is not a keyword (unlike <code>true</code>, <code>false</code>, <code>null</code>, etc..), <strong>it is a property of the global object</strong>. The value of <code>NaN</code> is the same as the value of <code>Number.NaN</code>:</p>
+<div class='highlight'><pre><code class='js'><span class='kc'>NaN</span><span class='p'>;</span> <span class='c1'>// NaN</span>
+<span class='nb'>Number</span><span class='p'>.</span><span class='kc'>NaN</span><span class='p'>;</span> <span class='c1'>// NaN</span>
+</code></pre>
+</div>
+<p>There are several ways in which <code>NaN</code> can happen:</p>
+
+<ol>
+<li>Division of zero by zero</li>
+
+<li>Dividing an infinity by an infinity</li>
+
+<li>Multiplication of an infinity by a zero</li>
+
+<li>Any operation in which <code>NaN</code> is an operand</li>
+
+<li>Converting a non-numeric string or <code>undefined</code> into a number</li>
+</ol>
+<aside>
+  If you're interested in why <code>0/0 = NaN</code>, read this <a target='_blank' href='http://www.newton.dep.anl.gov/askasci/math99/math99259.htm'>discussion</a>.  Even mathematicians are undecided.
+</aside>
+<h2 id='why_does__return_'>Why does <code>typeof NaN</code> return <code>"number"</code>?</h2>
+<div class='highlight'><pre><code class='js'><span class='k'>typeof</span> <span class='kc'>NaN</span><span class='p'>;</span> <span class='c1'>// &quot;number&quot;</span>
+</code></pre>
+</div>
+<p>The ECMAScript standard states that Numbers should be IEEE-754 floating point data. This includes <code>Infinity</code>, <code>-Infinity</code>, and also <code>NaN</code>.</p>
+
+<p>By definition, <code>NaN</code> is the return value from operations which have an <strong>undefined numerical result</strong>. Hence why, in JavaScript, aside from being part of the global object, it is also part of the Number object: <code>Number.NaN</code>. <strong>It is still a numeric data type</strong>, but it is undefined as a <a href='http://en.wikipedia.org/wiki/Real_number'>real number</a>.</p>
+<aside>
+  <code>NaN</code> also represents any number outside of the ECMAScript <a target='_blank' href='http://bclary.com/2004/11/07/#a-8.5'>domain of definition.</a>
+</aside>
+<h3 id='computer_arithmetic_is_limited'>Computer arithmetic is limited</h3>
+
+<p>Consider the following operation:</p>
+<div class='highlight'><pre><code class='js'><span class='p'>(</span><span class='mf'>3.2317006071311</span> <span class='o'>*</span> <span class='mi'>10</span><span class='nx'>e616</span><span class='p'>)</span> <span class='o'>/</span> <span class='p'>(</span><span class='mf'>3.2317006071311</span> <span class='o'>*</span> <span class='mi'>10</span><span class='nx'>e616</span><span class='p'>);</span> <span class='c1'>// NaN</span>
+</code></pre>
+</div>
+<p>As <a target='_blank' href='http://en.wikipedia.org/wiki/Real_number'>Wikipedia</a> states, <em>computer arithmetic cannot directly operate on real numbers, but only on a finite subset of rational numbers, limited by the number of bits used to store them</em>. In ordinary arithmetic, 3.2317006071311 * 10<sup>616</sup> is a real finite number, but, by ECMAScript standards, it is simply too large (i.e, considerably greater than <code>Number.MAX_VALUE</code>), and is therefore represented as <code>Infinity</code>. Attempting to divide an infinity by an infinity yields <code>NaN</code>. Of course, in ordinary arithmetic, since both operands are finite, the operation clearly equals 1.</p>
+
+<p>In this case, the <code>NaN</code> is in place of a real number that it could not compute (i.e, 1) due to the size of the operands. It would seem counter-intuitive if <code>typeof NaN</code> were to return something other than <code>"number"</code>. After all, in this example, <code>NaN</code> simply represents a value which could not be determined by computer arithmetic.</p>
+<aside>
+  The value 3.2317006071311 * 10<sup>616</sup> was computed by taking <code>Number.MAX_VALUE</code> and squaring it manually, in ordinary arithmetic.
+</aside>
+<h2 id='_is_unordered'><code>NaN</code> is unordered</h2>
+
+<p>According to the IEEE 754 floating-point standard, comparison with <code>NaN</code> always returns an unordered result. That is, <code>NaN</code> is not equal to, greater than, or less than anything, <strong>including itself</strong>:</p>
+<div class='highlight'><pre><code class='js'><span class='kc'>NaN</span> <span class='o'>&lt;</span> <span class='mi'>1</span><span class='p'>;</span>    <span class='c1'>// false</span>
+<span class='kc'>NaN</span> <span class='o'>&gt;</span> <span class='mi'>1</span><span class='p'>;</span>    <span class='c1'>// false</span>
+<span class='kc'>NaN</span> <span class='o'>==</span> <span class='kc'>NaN</span><span class='p'>;</span> <span class='c1'>// false</span>
+<span class='c1'>// But we can still check for NaN:</span>
+<span class='nb'>isNaN</span><span class='p'>(</span><span class='kc'>NaN</span><span class='p'>);</span> <span class='c1'>// true</span>
+</code></pre>
+</div>
+<p>This is why you cannot determine whether a given value is <code>NaN</code> by comparing it to <code>NaN</code>, and instead you must use the <code>isNaN()</code> function.</p>
+<aside>
+  The <em>division of zero by a zero</em> <a target='_blank' href='http://www.newton.dep.anl.gov/askasci/math99/math99259.htm'>discussion</a> illustrates why <code>NaN != NaN</code>: it is false to say that "every number <em>x</em> is equal to every number <em>x</em>".  Since the value cannot be determined, it follows that the comparison cannot be determined, and thus the sentence is instrinsically and mathematically false.
+</aside>
+<p>It is not surprising, then, that the native implementation of the function <code>isNaN()</code> could be simply replaced with:</p>
+<div class='highlight'><pre><code class='js'><span class='c1'>// Native implementation</span>
+<span class='kd'>function</span> <span class='nb'>isNaN</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>)</span> <span class='p'>{</span>
+  <span class='c1'>// Coerce into number</span>
+  <span class='nx'>x</span> <span class='o'>=</span> <span class='nb'>Number</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>);</span>
+  <span class='c1'>// if x is NaN, NaN != NaN is true, otherwise it&#39;s false</span>
+  <span class='k'>return</span> <span class='nx'>x</span> <span class='o'>!=</span> <span class='nx'>x</span><span class='p'>;</span>
+<span class='p'>}</span>
+</code></pre>
+</div><aside>
+  The native implementation of <code>isNaN()</code> returns <code>true</code> even if the value is <code>undefined</code>, or if the value cannot be coerced into a primitive number data type.
+</aside>
+<p>Of course, I wouldn&#8217;t recommend replacing the native implementation. However, there are some libraries out there which introduce their own. For example, <a target='blank' href='http://underscorejs.org/'>Underscore</a>&#8217;s implementation is as follows:</p>
+<div class='highlight'><pre><code class='js'><span class='nx'>_</span><span class='p'>.</span><span class='nb'>isNaN</span> <span class='o'>=</span> <span class='kd'>function</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>)</span> <span class='p'>{</span>
+  <span class='c1'>// `NaN` is the only value for which `===` is not reflexive.</span>
+  <span class='k'>return</span> <span class='nx'>obj</span> <span class='o'>!==</span> <span class='nx'>obj</span><span class='p'>;</span>
+<span class='p'>};</span>
+</code></pre>
+</div>
+<p>But, its behavior is not same as the native <code>isNaN()</code> function:</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>x</span><span class='p'>;</span> 	          <span class='c1'>// undefined</span>
+<span class='nb'>isNaN</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>);</span>         <span class='c1'>// true</span>
+<span class='nb'>isNaN</span><span class='p'>(</span><span class='kc'>undefined</span><span class='p'>);</span> <span class='c1'>// true</span>
+<span class='nb'>isNaN</span><span class='p'>(</span><span class='s2'>&quot;a&quot;</span><span class='p'>);</span>       <span class='c1'>// true</span>
+</code></pre>
+</div>
+<p>compared to Underscore&#8217;s:</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>x</span><span class='p'>;</span> 	            <span class='c1'>// undefined</span>
+<span class='nx'>_</span><span class='p'>.</span><span class='nb'>isNaN</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>);</span>         <span class='c1'>// false</span>
+<span class='nx'>_</span><span class='p'>.</span><span class='nb'>isNaN</span><span class='p'>(</span><span class='kc'>undefined</span><span class='p'>);</span> <span class='c1'>// false</span>
+<span class='nx'>_</span><span class='p'>.</span><span class='nb'>isNaN</span><span class='p'>(</span><span class='s2'>&quot;a&quot;</span><span class='p'>);</span>       <span class='c1'>// false</span>
+</code></pre>
+</div>
+<p>I can&#8217;t be certain, but I suppose Underscore included this implementation because you might be interested in checking that the value is indeed <code>NaN</code>, since the <strong>only</strong> value that satisfies an unequality check against itself is <code>NaN</code>.</p>
+
+<h3 id='booleans_are_not_s'>Booleans are NOT <code>NaN</code>s</h3>
+
+<p>Consider the following code:</p>
+<div class='highlight'><pre><code class='js'><span class='nb'>isNaN</span><span class='p'>(</span><span class='kc'>true</span><span class='p'>);</span>  <span class='c1'>// false</span>
+<span class='nb'>isNaN</span><span class='p'>(</span><span class='kc'>false</span><span class='p'>);</span> <span class='c1'>// false</span>
+</code></pre>
+</div>
+<p>This is because booleans are considered and implemented as numerical values with a single binary digit (i.e., bit), thus they are coerced into their respective bit representations:</p>
+<div class='highlight'><pre><code class='js'><span class='nb'>Number</span><span class='p'>(</span><span class='kc'>true</span><span class='p'>);</span>  <span class='c1'>// 1</span>
+<span class='nb'>Number</span><span class='p'>(</span><span class='kc'>false</span><span class='p'>);</span> <span class='c1'>// 0</span>
+</code></pre>
+</div><hr />
+<h3 id='resources'>Resources</h3>
+
+<ol>
+<li><a href='http://bclary.com/2004/11/07/#a-4.3.23'>ECMAScript Language Specification - NaN</a></li>
+
+<li><a href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/NaN'>MDN - NaN</a></li>
+
+<li><a href='http://en.wikipedia.org/wiki/NaN'>Wikipedia - NaN</a></li>
+
+<li><a href='http://en.wikipedia.org/wiki/Indeterminate_form'>Wikipedia - Indeterminate Forms</a></li>
+
+<li><a href='http://en.wikipedia.org/wiki/Real_number'>Wikipedia - Real number</a></li>
+
+<li><a href='http://en.wikipedia.org/wiki/IEEE_754-2008'>Wikipedia - IEEE floating point</a></li>
+
+<li><a href='http://steve.hollasch.net/cgindex/coding/ieeefloat.html'>IEEE Standard 754 Floating Point Numbers</a></li>
+</ol>
+
+<!--
+<hr />
+
+<small>Tags:  <a href="/tags/Numbers," title="View posts tagged with &quot;Numbers,&quot;"><u>Numbers,</u></a>     <a href="/tags/NaN," title="View posts tagged with &quot;NaN,&quot;"><u>NaN,</u></a>     <a href="/tags/Infinity," title="View posts tagged with &quot;Infinity,&quot;"><u>Infinity,</u></a>     <a href="/tags/typeof," title="View posts tagged with &quot;typeof,&quot;"><u>typeof,</u></a>     <a href="/tags/IEEE" title="View posts tagged with &quot;IEEE&quot;"><u>IEEE</u></a>    </small>
+-->
+
+<hr />
+
+<div class="pagination">
+    <p>
+      
+        <a href="/blog/typeof_null.html" title="Previous Post: Null and typeof">
+          &laquo; Null and typeof
+        </a>
+      
+      
+        &nbsp;|&nbsp;
+      
+      
+        <a href="/blog/web_dev.html" title="Next Post: Know your JavaScript">
+          Know your JavaScript &raquo;
+        </a>
+      
+    </p>
+</div>
+
+<!--
+<div id="related-posts">
+  <h4>Related Posts</h4>
+  <ul class="posts">
+    
+      <li><span>10 Jul 2012</span> &raquo; <a href="/blog/map_set.html">Map and Set</a></li>
+    
+      <li><span>01 Jul 2012</span> &raquo; <a href="/blog/web_dev.html">Know your JavaScript</a></li>
+    
+      <li><span>21 Jun 2012</span> &raquo; <a href="/blog/typeof_null.html">Null and typeof</a></li>
+    
+  </ul>
+</div>
+-->
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'kiro',
+        disqus_title = 'typeof_null',
+        disqus_identifier = '1000104';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+
+    </div>
+
+    <div id="sidebar">
+
+      <div id="about-section">
+          <h3>About me</h3>
+
+          <p>
+            <img id="me-image" src="http://www.gravatar.com/avatar/4ae8dc54def0eb337f21fe40fa8972db.png" />
+            I'm <strong>Kiro Risk</strong>, a <strong>Software Engineer</strong> at LinkedIn.  I work with JavaScript, HTML, CSS, Java, Python, MySQL, Objective-C and a plethora of other programming goodness every day.
+          </p>
+
+          <p>I live in Silicon Valley.</p>
+
+          <p>
+            Questions? Feel free to <a href="mailto:kiro@kiro.me">contact me</a>.
+          </p>
+
+          <a href="https://twitter.com/kirorisk" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @kirorisk</a>
+          <script>
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+          </script>
+
+          <p>
+            <a id="feedrss" title="Subscribe to this blog..." href="http://feeds.feedburner.com/krisk"><img src="/images/rss2.png"/>Subscribe to the RSS feed</a>
+          </p>
+
+          <p>
+            <a href="http://www.linkedin.com/in/kirollos">
+              <img src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png" width="21" height="16" alt="Kiro Risk's LinkedIn profile" style="vertical-align:top" border="0" />View my LinkedIn profile
+            </a>
+          </p>
+
+          <p>
+            <a id="github-account" href="http://www.github.com/krisk" target="_blank" title="Kiro - GitHub">
+              <img src="/images/github.png" width="16" alt="Kiro Risk's LinkedIn profile" style="vertical-align:top" border="0" />GitHub
+            </a>
+          </p>
+
+      </div>
+
+      <div id="clarify-section">
+        <iframe class="clarity-widget" data-c-id="8944" frameborder="0" style="border: 0; height: 0"></iframe>
+        <script src="https://clarity.fm/assets/widget_loader.js"></script>
+      </div>
+
+    </div>
+
+
+    <footer>
+      <hr />
+      <p>Designed and built using Jekyll, and hosted on <a href="http://github.com/krisk/krisk.github.com" target="_blank" title="GitHub page">GitHub</a></p>
+      <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a></p>
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</body>
+</html>

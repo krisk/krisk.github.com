@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>Null and typeof | K. Risk - JavaScript Refined</title>
+  <meta name="author" content="Kirollos Risk" />
+  
+  <meta name="description" content="Demystifying typeof null, once and for all.">
+  
+
+  <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+
+  <!--
+    I'm a front-end developer, a JavaScript afficionado, and I like all things web-related.
+    If the mark-up of this page looks hideous, we can blame it on Jekyll.  Enjoy.
+     - K. Risk
+  -->
+  
+
+  <link rel="alternate" type="application/rss+xml" title="K. Risk - JavaScript Refined" href="/feed.xml" />
+  <link href="/css/default.css" rel="stylesheet" type="text/css">
+
+  
+    <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
+  
+
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25301489-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</head>
+
+<body>
+
+  <div id="main">
+
+    <header>
+      <div>
+        <a href="http://www.kiro.me" id="logo">
+          <span>K. Risk -</span>
+          <strong>JavaScript Refined</strong>
+        </a>
+        <nav id="site-nav" role="navigation">
+          <ul id="site-menu">
+            <li ><a href="/">Home</a></li>
+            <li ><a href="/projects.html">Projects</a></li>
+            <li ><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div id="container">
+
+      <h1>Null and typeof</h1>
+<div class="byline">
+  <address class="author"><a rel="author" href="mailto:kiro@kiro.me" title="Kiro Risk">Kiro Risk</a></address>
+  <span class="separator">|</span>
+  <time class="pubdate" pubdate datetime="June 21 2012">21 Jun 2012</time>
+</div>
+
+<div id="share">
+  <ul id="share-button-list">
+    <!--Facebook -->
+    <li>
+      <div class="fb-like" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+    </li>
+    <!--LinkedIn -->
+    <li>
+      <script type="IN/Share" data-counter="right"></script>
+    </li>
+    <!--Twitter -->
+    <li>
+      <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+    </li>
+    <!-- G+ -->
+    <li>
+      <g:plusone size="medium"></g:plusone>
+    </li>
+    <!-- SU -->
+    <li>
+      <su:badge layout="1"></su:badge>
+    </li>
+    <!-- Hacker News -->
+    <li>
+      <a href="http://news.ycombinator.com/submitlink?u=http://www.kiro.me/blog/typeof_null.html&t=Null and typeof" target="_blank" title="Submit Null and typeof to Hacker News">
+        <img src="/images/y-comb.gif" />
+      </a>
+    </li>
+  </ul>
+
+  <div id="fb-root"></div>
+
+  <script>
+    //Facebook
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=399955583389436";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // LinkedIn
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = '//platform.linkedin.com/in.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+
+    //Twitter
+    !function(d,s,id){
+      var js,fjs=d.getElementsByTagName(s)[0];
+      if(!d.getElementById(id)){
+        js=d.createElement(s);
+        js.id=id;
+        js.src="//platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js,fjs);
+      }}(document,"script","twitter-wjs");
+
+    // G+
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+
+    // SU
+    (function() {
+      var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true;
+      li.src = 'https://platform.stumbleupon.com/1/widgets.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s);
+    })();
+  </script>
+
+</div>
+
+<p>The <code>typeof</code> operator can be a little counter-intuitive. However, regardless of the confusion it may cause, the way it works is extremely straightforward: <em>return the type string of a given reference according to the table specified in <a href='http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262%205th%20edition%20December%202009.pdf'>ECMA-262</a></em>:</p>
+<img class='es-table' src='/images/posts/typeof_table.png' />
+<h2 id='implementation'>Implementation</h2>
+
+<p>The actual implementation varies depending on which engine you are running. The V8 (behind Chrome and Node.js) implementation of the <code>typeof</code> operator (written in C++), is as follows (I&#8217;ve added a few comments for clarification):</p>
+<div class='highlight'><pre><code class='js'><span class='c1'>// Returns the type string of a value; see ECMA-262, 11.4.3</span>
+<span class='nx'>RUNTIME_FUNCTION</span><span class='p'>(</span><span class='nx'>MaybeObject</span><span class='o'>*</span><span class='p'>,</span> <span class='nx'>Runtime_Typeof</span><span class='p'>)</span> <span class='p'>{</span>
+  <span class='nx'>NoHandleAllocation</span> <span class='nx'>ha</span><span class='p'>;</span>
+
+  <span class='nb'>Object</span><span class='o'>*</span> <span class='nx'>obj</span> <span class='o'>=</span> <span class='nx'>args</span><span class='p'>[</span><span class='mi'>0</span><span class='p'>];</span>
+  <span class='k'>if</span> <span class='p'>(</span><span class='nx'>obj</span><span class='o'>-&gt;</span><span class='nx'>IsNumber</span><span class='p'>())</span> <span class='k'>return</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>number_symbol</span><span class='p'>();</span>
+  <span class='nx'>HeapObject</span><span class='o'>*</span> <span class='nx'>heap_obj</span> <span class='o'>=</span> <span class='nx'>HeapObject</span><span class='o'>::</span><span class='nx'>cast</span><span class='p'>(</span><span class='nx'>obj</span><span class='p'>);</span>
+
+  <span class='c1'>// typeof an undetectable object is &#39;undefined&#39;</span>
+  <span class='k'>if</span> <span class='p'>(</span><span class='nx'>heap_obj</span><span class='o'>-&gt;</span><span class='nx'>map</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>is_undetectable</span><span class='p'>())</span> <span class='p'>{</span>
+    <span class='k'>return</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>undefined_symbol</span><span class='p'>();</span>
+  <span class='p'>}</span>
+
+  <span class='nx'>InstanceType</span> <span class='nx'>instance_type</span> <span class='o'>=</span> <span class='nx'>heap_obj</span><span class='o'>-&gt;</span><span class='nx'>map</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>instance_type</span><span class='p'>();</span>
+  <span class='k'>if</span> <span class='p'>(</span><span class='nx'>instance_type</span> <span class='o'>&lt;</span> <span class='nx'>FIRST_NONSTRING_TYPE</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='c1'>// return &quot;string&quot;</span>
+    <span class='k'>return</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>string_symbol</span><span class='p'>();</span>
+  <span class='p'>}</span>
+
+  <span class='k'>switch</span> <span class='p'>(</span><span class='nx'>instance_type</span><span class='p'>)</span> <span class='p'>{</span>
+    <span class='c1'>// oddbal types: true, false, null, undefined</span>
+    <span class='k'>case</span> <span class='nx'>ODDBALL_TYPE</span><span class='o'>:</span>
+      <span class='c1'>// true, false</span>
+      <span class='k'>if</span> <span class='p'>(</span><span class='nx'>heap_obj</span><span class='o'>-&gt;</span><span class='nx'>IsTrue</span><span class='p'>()</span> <span class='o'>||</span> <span class='nx'>heap_obj</span><span class='o'>-&gt;</span><span class='nx'>IsFalse</span><span class='p'>())</span> <span class='p'>{</span>
+        <span class='c1'>// return &quot;boolean&quot;</span>
+        <span class='k'>return</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>boolean_symbol</span><span class='p'>();</span>
+      <span class='p'>}</span>
+      <span class='c1'>// null</span>
+      <span class='k'>if</span> <span class='p'>(</span><span class='nx'>heap_obj</span><span class='o'>-&gt;</span><span class='nx'>IsNull</span><span class='p'>())</span> <span class='p'>{</span>
+        <span class='k'>return</span> <span class='nx'>FLAG_harmony_typeof</span>
+            <span class='c1'>// return &quot;null&quot;</span>
+            <span class='o'>?</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>null_symbol</span><span class='p'>()</span>
+            <span class='c1'>// return &quot;object&quot;</span>
+            <span class='o'>:</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>object_symbol</span><span class='p'>();</span>
+      <span class='p'>}</span>
+      <span class='nx'>ASSERT</span><span class='p'>(</span><span class='nx'>heap_obj</span><span class='o'>-&gt;</span><span class='nx'>IsUndefined</span><span class='p'>());</span>
+      <span class='c1'>// return &quot;undefined&quot;</span>
+      <span class='k'>return</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>undefined_symbol</span><span class='p'>();</span>
+    <span class='k'>case</span> <span class='nx'>JS_FUNCTION_TYPE</span><span class='o'>:</span>
+    <span class='k'>case</span> <span class='nx'>JS_FUNCTION_PROXY_TYPE</span><span class='o'>:</span>
+      <span class='c1'>// return &quot;function&quot;</span>
+      <span class='k'>return</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>function_symbol</span><span class='p'>();</span>
+    <span class='k'>default</span><span class='o'>:</span>
+      <span class='c1'>// For any kind of object not handled above, the spec rule for</span>
+      <span class='c1'>// host objects gives that it is okay to return &quot;object&quot;</span>
+      <span class='k'>return</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>object_symbol</span><span class='p'>();</span>
+  <span class='p'>}</span>
+<span class='p'>}</span>
+</code></pre>
+</div><aside>
+  You can find the full file <a target='_blank' href='http://code.google.com/searchframe#W9JxUuHYyMg/trunk/src/runtime.cc&q=typeof%20null%20package:v8%5C.googlecode%5C.com'>here</a>
+</aside>
+<h2 id='why_does__return_'>Why does <code>typeof null </code> return <code>"object"</code>?</h2>
+<div class='highlight'><pre><code class='js'><span class='c1'>// What&#39;s happening here?</span>
+<span class='k'>typeof</span> <span class='kc'>null</span> <span class='o'>===</span> <span class='s2'>&quot;object&quot;</span><span class='p'>;</span> <span class='c1'>// true</span>
+</code></pre>
+</div>
+<p>The answer might disappoint some, but the truth is simply because the table above says to do so.</p>
+
+<p>The reasoning behind this is that <code>null</code>, in contrast with <code>undefined</code>, was (and still is) often used where objects appear. In other words, <code>null</code> is often used to signify an empty reference to an object. When <a href='http://en.wikipedia.org/wiki/Brendan_Eich'>Brendan Eich</a> created JavaScript, he followed the same paradigm, and it made sense (arguably) to return <code>"object"</code>. In fact, the ECMAScript specification defines <code>null</code> as the <em>primitive value that represents the intentional absence of any object value</em> (ECMA-262, 11.4.11).</p>
+
+<p>There have been discussions in the ECMAScript working group (between Brendan Eich, Douglas Crockford, and a few other other individuals) proposing the following change:</p>
+<div class='highlight'><pre><code class='js'><span class='k'>typeof</span> <span class='kc'>null</span> <span class='o'>===</span> <span class='s2'>&quot;null&quot;</span><span class='p'>;</span> <span class='c1'>// true</span>
+</code></pre>
+</div><aside>
+  For the interested, you can read the <a target='_blank' href='http://wiki.ecmascript.org/doku.php?id=discussion:typeof'>discussion</a> and <a target='_blank' href='http://wiki.ecmascript.org/doku.php?id=proposals:typeof'>proposal</a>
+</aside>
+<p>However, as Douglas Crockford <a href='http://wiki.ecmascript.org/doku.php?id=proposals:typeof'>pointed out</a>, <em>&#8220;I think it is too late to fix <code>typeof</code>. The change proposed for <code>typeof null</code> will break existing code.&#8221;</em> By &#8220;existing code&#8221; he means many incorrect implementations of type checks on the web, such as:</p>
+<div class='highlight'><pre><code class='js'><span class='c1'>// This is extremely bad</span>
+<span class='kd'>function</span> <span class='nx'>isNull</span><span class='p'>(</span><span class='nx'>a</span><span class='p'>)</span> <span class='p'>{</span>
+  <span class='k'>return</span> <span class='k'>typeof</span> <span class='nx'>a</span> <span class='o'>==</span> <span class='s1'>&#39;object&#39;</span> <span class='o'>&amp;&amp;</span> <span class='o'>!</span><span class='nx'>a</span><span class='p'>;</span>
+<span class='p'>}</span>
+</code></pre>
+</div>
+<p>Because of this, it was decided to leave <code>typeof</code> alone.</p>
+
+<h2 id='back_to_v8'>Back to V8</h2>
+
+<p>If you actually read each line of the V8 <code>typeof</code> operator implementation in <code>RUNTIME_FUNCTION</code> above, you might have noticed that <code>FLAG_harmony_typeof</code> check:</p>
+<div class='highlight'><pre><code class='js'><span class='c1'>// null</span>
+<span class='k'>if</span> <span class='p'>(</span><span class='nx'>heap_obj</span><span class='o'>-&gt;</span><span class='nx'>IsNull</span><span class='p'>())</span> <span class='p'>{</span>
+  <span class='k'>return</span> <span class='nx'>FLAG_harmony_typeof</span>
+      <span class='c1'>// return &quot;null&quot;</span>
+      <span class='o'>?</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>null_symbol</span><span class='p'>()</span>
+      <span class='c1'>// return &quot;object&quot;</span>
+      <span class='o'>:</span> <span class='nx'>isolate</span><span class='o'>-&gt;</span><span class='nx'>heap</span><span class='p'>()</span><span class='o'>-&gt;</span><span class='nx'>object_symbol</span><span class='p'>();</span>
+<span class='p'>}</span>
+</code></pre>
+</div>
+<p>Assuming you have the V8 Canary build on your machine, you can run it with the <code>--harmony-typeof</code> flag, which would essentially set the <code>FLAG_harmony_typeof</code> to <code>true</code>. Now, any <code>typeof null</code> check is going to return <code>"null"</code>.</p>
+
+<!--
+<hr />
+
+<small>Tags:  <a href="/tags/typeof," title="View posts tagged with &quot;typeof,&quot;"><u>typeof,</u></a>     <a href="/tags/null," title="View posts tagged with &quot;null,&quot;"><u>null,</u></a>     <a href="/tags/IEEE" title="View posts tagged with &quot;IEEE&quot;"><u>IEEE</u></a>    </small>
+-->
+
+<hr />
+
+<div class="pagination">
+    <p>
+      
+        <a href="/blog/wrapper_objects.html" title="Previous Post: The Wrapper Object">
+          &laquo; The Wrapper Object
+        </a>
+      
+      
+        &nbsp;|&nbsp;
+      
+      
+        <a href="/blog/typeof_nan.html" title="Next Post: NaN and typeof">
+          NaN and typeof &raquo;
+        </a>
+      
+    </p>
+</div>
+
+<!--
+<div id="related-posts">
+  <h4>Related Posts</h4>
+  <ul class="posts">
+    
+      <li><span>10 Jul 2012</span> &raquo; <a href="/blog/map_set.html">Map and Set</a></li>
+    
+      <li><span>01 Jul 2012</span> &raquo; <a href="/blog/web_dev.html">Know your JavaScript</a></li>
+    
+      <li><span>27 Jun 2012</span> &raquo; <a href="/blog/typeof_nan.html">NaN and typeof</a></li>
+    
+  </ul>
+</div>
+-->
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'kiro',
+        disqus_title = 'typeof_null',
+        disqus_identifier = '1000103';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+
+    </div>
+
+    <div id="sidebar">
+
+      <div id="about-section">
+          <h3>About me</h3>
+
+          <p>
+            <img id="me-image" src="http://www.gravatar.com/avatar/4ae8dc54def0eb337f21fe40fa8972db.png" />
+            I'm <strong>Kiro Risk</strong>, a <strong>Software Engineer</strong> at LinkedIn.  I work with JavaScript, HTML, CSS, Java, Python, MySQL, Objective-C and a plethora of other programming goodness every day.
+          </p>
+
+          <p>I live in Silicon Valley.</p>
+
+          <p>
+            Questions? Feel free to <a href="mailto:kiro@kiro.me">contact me</a>.
+          </p>
+
+          <a href="https://twitter.com/kirorisk" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @kirorisk</a>
+          <script>
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+          </script>
+
+          <p>
+            <a id="feedrss" title="Subscribe to this blog..." href="http://feeds.feedburner.com/krisk"><img src="/images/rss2.png"/>Subscribe to the RSS feed</a>
+          </p>
+
+          <p>
+            <a href="http://www.linkedin.com/in/kirollos">
+              <img src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png" width="21" height="16" alt="Kiro Risk's LinkedIn profile" style="vertical-align:top" border="0" />View my LinkedIn profile
+            </a>
+          </p>
+
+          <p>
+            <a id="github-account" href="http://www.github.com/krisk" target="_blank" title="Kiro - GitHub">
+              <img src="/images/github.png" width="16" alt="Kiro Risk's LinkedIn profile" style="vertical-align:top" border="0" />GitHub
+            </a>
+          </p>
+
+      </div>
+
+      <div id="clarify-section">
+        <iframe class="clarity-widget" data-c-id="8944" frameborder="0" style="border: 0; height: 0"></iframe>
+        <script src="https://clarity.fm/assets/widget_loader.js"></script>
+      </div>
+
+    </div>
+
+
+    <footer>
+      <hr />
+      <p>Designed and built using Jekyll, and hosted on <a href="http://github.com/krisk/krisk.github.com" target="_blank" title="GitHub page">GitHub</a></p>
+      <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a></p>
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</body>
+</html>

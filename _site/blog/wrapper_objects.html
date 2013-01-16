@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>The Wrapper Object | K. Risk - JavaScript Refined</title>
+  <meta name="author" content="Kirollos Risk" />
+  
+  <meta name="description" content="A look at the wrapper object created during type coercion.">
+  
+
+  <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style">
+
+  <!--
+    I'm a front-end developer, a JavaScript afficionado, and I like all things web-related.
+    If the mark-up of this page looks hideous, we can blame it on Jekyll.  Enjoy.
+     - K. Risk
+  -->
+  
+
+  <link rel="alternate" type="application/rss+xml" title="K. Risk - JavaScript Refined" href="/feed.xml" />
+  <link href="/css/default.css" rel="stylesheet" type="text/css">
+
+  
+    <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
+  
+
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25301489-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</head>
+
+<body>
+
+  <div id="main">
+
+    <header>
+      <div>
+        <a href="http://www.kiro.me" id="logo">
+          <span>K. Risk -</span>
+          <strong>JavaScript Refined</strong>
+        </a>
+        <nav id="site-nav" role="navigation">
+          <ul id="site-menu">
+            <li ><a href="/">Home</a></li>
+            <li ><a href="/projects.html">Projects</a></li>
+            <li ><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div id="container">
+
+      <h1>The Wrapper Object</h1>
+<div class="byline">
+  <address class="author"><a rel="author" href="mailto:kiro@kiro.me" title="Kiro Risk">Kiro Risk</a></address>
+  <span class="separator">|</span>
+  <time class="pubdate" pubdate datetime="June 10 2012">10 Jun 2012</time>
+</div>
+
+<div id="share">
+  <ul id="share-button-list">
+    <!--Facebook -->
+    <li>
+      <div class="fb-like" data-send="false" data-layout="button_count" data-show-faces="false"></div>
+    </li>
+    <!--LinkedIn -->
+    <li>
+      <script type="IN/Share" data-counter="right"></script>
+    </li>
+    <!--Twitter -->
+    <li>
+      <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+    </li>
+    <!-- G+ -->
+    <li>
+      <g:plusone size="medium"></g:plusone>
+    </li>
+    <!-- SU -->
+    <li>
+      <su:badge layout="1"></su:badge>
+    </li>
+    <!-- Hacker News -->
+    <li>
+      <a href="http://news.ycombinator.com/submitlink?u=http://www.kiro.me/blog/wrapper_objects.html&t=The Wrapper Object" target="_blank" title="Submit The Wrapper Object to Hacker News">
+        <img src="/images/y-comb.gif" />
+      </a>
+    </li>
+  </ul>
+
+  <div id="fb-root"></div>
+
+  <script>
+    //Facebook
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=399955583389436";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // LinkedIn
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = '//platform.linkedin.com/in.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+
+    //Twitter
+    !function(d,s,id){
+      var js,fjs=d.getElementsByTagName(s)[0];
+      if(!d.getElementById(id)){
+        js=d.createElement(s);
+        js.id=id;
+        js.src="//platform.twitter.com/widgets.js";
+        fjs.parentNode.insertBefore(js,fjs);
+      }}(document,"script","twitter-wjs");
+
+    // G+
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+
+    // SU
+    (function() {
+      var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true;
+      li.src = 'https://platform.stumbleupon.com/1/widgets.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s);
+    })();
+  </script>
+
+</div>
+
+<h3 id='all_primitives_have_no_properties_strings_are_primitives_therefore_strings_have_no_properties'>All primitives have no properties. Strings are primitives; therefore, Strings have no properties.</h3>
+
+<p><a href='http://en.wikipedia.org/wiki/Inference'>Inference</a> at its finest.</p>
+
+<p>Remember that a primitive data type is a non-composite building block. Essentially, it is a value, and as such it has no properties.</p>
+
+<p>Yes. Even in JavaScript, strings are considered primitive data types - they are <strong>not</strong> objects. However, consider the following code:</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>str</span> <span class='o'>=</span> <span class='s1'>&#39;hello&#39;</span><span class='p'>;</span>
+<span class='nx'>console</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>(</span><span class='nx'>str</span><span class='p'>.</span><span class='nx'>toUpperCase</span><span class='p'>());</span> <span class='c1'>// --&gt; HELLO</span>
+</code></pre>
+</div>
+<p>It appears that <code>str</code> clearly has a <code>toUpperCase</code> property. Was our inference incorrect? Specifically, <em>if strings are not objects, why do they have properties like <code>toUpperCase</code>, <code>toLowerCase</code>, etc&#8230;?</em></p>
+
+<p>Short answer: JavaScript promptly coerces between primitives and objects.</p>
+
+<p>Long answer: <strong>whenever you try to access a property of a string <code>str</code>, JavaScript coerces the string value to an object, by <code>new String(str)</code>.</strong> This object is called a <strong>wrapper object</strong>. It inherits all string methods, and is used to resolve the property reference. Once the property has been resolved, the wrapper object is discarded.</p>
+
+<p>(Note: the same concept applies to numbers and booleans)</p>
+
+<p>This is essentially the reason why the following piece of code yields an <code>undefined</code>:</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>str</span> <span class='o'>=</span> <span class='s1'>&#39;hello&#39;</span><span class='p'>;</span>
+<span class='nx'>str</span><span class='p'>.</span><span class='nx'>custom</span> <span class='o'>=</span> <span class='mi'>1</span><span class='p'>;</span>
+<span class='nx'>console</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>(</span><span class='nx'>str</span><span class='p'>.</span><span class='nx'>custom</span><span class='p'>);</span> <span class='c1'>// -&gt; undefined</span>
+</code></pre>
+</div>
+<p>Let&#8217;s look at it in detail:</p>
+
+<h4 id='step_1'>Step 1</h4>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>str</span> <span class='o'>=</span> <span class='s1'>&#39;hello&#39;</span><span class='p'>;</span>
+<span class='nx'>str</span><span class='p'>.</span><span class='nx'>custom</span> <span class='o'>=</span> <span class='mi'>1</span><span class='p'>;</span>
+</code></pre>
+</div>
+<p>JavaScript creates a wrapper <code>String</code> object, sets its <code>custom</code> property to <code>1</code>, and then discards it. Basically, it runs something like the following code:</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>str</span> <span class='o'>=</span> <span class='s1'>&#39;hello&#39;</span><span class='p'>;</span>
+<span class='kd'>var</span> <span class='nx'>temp</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nb'>String</span><span class='p'>(</span><span class='nx'>str</span><span class='p'>);</span> <span class='c1'>// wrapper object</span>
+<span class='nx'>temp</span><span class='p'>.</span><span class='nx'>custom</span> <span class='o'>=</span> <span class='mi'>1</span><span class='p'>;</span>
+<span class='c1'>// end of the line for temp</span>
+</code></pre>
+</div>
+<p>The exact way it deals with it is really implementation specific, and you shouldn&#8217;t have to think about it. Either way, if you examine <code>temp</code> in Firebug, Chrome Developer Toolbar, or whatever debugging tool you use, you&#8217;ll see something like the following:</p>
+<div class='highlight'><pre><code class='js'><span class='nb'>String</span><span class='o'>:</span>
+  <span class='mi'>0</span><span class='o'>:</span> <span class='s2'>&quot;h&quot;</span>
+  <span class='mi'>1</span><span class='o'>:</span> <span class='s2'>&quot;e&quot;</span>
+  <span class='mi'>2</span><span class='o'>:</span> <span class='s2'>&quot;l&quot;</span>
+  <span class='mi'>3</span><span class='o'>:</span> <span class='s2'>&quot;l&quot;</span>
+  <span class='mi'>4</span><span class='o'>:</span> <span class='s2'>&quot;o&quot;</span>
+  <span class='nx'>length</span><span class='o'>:</span> <span class='mi'>5</span>
+  <span class='nx'>custom</span><span class='o'>:</span> <span class='mi'>1</span>
+</code></pre>
+</div>
+<p>As you can see, the <code>custom</code> property is set onto the <code>temp</code> wrapper object.</p>
+
+<h4 id='step_2'>Step 2</h4>
+<div class='highlight'><pre><code class='js'><span class='nx'>console</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>(</span><span class='nx'>str</span><span class='p'>.</span><span class='nx'>custom</span><span class='p'>);</span>
+</code></pre>
+</div>
+<p>Once again, JavaScript creates a wrapper <code>String</code> object from the original, unmodified string value and then tries to read <code>custom</code>. This property, of course, does not exist, and the expression evaluates to <code>undefined</code>. Again, the wrapper object is then discarded.</p>
+<hr />
+<p>Similarly, given all the info above, we can now see how</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>str</span> <span class='o'>=</span> <span class='s1'>&#39;hello&#39;</span><span class='p'>;</span>
+<span class='kd'>var</span> <span class='nx'>upper</span> <span class='o'>=</span> <span class='nx'>str</span><span class='p'>.</span><span class='nx'>toUpperCase</span><span class='p'>();</span>
+<span class='nx'>console</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>(</span><span class='nx'>upper</span><span class='p'>);</span> <span class='c1'>// --&gt; HELLO</span>
+</code></pre>
+</div>
+<p>basically translates to</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>upper</span> <span class='o'>=</span> <span class='p'>(</span><span class='k'>new</span> <span class='nb'>String</span><span class='p'>(</span><span class='nx'>str</span><span class='p'>)).</span><span class='nx'>toUpperCase</span><span class='p'>().</span>
+</code></pre>
+</div>
+<h3 id='coercion_as_necessary'>Coercion as necessary</h3>
+
+<p>JavaScript coerces wrapper objects into the wrapped primitive values as necessary. The <code>==</code> equality will treat a value and its wrapper object as equal, while the <code>===</code> strict equality operator will treat them as different entities.</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>a</span> <span class='o'>=</span> <span class='s1'>&#39;hello&#39;</span><span class='p'>;</span>             <span class='c1'>// primitive</span>
+<span class='kd'>var</span> <span class='nx'>b</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nb'>String</span><span class='p'>(</span><span class='s1'>&#39;hello&#39;</span><span class='p'>);</span> <span class='c1'>// wrapper object</span>
+
+<span class='k'>typeof</span> <span class='nx'>a</span><span class='p'>;</span>  <span class='c1'>// &quot;string&quot;</span>
+<span class='k'>typeof</span> <span class='nx'>b</span><span class='p'>;</span>  <span class='c1'>// &quot;object&quot;</span>
+
+<span class='nx'>a</span> <span class='o'>==</span> <span class='nx'>b</span>  <span class='c1'>// true</span>
+<span class='nx'>a</span> <span class='o'>===</span> <span class='nx'>b</span> <span class='c1'>// false</span>
+</code></pre>
+</div>
+<h4 id='numbers'>Numbers</h4>
+
+<p>Same principle applies to numbers.</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>x</span> <span class='o'>=</span> <span class='mi'>1</span><span class='p'>;</span>
+<span class='kd'>var</span> <span class='nx'>y</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nb'>Number</span><span class='p'>(</span><span class='mi'>1</span><span class='p'>);</span>
+
+<span class='k'>typeof</span> <span class='nx'>x</span><span class='p'>;</span>  <span class='c1'>// &quot;number&quot;</span>
+<span class='k'>typeof</span> <span class='nx'>y</span><span class='p'>;</span>  <span class='c1'>// &quot;object&quot;</span>
+
+<span class='nx'>x</span> <span class='o'>==</span> <span class='nx'>y</span>  <span class='c1'>// true</span>
+<span class='nx'>x</span> <span class='o'>===</span> <span class='nx'>y</span> <span class='c1'>// false</span>
+</code></pre>
+</div>
+<p>When it comes to numbers, however, JavaScript gives you more liberty. For starters, you can create your own &#8220;number&#8221;-like objects, and let type coercion resolve any numerical operation for you. For example:</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>x</span> <span class='o'>=</span> <span class='p'>{</span>
+  <span class='nx'>num</span><span class='o'>:</span> <span class='mi'>2</span><span class='p'>,</span>
+  <span class='nx'>valueOf</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
+    <span class='k'>return</span> <span class='k'>this</span><span class='p'>.</span><span class='nx'>num</span> <span class='o'>*</span> <span class='mi'>2</span><span class='p'>;</span>
+  <span class='p'>}</span>
+<span class='p'>}</span>
+
+<span class='kd'>var</span> <span class='nx'>y</span> <span class='o'>=</span> <span class='p'>{</span>
+  <span class='nx'>num</span><span class='o'>:</span> <span class='mi'>3</span><span class='p'>,</span>
+  <span class='nx'>valueOf</span><span class='o'>:</span> <span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
+    <span class='k'>return</span> <span class='k'>this</span><span class='p'>.</span><span class='nx'>num</span> <span class='o'>*</span> <span class='mi'>2</span><span class='p'>;</span>
+  <span class='p'>}</span>
+<span class='p'>}</span>
+
+<span class='nx'>console</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>(</span><span class='nx'>x</span> <span class='o'>+</span> <span class='nx'>y</span><span class='p'>);</span> <span class='c1'>// 10</span>
+</code></pre>
+</div>
+<p>As you can see from the above code, I did not explicitly convert <code>x</code> and <code>y</code> to numbers, yet I was able to add them. This is because the addition coerced them into their primitive values. Basically, behind the scenes, JavaScript did the following:</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>temp</span> <span class='o'>=</span> <span class='nb'>Number</span><span class='p'>(</span><span class='nx'>x</span><span class='p'>)</span> <span class='o'>+</span> <span class='nb'>Number</span><span class='p'>(</span><span class='nx'>y</span><span class='p'>);</span>
+<span class='nx'>console</span><span class='p'>.</span><span class='nx'>log</span><span class='p'>(</span><span class='nx'>temp</span><span class='p'>);</span> <span class='c1'>// 10</span>
+</code></pre>
+</div>
+<p>Remember that calling the <code>Number</code> constructor without the <code>new</code> operation basically attempts to convert a value into its primitive representation. The same goes for <code>String</code> and <code>Boolean</code> (though <code>Boolean</code> is a little problematic - we&#8217;ll deal with it in a later post perhaps).</p>
+
+<p>Having said that, JavaScript knows what the primitive value of my number-like object is because it looks for and executes the <code>valueOf</code> method. As long as you have this method in your object (and assuming it returns a number), your object can be mathematically operated on (though, you should be warned, the <code>Number</code> object of course has more methods than just <code>valueOf</code>, such as <code>toExponential</code>, <code>toFixed</code>, <code>toLocaleString</code>, <code>toPrecision</code>, and <code>toString</code>).</p>
+<hr />
+<h3 id='resources'>Resources</h3>
+
+<ol>
+<li><a href='http://bclary.com/2004/11/07/#a-4.3.16'>ECMAScript Language Specification - Strings</a></li>
+
+<li><a href='https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String'>MDN - Strings</a></li>
+</ol>
+
+<!--
+<hr />
+
+<small>Tags:  <a href="/tags/functions," title="View posts tagged with &quot;functions,&quot;"><u>functions,</u></a>     <a href="/tags/Strings," title="View posts tagged with &quot;Strings,&quot;"><u>Strings,</u></a>     <a href="/tags/Numbers," title="View posts tagged with &quot;Numbers,&quot;"><u>Numbers,</u></a>     <a href="/tags/type" title="View posts tagged with &quot;type&quot;"><u>type</u></a>     <a href="/tags/coercion," title="View posts tagged with &quot;coercion,&quot;"><u>coercion,</u></a>     <a href="/tags/wrapper" title="View posts tagged with &quot;wrapper&quot;"><u>wrapper</u></a>     <a href="/tags/object" title="View posts tagged with &quot;object&quot;"><u>object</u></a>    </small>
+-->
+
+<hr />
+
+<div class="pagination">
+    <p>
+      
+        <a href="/blog/nfe_dilemma.html" title="Previous Post: Named Function Expressions and the IE dilemma">
+          &laquo; Named Function Expressions and the IE dilemma
+        </a>
+      
+      
+        &nbsp;|&nbsp;
+      
+      
+        <a href="/blog/typeof_null.html" title="Next Post: Null and typeof">
+          Null and typeof &raquo;
+        </a>
+      
+    </p>
+</div>
+
+<!--
+<div id="related-posts">
+  <h4>Related Posts</h4>
+  <ul class="posts">
+    
+      <li><span>10 Jul 2012</span> &raquo; <a href="/blog/map_set.html">Map and Set</a></li>
+    
+      <li><span>01 Jul 2012</span> &raquo; <a href="/blog/web_dev.html">Know your JavaScript</a></li>
+    
+      <li><span>27 Jun 2012</span> &raquo; <a href="/blog/typeof_nan.html">NaN and typeof</a></li>
+    
+  </ul>
+</div>
+-->
+
+<div id="disqus_thread"></div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'kiro',
+        disqus_title = 'wrapper_object',
+        disqus_identifier = '1000102';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+
+    </div>
+
+    <div id="sidebar">
+
+      <div id="about-section">
+          <h3>About me</h3>
+
+          <p>
+            <img id="me-image" src="http://www.gravatar.com/avatar/4ae8dc54def0eb337f21fe40fa8972db.png" />
+            I'm <strong>Kiro Risk</strong>, a <strong>Software Engineer</strong> at LinkedIn.  I work with JavaScript, HTML, CSS, Java, Python, MySQL, Objective-C and a plethora of other programming goodness every day.
+          </p>
+
+          <p>I live in Silicon Valley.</p>
+
+          <p>
+            Questions? Feel free to <a href="mailto:kiro@kiro.me">contact me</a>.
+          </p>
+
+          <a href="https://twitter.com/kirorisk" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @kirorisk</a>
+          <script>
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+          </script>
+
+          <p>
+            <a id="feedrss" title="Subscribe to this blog..." href="http://feeds.feedburner.com/krisk"><img src="/images/rss2.png"/>Subscribe to the RSS feed</a>
+          </p>
+
+          <p>
+            <a href="http://www.linkedin.com/in/kirollos">
+              <img src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png" width="21" height="16" alt="Kiro Risk's LinkedIn profile" style="vertical-align:top" border="0" />View my LinkedIn profile
+            </a>
+          </p>
+
+          <p>
+            <a id="github-account" href="http://www.github.com/krisk" target="_blank" title="Kiro - GitHub">
+              <img src="/images/github.png" width="16" alt="Kiro Risk's LinkedIn profile" style="vertical-align:top" border="0" />GitHub
+            </a>
+          </p>
+
+      </div>
+
+      <div id="clarify-section">
+        <iframe class="clarity-widget" data-c-id="8944" frameborder="0" style="border: 0; height: 0"></iframe>
+        <script src="https://clarity.fm/assets/widget_loader.js"></script>
+      </div>
+
+    </div>
+
+
+    <footer>
+      <hr />
+      <p>Designed and built using Jekyll, and hosted on <a href="http://github.com/krisk/krisk.github.com" target="_blank" title="GitHub page">GitHub</a></p>
+      <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a></p>
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</body>
+</html>
