@@ -147,7 +147,7 @@ var result = f.search('Falen');
 
 This isn't meant to work across hundreds of thousands, or millions of records. If you have that many records at once on the client, then you probably have bigger problems to worry about. To give you an idea of performance, searching over 2 keys in 20,000 records takes approximately 1 second. Still, 20k records is an awful lot. Ideally, a client-side fuzzy-search solution is only acceptable if the record-set is small, and the pattern string and keys' short.
 
-The pattern string cannot exceed 32 characters.
+Note: the pattern string cannot exceed 32 characters.
 
 ### How does it do it?
 
