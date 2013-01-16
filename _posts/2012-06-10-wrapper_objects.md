@@ -74,7 +74,7 @@ As you can see, the `custom` property is set onto the `temp` wrapper object.
 
 #### Step 2
 
-{% highlight js(linenostart=3 %}
+{% highlight js linenostart=3 %}
 console.log(str.custom);
 {% endhighlight %}
 

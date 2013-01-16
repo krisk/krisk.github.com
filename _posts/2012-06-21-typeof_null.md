@@ -109,7 +109,7 @@ Because of this, it was decided to leave <code>typeof</code> alone.
 
 If you actually read each line of the V8 <code>typeof</code> operator implementation in <code>RUNTIME_FUNCTION</code> above, you might have noticed that <code>FLAG_harmony_typeof</code> check:
 
-{% highlight js(linenostart=28 %}
+{% highlight js linenostart=28 %}
 // null
 if (heap_obj->IsNull()) {
   return FLAG_harmony_typeof
