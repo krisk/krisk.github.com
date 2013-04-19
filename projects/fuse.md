@@ -16,7 +16,7 @@ css:
   - /css/examples/fuse.css
 ---
 
-### Lighweight fuzzy-search, in JavaScript.
+### Lightweight fuzzy-search, in JavaScript.
 
 Download:
 
