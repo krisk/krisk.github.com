@@ -8,7 +8,7 @@ disqus_title: fuse
 disqus_identifer: 1000001
 javascript:
   - http://code.jquery.com/jquery.min.js
-  - https://raw.github.com/krisk/fuse/master/fuse.js
+  - /javascript/projects/fuse.min.js
   - /javascript/examples/fuse.js
 css:
   - /css/project.css

@@ -8,7 +8,7 @@ disqus_title: textualizer
 disqus_identifer: 1000000
 javascript:
   - http://code.jquery.com/jquery.min.js
-  - https://raw.github.com/krisk/textualizer/master/textualizer.js
+  - /javascript/projects/textualizer.min.js
   - /javascript/examples/textualizer.js
 css:
   - /css/project.css
