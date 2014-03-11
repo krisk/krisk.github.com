@@ -59,13 +59,13 @@ var RectangleFactory = (function() {
 ``` js
 var ShapeFactory = (function() {
   ...
-  // Need to re assign Shape to prototype.constructor
+  // 1) Need to re assign Shape to prototype.constructor
   Shape.prototype.constructor = Shape;
   ...
 })();
 
 var RectangleFactory = (function() {
-  // Bootstrapping:
+  // 2) Bootstrapping:
   // Capture the instance, as we'll need it to set up the prototype
   var baseInstance = new FactoryClassA.createThingA();
   // Capture the constructor
@@ -81,7 +81,7 @@ var RectangleFactory = (function() {
     // Call base constructor
     baseProto.constructor.apply(this, arguments);
   };
-  // Set up the inheritance chain
+  // 3) Set up the inheritance chain
   Rectangle.prototype = baseInstance;
   Rectangle.prototype.constructor = Rectangle;
 
