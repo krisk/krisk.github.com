@@ -18,10 +18,10 @@ Remember that a primitive data type is a non-composite building block.  Essentia
 
 Yes.  Even in JavaScript, strings are considered primitive data types - they are **not** objects.  However, consider the following code:
 
-{% highlight js %}
+```js
 var str = 'hello';
 console.log(str.toUpperCase()); // --> HELLO
-{% endhighlight %}
+```
 
 It appears that `str` clearly has a `toUpperCase` property.  Was our inference incorrect? Specifically, *if strings are not objects, why do they have properties like `toUpperCase`, `toLowerCase`, etc...?*
 
@@ -33,33 +33,33 @@ Long answer: **whenever you try to access a property of a string `str`, JavaScri
 
 This is essentially the reason why the following piece of code yields an `undefined`:
 
-{% highlight js %}
+```js
 var str = 'hello';
 str.custom = 1;
 console.log(str.custom); // -> undefined
-{% endhighlight %}
+```
 
 Let's look at it in detail:
 
 #### Step 1
 
-{% highlight js %}
+```js
 var str = 'hello';
 str.custom = 1;
-{% endhighlight %}
+```
 
 JavaScript creates a wrapper `String` object, sets its `custom` property to `1`, and then discards it.  Basically, it runs something like the following code:
 
-{% highlight js %}
+```js
 var str = 'hello';
 var temp = new String(str); // wrapper object
 temp.custom = 1;
 // end of the line for temp
-{% endhighlight %}
+```
 
 The exact way it deals with it is really implementation specific, and you shouldn't have to think about it.  Either way, if you examine `temp` in Firebug, Chrome Developer Toolbar, or whatever debugging tool you use, you'll see something like the following:
 
-{% highlight js %}
+```js
 String:
   0: "h"
   1: "e"
@@ -68,15 +68,15 @@ String:
   4: "o"
   length: 5
   custom: 1
-{% endhighlight %}
+```
 
 As you can see, the `custom` property is set onto the `temp` wrapper object.
 
 #### Step 2
 
-{% highlight js linenostart=3 %}
+```js
 console.log(str.custom);
-{% endhighlight %}
+```
 
 Once again, JavaScript creates a wrapper `String` object from the original, unmodified string value and then tries to read `custom`. This property, of course, does not exist, and the expression evaluates to `undefined`.  Again, the wrapper object is then discarded.
 
@@ -84,23 +84,23 @@ Once again, JavaScript creates a wrapper `String` object from the original, unmo
 
 Similarly, given all the info above, we can now see how
 
-{% highlight js %}
+```js
 var str = 'hello';
 var upper = str.toUpperCase();
 console.log(upper); // --> HELLO
-{% endhighlight %}
+```
 
 basically translates to
 
-{% highlight js %}
+```js
 var upper = (new String(str)).toUpperCase().
-{% endhighlight %}
+```
 
 ### Coercion as necessary
 
 JavaScript coerces wrapper objects into the wrapped primitive values as necessary.  The `==` equality will treat a value and its wrapper object as equal, while the `===` strict equality operator will treat them as different entities.
 
-{% highlight js %}
+```js
 var a = 'hello';             // primitive
 var b = new String('hello'); // wrapper object
 
@@ -109,13 +109,13 @@ typeof b;  // "object"
 
 a == b  // true
 a === b // false
-{% endhighlight %}
+```
 
 #### Numbers
 
 Same principle applies to numbers.
 
-{% highlight js %}
+```js
 var x = 1;
 var y = new Number(1);
 
@@ -124,11 +124,11 @@ typeof y;  // "object"
 
 x == y  // true
 x === y // false
-{% endhighlight %}
+```
 
 When it comes to numbers, however, JavaScript gives you more liberty.  For starters, you can create your own "number"-like objects, and let type coercion resolve any numerical operation for you.  For example:
 
-{% highlight js %}
+```js
 var x = {
   num: 2,
   valueOf: function() {
@@ -144,14 +144,14 @@ var y = {
 }
 
 console.log(x + y); // 10
-{% endhighlight %}
+```
 
 As you can see from the above code, I did not explicitly convert `x` and `y` to numbers, yet I was able to add them.  This is because the addition coerced them into their primitive values.  Basically, behind the scenes, JavaScript did the following:
 
-{% highlight js %}
+```js
 var temp = Number(x) + Number(y);
 console.log(temp); // 10
-{% endhighlight %}
+```
 
 Remember that calling the `Number` constructor without the `new` operation basically attempts to convert a value into its primitive representation.  The same goes for `String` and `Boolean` (though `Boolean` is a little problematic - we'll deal with it in a later post perhaps).
 

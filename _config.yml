@@ -1,4 +1,5 @@
 name: Kiro.me
+markdown: redcarpet
 description: Web Development
 url: http://kiro.me
 permalink: /blog/:title.html

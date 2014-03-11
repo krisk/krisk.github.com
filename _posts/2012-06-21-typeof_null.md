@@ -18,7 +18,7 @@ The <code>typeof</code> operator can be a little counter-intuitive.  However, re
 
 The actual implementation varies depending on which engine you are running.  The V8 (behind Chrome and Node.js) implementation of the <code>typeof</code> operator (written in C++), is as follows (I've added a few comments for clarification):
 
-{% highlight js %}
+```cpp
 // Returns the type string of a value; see ECMA-262, 11.4.3
 RUNTIME_FUNCTION(MaybeObject*, Runtime_Typeof) {
   NoHandleAllocation ha;
@@ -67,7 +67,7 @@ RUNTIME_FUNCTION(MaybeObject*, Runtime_Typeof) {
       return isolate->heap()->object_symbol();
   }
 }
-{% endhighlight %}
+```
 
 <aside>
   You can find the full file <a href="http://code.google.com/searchframe#W9JxUuHYyMg/trunk/src/runtime.cc&q=typeof%20null%20package:v8%5C.googlecode%5C.com" target="_blank">here</a>
@@ -86,9 +86,9 @@ The reasoning behind this is that <code>null</code>, in contrast with <code>unde
 
 There have been discussions in the ECMAScript working group (between Brendan Eich, Douglas Crockford, and a few other other individuals) proposing the following change:
 
-{% highlight js %}
+```js
 typeof null === "null"; // true
-{% endhighlight %}
+```
 
 <aside>
   For the interested, you can read the <a href="http://wiki.ecmascript.org/doku.php?id=discussion:typeof" target="_blank">discussion</a> and <a href="http://wiki.ecmascript.org/doku.php?id=proposals:typeof" target="_blank">proposal</a>
@@ -96,12 +96,12 @@ typeof null === "null"; // true
 
 However, as Douglas Crockford [pointed out](http://wiki.ecmascript.org/doku.php?id=proposals:typeof), *"I think it is too late to fix <code>typeof</code>. The change proposed for <code>typeof null</code> will break existing code."*  By "existing code" he means many incorrect implementations of type checks on the web, such as:
 
-{% highlight js %}
+```js
 // This is extremely bad
 function isNull(a) {
   return typeof a == 'object' && !a;
 }
-{% endhighlight %}
+```
 
 Because of this, it was decided to leave <code>typeof</code> alone.
 
@@ -109,7 +109,7 @@ Because of this, it was decided to leave <code>typeof</code> alone.
 
 If you actually read each line of the V8 <code>typeof</code> operator implementation in <code>RUNTIME_FUNCTION</code> above, you might have noticed that <code>FLAG_harmony_typeof</code> check:
 
-{% highlight js linenostart=28 %}
+```cpp
 // null
 if (heap_obj->IsNull()) {
   return FLAG_harmony_typeof
@@ -118,6 +118,6 @@ if (heap_obj->IsNull()) {
       // return "object"
       : isolate->heap()->object_symbol();
 }
-{% endhighlight %}
+```
 
 Assuming you have the V8 Canary build on your machine, you can run it with the <code>--harmony-typeof</code> flag, which would essentially set the <code>FLAG_harmony_typeof</code> to <code>true</code>.  Now, any <code>typeof null</code> check is going to return <code>"null"</code>.
