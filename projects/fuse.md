@@ -123,6 +123,44 @@ var result = f.search('Falen');
 ==> [21, 15, 16]; // List of the indices
 {% endhighlight %}
 
+### Example 4
+
+Fuse also allows for deep key search:
+
+{% highlight js %}
+// List of books
+var books = [{
+  id: 1,
+  title: 'The Great Gatsby',
+  author: {
+    firstName: 'F. Scott',
+    lastName: 'Fitzgerald'
+  }
+},{
+  title: 'The DaVinci Code',
+  author: {
+    firstName: 'Dan',
+    lastName: 'Brown'
+  }
+}];
+
+var options = {
+  keys: ['author.firstName']
+}
+var f = new Fuse(books, options);
+var result = f.search('brwn');
+
+// Output:
+==>
+[{
+  title: 'The DaVinci Code',
+  author: {
+    firstName: 'Dan',
+    lastName: 'Brown'
+  }
+}];
+{% endhighlight %}
+
 #### Options
 <ul id="api">
   <li>
