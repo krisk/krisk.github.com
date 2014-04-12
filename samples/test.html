@@ -308,6 +308,9 @@ body {
   <section id="output">
     <h2>Output</h2>
 
+    <label>Search time:</label>
+    <span id="searchTimeLabel"></span>
+
     <pre id="resultTextAreaContainer">
 <code id="resultTextArea"></code>
     </pre>
@@ -461,25 +464,27 @@ body {
             this.setupNodes();
             this.bindEvents();
             this.setupItems();
-            this.setupFuse();
           },
           setupNodes: function() {
             this.$itemsTextArea = $('#itemsTextArea');
             this.$searchTextbox = $('#searchTextbox');
             this.$resultTextArea = $('#resultTextArea');
             this.$jsTextArea = $('#jsTextArea');
+            this.$searchTimeLabel = $('#searchTimeLabel');
           },
           bindEvents: function() {
             this.options = new App.Options();
             this.options.on('change', _.bind(this.setupFuse, this));
+            this.$itemsTextArea.on('change', _.bind(this.setupItems, this));
 
-            this.$searchTextbox.on('keyup', _.bind(function() {
+            this.$searchTextbox.on('keyup', _.debounce(_.bind(function() {
               this.search(this.$searchTextbox.val());
-            }, this));
+            }, this), 0));
           },
           setupItems: function() {
             var list = this.$itemsTextArea.val();
             this.list = eval(list);
+            this.setupFuse();
           },
           setupFuse: function() {
             this.fuse = new Fuse(this.list, this.options.data);
@@ -488,7 +493,10 @@ body {
           },
           search: function(pattern) {
             this.pattern = pattern;
+            var start = new Date().getTime();
             var result = this.fuse.search(pattern);
+            var end = new Date().getTime();
+            this.$searchTimeLabel.text((end - start) + ' ms');
             this.$resultTextArea.html(JSON.stringify(result, null, '  '));
             this.updateJS();
           },
