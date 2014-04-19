@@ -21,6 +21,15 @@ body {
   border: 1px solid black;
 }
 
+#searchTextbox {
+  padding: 5px;
+  width: 200px;
+}
+
+#keysTextbox {
+  width: 200px;
+}
+
 </style>
 
 <body>
@@ -42,6 +51,11 @@ body {
 
   <section id="items">
     <h2>Items</h2>
+
+
+    <aside>
+      Insert your list of items here:
+    </aside>
 
     <textarea rows="20" cols="100" id="itemsTextArea">
 [
@@ -215,6 +229,8 @@ body {
 
     <h2>Options</h2>
 
+    <h3>Fuse specific options</h3>
+
     <article>
       <input type="checkbox" id="caseSensitiveCheckbox" />
       <label for="caseSensitiveCheckbox">Case sensitive</label>
@@ -254,6 +270,8 @@ body {
         List of properties that will be searched. This also supports nested properties
       </aside>
     </article>
+
+    <h3>Bitap specific options</h3>
 
     <article>
       <label for="locationRange">Location</label>
@@ -306,7 +324,7 @@ body {
   </section>
 
   <section id="output">
-    <h2>Output</h2>
+    <h2>Result</h2>
 
     <label>Search time:</label>
     <span id="searchTimeLabel"></span>
@@ -366,6 +384,8 @@ body {
 
             this.setupKeys(false);
 
+            this.setupIdentifier(false);
+
             this.setupPatternLength(false);
           },
           setupNodes: function() {
@@ -416,6 +436,8 @@ body {
               }, this));
             }, this));
 
+            this.$identifierTextbox.on('change', _.bind(this.setupIdentifier, this));
+
             // keys
             this.$keysTextbox.on('change', _.bind(this.setupKeys, this));
 
@@ -433,6 +455,12 @@ body {
             var value = item.node.val();
             this.data[item.name] = parseFloat(value);
             if (trigger || trigger === undefined) {
+              this.trigger('change');
+            }
+          },
+          setupIdentifier: function(trigger) {
+            this.data.id = this.$identifierTextbox.val();
+            if (trigger) {
               this.trigger('change');
             }
           },
@@ -492,6 +520,10 @@ body {
             this.search(this.$searchTextbox.val());
           },
           search: function(pattern) {
+            if (pattern.length > this.options.data.maxPatternLength) {
+              this.$resultTextArea.html("Pattern length is too long");
+              return;
+            }
             this.pattern = pattern;
             var start = new Date().getTime();
             var result = this.fuse.search(pattern);
@@ -503,6 +535,9 @@ body {
           updateJS: function() {
             var arr = [];
             arr.push('var options = {');
+            if (this.options.data.id) {
+              arr.push('  id: "' + this.options.data.id + '",');
+            }
             arr.push('  caseSensitive: ' + this.options.data.caseSensitive + ',');
             arr.push('  includeScore: ' + this.options.data.includeScore + ',');
             arr.push('  shouldSort: ' + this.options.data.shouldSort + ',');
@@ -515,7 +550,7 @@ body {
             }).join(',');
             arr.push('  keys: [' + keys + ']');
             arr.push('};');
-            arr.push('var fuse = new Fuse(list, options);');
+            arr.push('var fuse = new Fuse(list, options); // "list" is the item array');
             arr.push('var result = fuse.search("' + this.pattern + '");');
             arr = arr.join('\n');
             this.$jsTextArea.html(arr);
