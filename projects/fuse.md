@@ -191,6 +191,10 @@ Note: the pattern string cannot exceed 32 characters.
 
 Currently, it uses a full [Bitap algorithm](http://en.wikipedia.org/wiki/Bitap_algorithm "Bitap algorithm - wiki"), leveraging a modified version of the [Diff, Match & Patch](http://code.google.com/p/google-diff-match-patch/ "Diff, Match & Patch") tool by Google.
 
+### Want to see more?
+
+Check out [this test page](http://kiro.me/projects/fuse.html).
+
 ### To do
 
 Currently planning to make it faster, and work for larger sets of data.  Let me know your thoughts, ideas, or anything else.
