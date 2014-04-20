@@ -193,7 +193,7 @@ Currently, it uses a full [Bitap algorithm](http://en.wikipedia.org/wiki/Bitap_a
 
 ### Want to see more?
 
-Check out [this test page](http://kiro.me/projects/fuse.html).
+Check out [this test page](http://kiro.me/exp/fuse.html).
 
 ### To do
 
