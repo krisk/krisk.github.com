@@ -67,7 +67,7 @@ var ShapeFactory = (function() {
 var RectangleFactory = (function() {
   // 2) Bootstrapping:
   // Capture the instance, as we'll need it to set up the prototype
-  var baseInstance = new FactoryClassA.createThingA();
+  var baseInstance = new ShapeFactory.createShape();
   // Capture the constructor
   var baseConstructor = baseInstance.constructor;
   // Keep a reference to the base prototype
@@ -130,7 +130,7 @@ However, in the initial implementation of `ShapeFactory`, the entire prototype w
 **2) Bootstrapping**
 
 ``` js
-var baseInstance = new FactoryClassA.createShape();
+var baseInstance = new ShapeFactory.createShape();
 var baseConstructor = baseInstance.constructor;
 var baseProto = baseConstructor.prototype;
 ```
