@@ -29,6 +29,13 @@ ol li {
     list-style-type: decimal;
     line-height: 1.4em;
 }
+.banner {
+    margin-top: 10px;
+    font-size: 15px;
+    background-color: #fff8dc;
+    border: 1px solid #e0dcbf;
+    padding: 5px;
+}
 #main {
     width: 960px;
     margin: auto;
