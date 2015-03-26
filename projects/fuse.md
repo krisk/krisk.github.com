@@ -162,24 +162,8 @@ var result = f.search('brwn');
 {% endhighlight %}
 
 #### Options
-<ul id="api">
-  <li>
-    <code>keys</code>
-    <p>List of keys (properties) that will be searched.</p>
-  </li>
-  <li>
-    <code>id</code>
-    <p>The string name of the identifier key. If specified, the returned result will be a list of the items' identifiers, otherwise it will be a list of the items.</p>
-  </li>
-  <li>
-    <code>threshold</code>
-    <p>A decimal value indicating at which point the match algorithm gives up. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything.</p>
-  </li>
-  <li>
-    <code>caseSensitive</code>
-    <p>A boolean value indicating whether comparisons should be case sensitive.  False by default.</p>
-  </li>
-</ul>
+
+[See here](https://github.com/krisk/Fuse#options "Fuse options") for all available options.
 
 ### Limitations
 
