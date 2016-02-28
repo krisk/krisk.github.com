@@ -264,6 +264,14 @@ body {
       </aside>
     </article>
 
+    <article>
+      <input type="checkbox" id="tokenizeCheckbox" />
+      <label for="tokenizeCheckbox">Tokenize</label>
+      <aside>
+        When true, the search algorithm will search individual words **and** the full string, computing the final score as a function of both. Note that when `tokenize` is `true`, the `threshold`, `distance`, and `location` are inconsequential for individual tokens.
+      </aside>
+    </article>
+
     <h3>Bitap specific options</h3>
 
     <article>
@@ -385,6 +393,7 @@ body {
             this.$caseSensitiveCheckbox = $('#caseSensitiveCheckbox');
             this.$scoreCheckbox = $('#scoreCheckbox');
             this.$sortCheckbox = $('#sortCheckbox');
+            this.$tokenizeCheckbox = $('#tokenizeCheckbox');
             this.$identifierTextbox = $('#identifierTextbox');
             this.$keysTextbox = $('#keysTextbox');
             this.$locationRange = $('#locationRange');
@@ -401,6 +410,9 @@ body {
             }, {
               node: this.$sortCheckbox,
               name: 'shouldSort'
+            }, {
+              node: this.$tokenizeCheckbox,
+              name: 'tokenize'
             }];
 
             this.rangeItems = [{
@@ -534,6 +546,7 @@ body {
             arr.push('  caseSensitive: ' + this.options.data.caseSensitive + ',');
             arr.push('  includeScore: ' + this.options.data.includeScore + ',');
             arr.push('  shouldSort: ' + this.options.data.shouldSort + ',');
+            arr.push('  tokenize: ' + this.options.data.tokenize + ',');
             arr.push('  threshold: ' + this.options.data.threshold + ',');
             arr.push('  location: ' + this.options.data.location + ',');
             arr.push('  distance: ' + this.options.data.distance + ',');
