@@ -33,7 +33,7 @@ I've been a Software Engineer for over a decade, specializing in Web and Mobile 
 I'm a family man. Stability is imperative.
 </aside>
 
-I've recently learned of [Toptal](https://www.toptal.com). What immediately interested me about Toptal is its [rigorous approach](https://www.toptal.com/top-3-percent) to identify the best engineers. They typically only accept about 3% of applicants, instantly meaning that the pool of freelances in the system is that much more intimate than competitive platforms.
+I've recently learned of [Toptal](https://www.toptal.com/web). What immediately interested me about Toptal is its [rigorous approach](https://www.toptal.com/top-3-percent) to identify the best engineers. They typically only accept about 3% of applicants, instantly meaning that the pool of freelances in the system is that much more intimate than competitive platforms.
 
 Because everyone at Toptal is a top senior developer (or designer), one can be sure that the the projects found therein are challenging, complex, and help stimulate creative passion. The caliber of talent leads to fair, competitive compensation.
 
