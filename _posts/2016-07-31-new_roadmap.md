@@ -27,13 +27,13 @@ Interestingly, opening up your helmet's visor in the summer heat of the I-680 st
 
 I started investigating different places where I could enroll and start reaping the benefits of freelancing, however, I had found that most of the platforms out there were saturated with low-paying short-term projects that would most frequently be given to developers that would charge a fraction of what I would.
 
-I've been a Software Engineer for over a decade, specializing in Web and Mobile applications, therefore, when it comes to experience, I think I have the necessary qualifications. Obviously, fair renumeration is of paramount importance to me, along with a steady stream of mid-to-long-term projects.
+I've been a Software Engineer for over a decade, specializing in Web and Mobile applications, therefore, when it comes to experience, I think I have the necessary qualifications. Obviously, fair compensation is of paramount importance to me, along with a steady stream of mid-to-long-term projects.
 
 <aside>
 I'm a family man. Stability is imperative.
 </aside>
 
-I've recently learned of [Toptal](https://www.toptal.com/web). What immediately interested me about Toptal is its [rigorous approach](https://www.toptal.com/top-3-percent) to identify the best engineers. They typically only accept about 3% of applicants, instantly meaning that the pool of freelances in the system is that much more intimate than competitive platforms.
+I've recently learned of [Toptal](https://www.toptal.com/web). What immediately interested me about Toptal is its [rigorous approach](https://www.toptal.com/top-3-percent) to identify the best engineers. They typically only accept about 3% of applicants, instantly meaning that the pool of freelancers in the system is that much more intimate than competitive platforms.
 
 Because everyone at Toptal is a top senior developer (or designer), one can be sure that the the projects found therein are challenging, complex, and help stimulate creative passion. The caliber of talent leads to fair, competitive compensation.
 
