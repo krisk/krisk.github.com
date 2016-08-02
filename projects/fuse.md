@@ -18,6 +18,8 @@ css:
 
 ### Lightweight fuzzy-search, in JavaScript.
 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/kirorisk)
+
 Download:
 
 <ul class="download-list">
