@@ -20,7 +20,7 @@ css:
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/kirorisk)
 
-<a href="https://twitter.com/fusejs" class="twitter-follow-button" data-show-count="false">Follow @fusejs</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/fusejs" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @fusejs</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Download:
 
