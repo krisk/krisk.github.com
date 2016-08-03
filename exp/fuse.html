@@ -5,43 +5,33 @@
     font: 100%/1.6 cambria, palatino, georgia, serif;
     }
     main {
-      padding: 50px;
-    }
-    #options article {
-    margin-bottom: 10px;
-    }
-    #options aside {
-    font-size: 13px;
+      padding: 20px;
     }
     #resultTextAreaContainer {
     height: 300px;
     overflow-y: scroll;
-    border: 1px solid black;
-    }
-    #searchTextbox {
-    padding: 5px;
-    width: 200px;
-    }
-    #keysTextbox {
-    width: 200px;
     }
   </style>
   <body>
+    <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script src="http://underscorejs.org/underscore-min.js"></script>
+      <script src="http://kiro.me/javascript/projects/fuse.min.js"></script>
+      <script src="http://kiro.me/javascript/projects/fiber.min.js"></script>
+    </head>
+
     <main>
-      <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="http://underscorejs.org/underscore-min.js"></script>
-        <script src="http://kiro.me/javascript/projects/fuse.min.js"></script>
-        <script src="http://kiro.me/javascript/projects/fiber.min.js"></script>
-      </head>
-      <section id="items">
-        <h2>Items</h2>
-        <aside>
-          Insert your list of items here:
-        </aside>
-        <textarea rows="20" cols="100" id="itemsTextArea">
+      <h1>Fuse.js - Demo</h1>
+
+      <div class="row">
+        <div class="col-md-4">
+
+        <h3>Items</h3>
+
+        <span id="helpBlock" class="help-block">Insert your list of items here</span>
+
+        <textarea id="itemsTextArea" style="min-width: 100%; min-height: 500px">
   [
      {
         title: "Old Man's War",
@@ -206,106 +196,115 @@
      }
   ]
       </textarea>
-      </section>
-      <div class="row">
-        <div class="col-md-8">
-          <section id="options">
-            <h2>Options</h2>
-            <article>
-              <input type="checkbox" id="caseSensitiveCheckbox" />
-              <label for="caseSensitiveCheckbox">Case sensitive</label>
-              <aside>
-                Indicates whether comparisons should be case sensitive
-              </aside>
-            </article>
-            <article>
-              <input type="checkbox" id="scoreCheckbox" />
-              <label for="scoreCheckbox">Include score</label>
-              <aside>
-                Whether the score should be included in the result set
-              </aside>
-            </article>
-            <article>
-              <input type="checkbox" id="matchesCheckbox" />
-              <label for="matchesCheckbox">Include matches</label>
-              <aside>
-                Whether the matches should be included in the result set
-              </aside>
-            </article>
-            <article>
-              <input type="checkbox" id="sortCheckbox" checked="checked" />
-              <label for="sortCheckbox">Sort</label>
-              <aside>
-                Whether to sort the result list, by score
-              </aside>
-            </article>
-            <article>
-              <label for="identifierTextbox">ID</label>
-              <input type="text" id="identifierTextbox" />
-              <aside>
-                The name of the identifier property. If specified, the returned result will be a list of the items' identifiers, otherwise it will be a list of the items
-              </aside>
-            </article>
-            <article>
-              <label for="keysTextbox">Keys</label>
-              <input type="text" id="keysTextbox" value="title,author.firstName" />
-              <aside>
-                List of properties that will be searched. This also supports nested properties
-              </aside>
-            </article>
-            <article>
-              <input type="checkbox" id="tokenizeCheckbox" />
-              <label for="tokenizeCheckbox">Tokenize</label>
-              <aside>
-                When true, the search algorithm will search individual words **and** the full string, computing the final score as a function of both. Note that when `tokenize` is `true`, the `threshold`, `distance`, and `location` are inconsequential for individual tokens.
-              </aside>
-            </article>
-            <article>
-              <label for="locationRange">Location</label>
-              <input type="number" id="locationRange" min="0" max="100" value="0">
-              <aside>
-                Determines approximately where in the text is the pattern expected to be found
-              </aside>
-            </article>
-            <article>
-              <label for="thresholdRange">Threshold</label>
-              <input type="number" id="thresholdRange" min="0" step="0.1" max="1" value="0.6">
-              <aside>
-                At what point does the match algorithm give up. A threshold of 0.0 requires a perfect match (of both letters and location), a threshold of 1.0 would match anything
-              </aside>
-            </article>
-            <article>
-              <label for="distanceRange">Distance</label>
-              <input type="number" id="distanceRange" min="0" max="1000" value="100">
-              <aside>
-                Determines how close the match must be to the fuzzy location (specified by location). An exact letter match which is distance characters away from the fuzzy location would score as a complete mismatch. A distance of 0 requires the match be at the exact location specified, a threshold of 1000 would require a perfect match to be within 800 characters of the location to be found using a threshold of 0.8.
-              </aside>
-            </article>
-            <article>
-              <label for="maxPatternLength">Max pattern length</label>
-              <input type="number" id="maxPatternLength" min="0" max="64" value="32">
-              <aside>
-                The maximum length of the pattern. The longer the pattern, the more intensive the search operation will be. Whenever the pattern exceeds the maxPatternLength, an error will be thrown. Why is this important? Read this.
-              </aside>
-            </article>
-          </section>
+        </div>
+
+        <div class="col-md-4">
+
+          <h3>Options</h3>
+
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="caseSensitiveCheckbox"> Case sensitive
+              </label>
+              <span id="helpBlock" class="help-block">Indicates whether comparisons should be case sensitive</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="scoreCheckbox">Include score
+              </label>
+              <span id="helpBlock" class="help-block">Whether the score should be included in the result set</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="matchesCheckbox">Include matches
+              </label>
+              <span id="helpBlock" class="help-block">Whether the matches should be included in the result set</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="sortCheckbox" checked="checked">Sort
+              </label>
+              <span id="helpBlock" class="help-block">Whether to sort the result list, by score</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" id="tokenizeCheckbox">Tokenize
+              </label>
+              <span id="helpBlock" class="help-block">When true, the search algorithm will search individual words **and** the full string, computing the final score as a function of both. Note that when <code>tokenize</code> is <code>true</code>, the <code>threshold</code>, <code>distance</code>, and <code>location</code> are inconsequential for individual tokens, and are thus ignored</span>
+            </div>
+          </div>
+
+          <div class="form-group form-inline">
+            <label for="identifierTextbox">ID</label>
+            <input type="text" class="form-control" id="identifierTextbox">
+            <span id="helpBlock" class="help-block">The name of the identifier property. If specified, the returned result will be a list of the items' identifiers, otherwise it will be a list of the items</span>
+          </div>
+
+          <div class="form-group form-inline">
+            <label for="keysTextbox">Keys</label>
+            <input type="text" class="form-control" id="keysTextbox" value="title,author.firstName">
+            <span id="helpBlock" class="help-block">List of properties that will be searched. This also supports nested properties</span>
+          </div>
+
+          <div class="form-group form-inline">
+            <label for="locationRange">Location</label>
+            <input type="number" id="locationRange" min="0" max="100" value="0">
+            <span id="helpBlock" class="help-block">Determines approximately where in the text is the pattern expected to be found</span>
+          </div>
+
+          <div class="form-group form-inline">
+            <label for="thresholdRange">Threshold</label>
+            <input type="number" id="thresholdRange" min="0" step="0.1" max="1" value="0.6">
+            <span id="helpBlock" class="help-block">At what point does the match algorithm give up. A threshold of <code>0.0</code> requires a perfect match (of both letters and location), a threshold of <code>1.0</code> would match anything</span>
+          </div>
+
+          <div class="form-group form-inline">
+            <label for="distanceRange">Distance</label>
+            <input type="number" id="distanceRange" min="0" max="1000" value="100">
+            <span id="helpBlock" class="help-block">Determines how close the match must be to the fuzzy location (specified by location). An exact letter match which is distance characters away from the fuzzy location would score as a complete mismatch. A distance of <code>0</code> requires the match be at the exact location specified, a threshold of <code>1000</code> would require a perfect match to be within <code>800</code> characters of the location to be found using a threshold of <code>0.8</code></span>
+          </div>
+
+          <div class="form-group form-inline">
+            <label for="maxPatternLength">Max pattern length</label>
+            <input type="number" id="maxPatternLength" min="0" max="64" value="32">
+            <span id="helpBlock" class="help-block">The maximum length of the pattern. The longer the pattern, the more intensive the search operation will be. Whenever the pattern exceeds the maxPatternLength, an error will be thrown. Why is this important? Read this.</span>
+          </div>
+
         </div>
         <div class="col-md-4">
 
-        <section id="js">
-        <h2>JavaScript</h2>
+          <section id="search">
+            <h3>Search</h3>
+
+            <div class="form-group form-inline">
+              <input type="text" class="form-control" id="searchTextbox" placeholder="Old man's war, etc...">
+              <span id="helpBlock" class="help-block">Type your search query, typos are ok (and the point of Fuse) :)</span>
+            </div>
+
+          </section>
+
+          <section id="js">
+           <h3>JavaScript</h3>
 <pre>
 <code id="jsTextArea"></code>
 </pre>
-        </section>
-
-          <section id="search">
-            <h2>Search</h2>
-            <input type="text" id="searchTextbox" />
           </section>
 
           <section id="output">
-            <h2>Result</h2>
+            <h3>Result</h3>
             <label>Search time:</label>
             <span id="searchTimeLabel"></span>
 <pre id="resultTextAreaContainer">
