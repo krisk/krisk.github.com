@@ -208,7 +208,7 @@
               <label>
                 <input type="checkbox" id="caseSensitiveCheckbox"> Case sensitive
               </label>
-              <span id="helpBlock" class="help-block">Indicates whether comparisons should be case sensitive</span>
+              <span id="helpBlock" class="help-block">Indicates whether comparisons should be case sensitive.</span>
             </div>
           </div>
 
@@ -217,7 +217,7 @@
               <label>
                 <input type="checkbox" id="scoreCheckbox">Include score
               </label>
-              <span id="helpBlock" class="help-block">Whether the score should be included in the result set</span>
+              <span id="helpBlock" class="help-block">Whether the score should be included in the result set.</span>
             </div>
           </div>
 
@@ -226,7 +226,7 @@
               <label>
                 <input type="checkbox" id="matchesCheckbox">Include matches
               </label>
-              <span id="helpBlock" class="help-block">Whether the matches should be included in the result set</span>
+              <span id="helpBlock" class="help-block">Whether the matches should be included in the result set. When <code>true</code>, each record in the result set will include the indices of the matched characters: <code>indices: [start, length]</code>. These can consequently be used for highlighting purposes.</span>
             </div>
           </div>
 
@@ -235,7 +235,7 @@
               <label>
                 <input type="checkbox" id="sortCheckbox" checked="checked">Sort
               </label>
-              <span id="helpBlock" class="help-block">Whether to sort the result list, by score</span>
+              <span id="helpBlock" class="help-block">Whether to sort the result list, by score.</span>
             </div>
           </div>
 
@@ -244,44 +244,44 @@
               <label>
                 <input type="checkbox" id="tokenizeCheckbox">Tokenize
               </label>
-              <span id="helpBlock" class="help-block">When <code>true</code>, the algorithm will search individual words <strong>and</strong> the full string, computing the final score as a function of both. In this case, the <code>threshold</code>, <code>distance</code>, and <code>location</code> are inconsequential for individual tokens, and are thus ignored</span>
+              <span id="helpBlock" class="help-block">When <code>true</code>, the algorithm will search individual words <strong>and</strong> the full string, computing the final score as a function of both. In this case, the <code>threshold</code>, <code>distance</code>, and <code>location</code> are inconsequential for individual tokens, and are thus ignored.</span>
             </div>
           </div>
 
           <div class="form-group form-inline">
             <label for="identifierTextbox">ID</label>
             <input type="text" class="form-control" id="identifierTextbox">
-            <span id="helpBlock" class="help-block">The name of the identifier property. If specified, the returned result will be a list of the items' identifiers, otherwise it will be a list of the items</span>
+            <span id="helpBlock" class="help-block">The name of the identifier property. If specified, the returned result will be a list of the items' identifiers, otherwise it will be a list of the items.</span>
           </div>
 
           <div class="form-group form-inline">
             <label for="keysTextbox">Keys</label>
             <input type="text" class="form-control" id="keysTextbox" value="title,author.firstName">
-            <span id="helpBlock" class="help-block">List of properties that will be searched. This also supports nested properties</span>
+            <span id="helpBlock" class="help-block">List of properties that will be searched. This also supports nested properties.</span>
           </div>
 
           <div class="form-group form-inline">
             <label for="locationRange">Location</label>
             <input type="number" id="locationRange" min="0" max="100" value="0">
-            <span id="helpBlock" class="help-block">Determines approximately where in the text is the pattern expected to be found</span>
+            <span id="helpBlock" class="help-block">Determines approximately where in the text is the pattern expected to be found.</span>
           </div>
 
           <div class="form-group form-inline">
             <label for="thresholdRange">Threshold</label>
             <input type="number" id="thresholdRange" min="0" step="0.1" max="1" value="0.6">
-            <span id="helpBlock" class="help-block">At what point does the match algorithm give up. A threshold of <code>0.0</code> requires a perfect match (of both letters and location), a threshold of <code>1.0</code> would match anything</span>
+            <span id="helpBlock" class="help-block">At what point does the match algorithm give up. A threshold of <code>0.0</code> requires a perfect match (of both letters and location), a threshold of <code>1.0</code> would match anything.</span>
           </div>
 
           <div class="form-group form-inline">
             <label for="distanceRange">Distance</label>
             <input type="number" id="distanceRange" min="0" max="1000" value="100">
-            <span id="helpBlock" class="help-block">Determines how close the match must be to the fuzzy location (specified by location). An exact letter match which is distance characters away from the fuzzy location would score as a complete mismatch. A distance of <code>0</code> requires the match be at the exact location specified, a threshold of <code>1000</code> would require a perfect match to be within <code>800</code> characters of the location to be found using a threshold of <code>0.8</code></span>
+            <span id="helpBlock" class="help-block">Determines how close the match must be to the fuzzy location (specified by location). An exact letter match which is distance characters away from the fuzzy location would score as a complete mismatch. A distance of <code>0</code> requires the match be at the exact location specified, a threshold of <code>1000</code> would require a perfect match to be within <code>800</code> characters of the location to be found using a threshold of <code>0.8</code>.</span>
           </div>
 
           <div class="form-group form-inline">
             <label for="maxPatternLength">Max pattern length</label>
             <input type="number" id="maxPatternLength" min="0" max="64" value="32">
-            <span id="helpBlock" class="help-block">The maximum length of the pattern. The longer the pattern, the more intensive the search operation will be. Whenever the pattern exceeds the maxPatternLength, an error will be thrown. Why is this important? Read this.</span>
+            <span id="helpBlock" class="help-block">The maximum length of the pattern. The longer the pattern (i.e. the search query), the more intensive the search operation will be. Whenever the pattern exceeds the <code>maxPatternLength</code>, an error will be thrown. Why is this important? Read <a href="https://en.wikipedia.org/wiki/Word_(computer_architecture)#Word_size_choice" alt="word size choice" target="_blank">this</a>.</span>
           </div>
 
         </div>
